@@ -1,0 +1,156 @@
+{
+  "colleges": [
+    {
+      "name": "MIT",
+      "type": "Highly Selective Engineering",
+      "requirements": {
+        "math": "4 years (through Calculus BC recommended)",
+        "science": "4 years (Physics, Chemistry required)",
+        "english": "4 years",
+        "social_studies": "3-4 years",
+        "foreign_language": "2+ years (4 recommended)",
+        "recommendations": [
+          "AP Calculus BC",
+          "AP Physics C",
+          "AP Chemistry",
+          "Computer Science courses",
+          "Strong STEM extracurriculars"
+        ]
+      }
+    },
+    {
+      "name": "Stanford University",
+      "type": "Highly Selective",
+      "requirements": {
+        "math": "4 years (through Calculus recommended)",
+        "science": "3+ years (lab sciences)",
+        "english": "4 years",
+        "social_studies": "3+ years",
+        "foreign_language": "3+ years",
+        "recommendations": [
+          "AP Calculus AB or BC",
+          "Multiple AP courses",
+          "Well-rounded with depth",
+          "Leadership activities"
+        ]
+      }
+    },
+    {
+      "name": "UC System (Berkeley, UCLA, etc.)",
+      "type": "Public University System",
+      "requirements": {
+        "math": "3 years required, 4 recommended",
+        "science": "2 years required, 3 recommended",
+        "english": "4 years",
+        "social_studies": "2 years",
+        "foreign_language": "2 years required, 3 recommended",
+        "visual_performing_arts": "1 year",
+        "recommendations": [
+          "A-G requirements must be met",
+          "Honors/AP courses boost GPA",
+          "Strong junior year grades crucial"
+        ]
+      }
+    },
+    {
+      "name": "Ivy League (Harvard, Yale, Princeton, etc.)",
+      "type": "Highly Selective Liberal Arts",
+      "requirements": {
+        "math": "4 years",
+        "science": "4 years (lab sciences)",
+        "english": "4 years",
+        "social_studies": "3-4 years",
+        "foreign_language": "4 years",
+        "recommendations": [
+          "Multiple AP courses (8-12)",
+          "Calculus required",
+          "Foreign language proficiency",
+          "Exceptional extracurriculars"
+        ]
+      }
+    },
+    {
+      "name": "State University",
+      "type": "Public State School",
+      "requirements": {
+        "math": "3 years (Algebra I, II, Geometry)",
+        "science": "2-3 years",
+        "english": "4 years",
+        "social_studies": "2-3 years",
+        "foreign_language": "2 years",
+        "recommendations": [
+          "Solid GPA (3.0+)",
+          "Some honors courses",
+          "Well-rounded activities"
+        ]
+      }
+    },
+    {
+      "name": "Liberal Arts Colleges (Williams, Amherst, Swarthmore)",
+      "type": "Selective Liberal Arts",
+      "requirements": {
+        "math": "4 years",
+        "science": "3-4 years",
+        "english": "4 years",
+        "social_studies": "3-4 years",
+        "foreign_language": "3-4 years",
+        "recommendations": [
+          "Strong writing skills",
+          "Intellectual curiosity",
+          "AP courses in areas of interest",
+          "Thoughtful essay"
+        ]
+      }
+    },
+    {
+      "name": "Engineering Schools (Georgia Tech, Purdue, UIUC)",
+      "type": "Engineering Focused",
+      "requirements": {
+        "math": "4 years (through Calculus)",
+        "science": "4 years (Physics, Chemistry required)",
+        "english": "4 years",
+        "social_studies": "3 years",
+        "foreign_language": "2+ years",
+        "recommendations": [
+          "AP Calculus AB or BC",
+          "AP Physics",
+          "AP Chemistry",
+          "Robotics or engineering clubs"
+        ]
+      }
+    },
+    {
+      "name": "Business Schools (Wharton, Ross, Stern)",
+      "type": "Business Focused",
+      "requirements": {
+        "math": "4 years (through Pre-Calculus/Calculus)",
+        "science": "3 years",
+        "english": "4 years",
+        "social_studies": "3-4 years (Economics recommended)",
+        "foreign_language": "3+ years",
+        "recommendations": [
+          "AP Statistics",
+          "AP Economics",
+          "AP Calculus",
+          "Business/entrepreneurship activities"
+        ]
+      }
+    }
+  ],
+  "general_guidance": {
+    "minimum_competitive": {
+      "math": "Algebra I, Geometry, Algebra II, Pre-Calculus",
+      "science": "Biology, Chemistry, Physics",
+      "english": "4 years",
+      "social_studies": "US History, World History, Government",
+      "foreign_language": "2-3 years same language"
+    },
+    "highly_competitive": {
+      "math": "Through Calculus BC",
+      "science": "AP Biology, AP Chemistry, AP Physics",
+      "ap_courses": "8-12 total",
+      "gpa": "3.8+ unweighted"
+    }
+  }
+}
+

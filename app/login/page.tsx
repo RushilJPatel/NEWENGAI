@@ -34,7 +34,7 @@ export default function LoginPage() {
     if (result?.error) {
       setError('Invalid credentials. For demo, use any email/password.');
     } else {
-      router.push('/planner');
+      router.push('/dashboard');
     }
   };
 
@@ -44,10 +44,10 @@ export default function LoginPage() {
         {/* Logo/Header */}
         <div className="text-center mb-8">
           <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-            🎓 High School Planner AI
+            🎓 College Planner AI
           </h1>
           <p className="text-gray-600 text-lg">
-            Plan your 4-year high school journey
+            Your AI-powered college planning assistant
           </p>
         </div>
 
@@ -133,16 +133,16 @@ export default function LoginPage() {
         {/* Features */}
         <div className="mt-8 grid grid-cols-3 gap-4 text-center">
           <div>
-            <div className="text-3xl mb-2">📅</div>
-            <div className="text-sm text-gray-600">4-Year Plans</div>
+            <div className="text-3xl mb-2">💬</div>
+            <div className="text-sm text-gray-600">AI Chatbot</div>
           </div>
           <div>
-            <div className="text-3xl mb-2">🤖</div>
-            <div className="text-sm text-gray-600">AI Powered</div>
+            <div className="text-3xl mb-2">📝</div>
+            <div className="text-sm text-gray-600">App Guidance</div>
           </div>
           <div>
-            <div className="text-3xl mb-2">🎯</div>
-            <div className="text-sm text-gray-600">Major Tracks</div>
+            <div className="text-3xl mb-2">🎓</div>
+            <div className="text-sm text-gray-600">College Help</div>
           </div>
         </div>
       </div>

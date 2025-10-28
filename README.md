@@ -1,43 +1,66 @@
-# 🎓 High School Planner AI
+# 🎓 College Planner AI - Your Personal College Advisor
 
-An intelligent web application that helps high school students plan their entire 4-year academic journey with AI-powered recommendations tailored to their chosen major.
+An intelligent AI-powered chatbot that helps high school students plan their entire college journey. Get personalized 4-year high school schedules based on your target colleges, step-by-step application guidance, and answers to all your college-related questions!
 
-## ✨ Features
+## ✨ Key Features
 
-- 🔐 **User Authentication** - Secure login/signup system
-- 📚 **6 Major Tracks** - STEM, Business, Liberal Arts, Health Sciences, Arts & Media, Undecided
-- 📅 **4-Year Planning** - Complete course schedules from Grade 9-12
-- 🤖 **AI-Powered Guidance** - Personalized recommendations using Google Gemini AI
-- 💯 **37+ Courses** - Comprehensive high school curriculum including AP courses
-- 🎯 **Smart Prerequisites** - Automatic prerequisite tracking and validation
-- 📊 **Credit Tracking** - Monitor credits across all 4 years
-- 🖨️ **Print Schedules** - Export your 4-year plan
-- 🎨 **Beautiful UI** - Modern, responsive design
+### 🤖 AI Chatbot Advisor
+- **Chat with AI** about anything college-related
+- Get instant answers to college planning questions
+- Personalized advice based on your goals
 
-## 🚀 Major Tracks Available
+### 📚 Custom 4-Year High School Schedules
+- **Tailored to ANY US College** - MIT, Stanford, Ivy League, UC System, State Schools, and more
+- Automatically adjusts course rigor based on college selectivity
+- Includes specific course recommendations with prerequisites
+- Explains WHY each course matters for your target schools
 
-1. **STEM** 🔬 - Science, Technology, Engineering, Math
-2. **Business & Economics** 💼 - Entrepreneurship and Finance
-3. **Liberal Arts & Humanities** 📚 - Writing, History, Social Sciences
-4. **Health & Life Sciences** ⚕️ - Pre-Med, Nursing, Health Professions
-5. **Arts & Media** 🎨 - Design, Film, Music, Visual Arts
-6. **Undecided / Exploratory** 🎓 - Balanced curriculum
+###Examples:
+- "Create a 4-year schedule for me targeting MIT"
+- "I want to apply to UC Berkeley - what courses should I take?"
+- "Plan my schedule for Ivy League schools"
+- "What classes do I need for Georgia Tech engineering?"
+
+### 📝 Comprehensive College Guidance
+- Step-by-step college application process
+- Essay writing tips and brainstorming
+- Financial aid and scholarship advice
+- SAT/ACT preparation strategies
+- Interview preparation
+- Campus visit recommendations
+- Timeline and deadline management
+
+### 🔐 Secure & Personalized
+- User authentication system
+- Save conversation history
+- Track your progress
+
+## 🏫 Supported College Types
+
+The AI has knowledge of requirements for:
+- **Highly Selective Engineering** (MIT, Caltech, etc.)
+- **Ivy League** (Harvard, Yale, Princeton, etc.)
+- **UC System** (Berkeley, UCLA, etc.)
+- **Top Engineering Schools** (Georgia Tech, Purdue, UIUC)
+- **Business Schools** (Wharton, Ross, Stern)
+- **Liberal Arts Colleges** (Williams, Amherst, Swarthmore)
+- **State Universities** - Any public university
+- **AND MORE!** - Just ask about any college!
 
 ## 🛠️ Technologies Used
 
 - **Next.js 14** - React framework with App Router
-- **NextAuth.js** - Authentication system
-- **React 18** - UI library
+- **NextAuth.js** - Secure authentication
+- **Google Gemini AI** - Powerful conversational AI
 - **TypeScript** - Type-safe development
-- **Tailwind CSS** - Beautiful styling
-- **Google Gemini AI** - Intelligent recommendations
-- **JSON Data Store** - Fast data management
+- **Tailwind CSS** - Beautiful, responsive UI
+- **JSON Database** - Fast data access for 37+ courses and college requirements
 
 ## 📋 Prerequisites
 
 - Node.js 18.17 or later ([Download](https://nodejs.org/))
-- A **Gemini API key** (free - get it from [Google AI Studio](https://makersuite.google.com/app/apikey))
-- A Vercel account (optional, for deployment)
+- **Gemini API key** (FREE - get it from [Google AI Studio](https://makersuite.google.com/app/apikey))
+- Vercel account (optional, for deployment)
 
 ## 🚀 Getting Started
 
@@ -52,12 +75,10 @@ npm install
 Create a `.env.local` file in the root directory:
 
 ```env
-# Gemini AI API Key (Required for AI recommendations)
-# Get your free API key from: https://makersuite.google.com/app/apikey
+# Gemini AI API Key (Required for chatbot)
 GEMINI_API_KEY=your_gemini_api_key_here
 
 # NextAuth Secret (Required for authentication)
-# Generate with: openssl rand -base64 32
 NEXTAUTH_SECRET=your-secret-key-change-in-production
 ```
 
@@ -73,173 +94,140 @@ Open [http://localhost:3000](http://localhost:3000) in your browser!
 
 ### 4. How to Use
 
-1. **Sign Up/Login** - Create an account or sign in
-2. **Choose Your Major** - Select from 6 major tracks
-3. **View 4-Year Plan** - Get a complete schedule from Grade 9-12
-4. **Get AI Guidance** - Receive personalized recommendations
-5. **Print/Save** - Export your plan for reference
+1. **Sign Up/Login** - Create an account
+2. **Start Chatting** - Ask any college-related question
+3. **Get Your Schedule** - Ask the AI to create a 4-year plan for your target colleges
+4. **Get Guidance** - Ask about essays, applications, financial aid, etc.
+
+## 💬 Example Questions to Ask the AI
+
+### Schedule Planning:
+- "Create a 4-year schedule for me targeting MIT"
+- "I want to apply to UC schools - what courses should I take?"
+- "Plan my schedule for Ivy League colleges"  
+- "What classes should I take for a pre-med track?"
+- "I'm interested in business schools like Wharton - help me plan"
+
+### Application Help:
+- "How do I start the college application process?"
+- "What makes a good college essay?"
+- "When should I take the SAT/ACT?"
+- "How do I choose the right college for me?"
+- "Tell me about financial aid and scholarships"
+- "How do I prepare for college interviews?"
+
+### Course Advice:
+- "Should I take AP Calculus AB or BC?"
+- "Is 4 years of foreign language necessary?"
+- "What science classes do engineering schools want to see?"
+- "How many AP courses should I take?"
 
 ## 📁 Project Structure
 
 ```
-high-school-planner-ai/
+college-planner-ai/
 ├── app/
 │   ├── api/
-│   │   ├── auth/[...nextauth]/  # Authentication
-│   │   ├── colleges/            # College data API
-│   │   ├── courses/             # Course data API
-│   │   ├── generate-schedule/   # Schedule generation
-│   │   ├── hs-courses/          # High school courses
-│   │   ├── majors/              # Major tracks
-│   │   └── recommend/           # AI recommendations
-│   ├── login/                   # Login page
-│   ├── planner/                 # Main planner UI
-│   ├── providers/               # Session provider
-│   ├── layout.tsx               # Root layout
-│   └── page.tsx                 # Home page (redirects)
+│   │   ├── auth/[...nextauth]/   # Authentication
+│   │   ├── chat/                 # AI Chatbot API (Main feature!)
+│   │   ├── colleges-search/      # College search
+│   │   ├── generate-schedule/    # Schedule generation
+│   │   └── ...other APIs
+│   ├── dashboard/                # Main chat interface
+│   ├── login/                    # Login page
+│   └── ...other pages
 ├── data/
-│   ├── courses.json             # College courses
-│   ├── college_curriculums.json # College data
-│   ├── high_school_courses.json # High school courses
-│   └── major_tracks.json        # Major track data
+│   ├── college_requirements.json # College requirements database
+│   ├── high_school_courses.json  # 37+ high school courses
+│   ├── major_tracks.json         # Major track data
+│   └── ...other data files
 ├── types/
-│   └── next-auth.d.ts          # NextAuth TypeScript definitions
-├── middleware.ts               # Route protection
-├── .env.local                  # Environment variables (DO NOT COMMIT)
-└── README.md                   # This file
+│   └── next-auth.d.ts           # TypeScript definitions
+├── .env.local                   # Environment variables (DO NOT COMMIT)
+└── README.md                    # This file
 ```
 
 ## 🌐 Deploy to Vercel
 
-### Method 1: Deploy with GitHub (Recommended)
+### Method 1: GitHub + Vercel (Recommended)
 
-1. **Push your code to GitHub:**
+1. **Push to GitHub:**
 ```bash
 git add .
-git commit -m "High School Planner AI"
+git commit -m "College Planner AI"
 git push origin main
 ```
 
 2. **Deploy on Vercel:**
    - Go to [vercel.com](https://vercel.com)
-   - Click "New Project"
-   - Import your GitHub repository
-   - **⚠️ Add Environment Variables:**
+   - Import your repository
+   - **Add Environment Variables:**
      - `GEMINI_API_KEY` = your API key
      - `NEXTAUTH_SECRET` = your secret key
-   - Click "Deploy"
-   - Live in 2 minutes! 🎉
+   - Deploy! 🚀
 
-### Method 2: Deploy with Vercel CLI
+### Method 2: Vercel CLI
 
 ```bash
-# Login
-vercel login
-
-# Deploy
 vercel
-
-# Add environment variables
-vercel env add GEMINI_API_KEY
-vercel env add NEXTAUTH_SECRET
-
-# Deploy to production
+# Add environment variables when prompted
 vercel --prod
 ```
 
-## 🎨 Customization
+## 🎯 How It Works
 
-### Add More Courses
+1. **AI Context**: The chatbot has access to a database of college requirements and high school courses
+2. **Smart Recommendations**: Based on your target colleges, the AI suggests appropriate courses
+3. **Conversation Memory**: The AI remembers your conversation for context-aware responses
+4. **Customization**: Every schedule is personalized to your goals and interests
 
-Edit `data/high_school_courses.json`:
+## 🔒 Privacy & Security
 
-```json
-{
-  "id": "NEW_COURSE",
-  "name": "Course Name",
-  "subject": "Subject",
-  "grade": 10,
-  "prerequisites": ["PREREQ_COURSE"],
-  "credits": 1,
-  "advanced": false
-}
-```
+- All chats are private to your account
+- Authentication handled by NextAuth.js
+- API keys stored securely in environment variables
+- No student data is shared or sold
 
-### Add More Majors
+## 📚 Future Enhancements
 
-Edit `data/major_tracks.json`:
-
-```json
-{
-  "id": "your-major",
-  "name": "Your Major Name",
-  "description": "Description",
-  "icon": "🎯",
-  "recommendedCourses": {
-    "grade9": ["course1", "course2"],
-    "grade10": ["course3", "course4"],
-    "grade11": ["course5", "course6"],
-    "grade12": ["course7", "course8"]
-  },
-  "totalCredits": 28
-}
-```
-
-## 🔒 Security Notes
-
-- All authentication is handled by NextAuth.js
-- Passwords are never stored in this demo (uses credential provider)
-- For production, integrate a real database (PostgreSQL, MongoDB, etc.)
-- API keys are protected in `.env.local`
-- Routes are protected with middleware
-
-## 📚 API Routes
-
-| Route | Method | Description |
-|-------|--------|-------------|
-| `/api/auth/[...nextauth]` | GET/POST | NextAuth authentication |
-| `/api/hs-courses` | GET | Get high school courses |
-| `/api/majors` | GET | Get major tracks |
-| `/api/generate-schedule` | POST | Generate 4-year schedule |
-| `/api/colleges` | GET | Get college data (legacy) |
-| `/api/courses` | GET | Get college courses (legacy) |
+- 💾 **Database Integration** - PostgreSQL for persistent chat history
+- 📊 **Progress Dashboard** - Visual tracking of completed courses
+- 🗓️ **Semester Planning** - Break down by fall/spring semesters
+- 👥 **Counselor Tools** - Features for school counselors
+- 📱 **Mobile App** - Native iOS/Android apps
+- 🎓 **College Matching** - AI-powered college recommendations
+- 💰 **Scholarship Finder** - Database of scholarships with AI matching
 
 ## 🐛 Troubleshooting
 
-### Build Errors?
+### Chatbot not responding?
+- Verify `GEMINI_API_KEY` is correct in `.env.local`
+- Check API quota at [Google AI Studio](https://makersuite.google.com/)
+- Make sure you've run `npm install`
+
+### Build errors?
 ```bash
 rm -rf .next node_modules
 npm install
 npm run build
 ```
 
-### Authentication Issues?
-- Make sure `NEXTAUTH_SECRET` is set in `.env.local`
-- Try clearing cookies and logging in again
-
-### AI Not Working?
-- Verify your `GEMINI_API_KEY` is correct
-- Check you have API quota remaining at [Google AI Studio](https://makersuite.google.com/)
-
-## 🚀 Future Enhancements
-
-- 💾 **Database Integration** - PostgreSQL/MongoDB for user data
-- 📊 **Progress Tracking** - Track completed courses semester by semester
-- 🔄 **Course Swapping** - Drag and drop to customize schedules
-- 🎓 **College Matching** - Recommend colleges based on your plan
-- 📱 **Mobile App** - React Native version
-- 🗓️ **Semester View** - Break down by fall/spring semesters
-- 👥 **Counselor Dashboard** - Tools for school counselors
-- 📈 **GPA Calculator** - Track weighted and unweighted GPA
+### Login issues?
+- Ensure `NEXTAUTH_SECRET` is set
+- Try clearing browser cookies
 
 ## 📝 License
 
 This project is open source and free to use!
 
-## 🙏 Credits
+## 🙏 Acknowledgments
 
-Built with ❤️ for high school students planning their future.
+- Built with ❤️ for high school students planning their future
+- Powered by Google Gemini AI
+- Inspired by the need for accessible college planning resources
 
 ---
 
-**Happy Planning! 🎓✨**
+**Ready to plan your college journey? Let's get started! 🚀🎓**
+
+*Ask your AI advisor: "Create a 4-year schedule for me targeting [your dream college]"*

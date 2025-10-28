@@ -3,8 +3,8 @@ import './globals.css';
 import { SessionProvider } from './providers/SessionProvider';
 
 export const metadata: Metadata = {
-  title: 'High School Planner AI',
-  description: 'Plan your 4-year high school journey with AI-powered recommendations',
+  title: 'College Planner AI',
+  description: 'Your AI-powered assistant for college planning, applications, and guidance',
 };
 
 export default function RootLayout({
