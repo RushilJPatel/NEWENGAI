@@ -1,0 +1,83 @@
+{
+  "majors": [
+    {
+      "id": "stem",
+      "name": "STEM (Science, Technology, Engineering, Math)",
+      "description": "Perfect for future engineers, scientists, and tech professionals",
+      "icon": "🔬",
+      "recommendedCourses": {
+        "grade9": ["ENG9", "ALG1", "BIO", "WORLD_HIST", "SPAN1", "HEALTH", "PE9", "CS_INTRO"],
+        "grade10": ["ENG10", "GEO", "CHEM", "US_HIST", "SPAN2", "PE10", "AP_CSP"],
+        "grade11": ["ENG11", "ALG2", "PHYS", "US_GOV", "ECON", "SPAN3", "AP_CSA", "ENG_INTRO"],
+        "grade12": ["ENG12", "CALC", "AP_PHYS", "AP_CHEM", "STATS", "ROBOTICS"]
+      },
+      "totalCredits": 28
+    },
+    {
+      "id": "business",
+      "name": "Business & Economics",
+      "description": "Ideal for aspiring entrepreneurs, managers, and finance professionals",
+      "icon": "💼",
+      "recommendedCourses": {
+        "grade9": ["ENG9", "ALG1", "BIO", "WORLD_HIST", "SPAN1", "HEALTH", "PE9", "BUS_INTRO"],
+        "grade10": ["ENG10", "GEO", "CHEM", "US_HIST", "SPAN2", "PE10", "MARKETING"],
+        "grade11": ["ENG11", "ALG2", "PHYS", "US_GOV", "ECON", "SPAN3", "ACCOUNTING"],
+        "grade12": ["ENG12", "PRECALC", "STATS", "AP_EURO", "CS_INTRO", "AP_CSP"]
+      },
+      "totalCredits": 27
+    },
+    {
+      "id": "liberal_arts",
+      "name": "Liberal Arts & Humanities",
+      "description": "Great for future writers, historians, teachers, and social scientists",
+      "icon": "📚",
+      "recommendedCourses": {
+        "grade9": ["ENG9", "ALG1", "BIO", "WORLD_HIST", "SPAN1", "HEALTH", "PE9", "ART"],
+        "grade10": ["ENG10", "GEO", "CHEM", "US_HIST", "SPAN2", "PE10", "MUSIC"],
+        "grade11": ["ENG11", "ALG2", "PHYS", "US_GOV", "ECON", "SPAN3", "AP_EURO"],
+        "grade12": ["ENG12", "PRECALC", "AP_BIO", "AP_SPAN", "ART", "MUSIC"]
+      },
+      "totalCredits": 27
+    },
+    {
+      "id": "health_sciences",
+      "name": "Health & Life Sciences",
+      "description": "Perfect for pre-med, nursing, pharmacy, and health professions",
+      "icon": "⚕️",
+      "recommendedCourses": {
+        "grade9": ["ENG9", "ALG1", "BIO", "WORLD_HIST", "SPAN1", "HEALTH", "PE9", "ART"],
+        "grade10": ["ENG10", "GEO", "CHEM", "US_HIST", "SPAN2", "PE10", "CS_INTRO"],
+        "grade11": ["ENG11", "ALG2", "PHYS", "US_GOV", "ECON", "SPAN3", "AP_BIO"],
+        "grade12": ["ENG12", "PRECALC", "AP_CHEM", "STATS", "AP_PHYS", "AP_SPAN"]
+      },
+      "totalCredits": 28
+    },
+    {
+      "id": "arts_media",
+      "name": "Arts & Media",
+      "description": "For creative students interested in design, film, music, and visual arts",
+      "icon": "🎨",
+      "recommendedCourses": {
+        "grade9": ["ENG9", "ALG1", "BIO", "WORLD_HIST", "SPAN1", "HEALTH", "PE9", "ART"],
+        "grade10": ["ENG10", "GEO", "CHEM", "US_HIST", "SPAN2", "PE10", "MUSIC"],
+        "grade11": ["ENG11", "ALG2", "PHYS", "US_GOV", "ECON", "SPAN3", "ART"],
+        "grade12": ["ENG12", "PRECALC", "AP_BIO", "AP_EURO", "MUSIC", "CS_INTRO"]
+      },
+      "totalCredits": 27
+    },
+    {
+      "id": "undecided",
+      "name": "Undecided / Exploratory",
+      "description": "A balanced curriculum to keep all options open",
+      "icon": "🎓",
+      "recommendedCourses": {
+        "grade9": ["ENG9", "ALG1", "BIO", "WORLD_HIST", "SPAN1", "HEALTH", "PE9", "CS_INTRO"],
+        "grade10": ["ENG10", "GEO", "CHEM", "US_HIST", "SPAN2", "PE10", "ART"],
+        "grade11": ["ENG11", "ALG2", "PHYS", "US_GOV", "ECON", "SPAN3", "BUS_INTRO"],
+        "grade12": ["ENG12", "PRECALC", "AP_BIO", "AP_CSP", "MARKETING", "MUSIC"]
+      },
+      "totalCredits": 27
+    }
+  ]
+}
+

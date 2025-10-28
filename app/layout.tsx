@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { SessionProvider } from './providers/SessionProvider';
 
 export const metadata: Metadata = {
-  title: 'My First App',
-  description: 'A beautiful web app built with Next.js',
+  title: 'High School Planner AI',
+  description: 'Plan your 4-year high school journey with AI-powered recommendations',
 };
 
 export default function RootLayout({
@@ -13,7 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SessionProvider>{children}</SessionProvider>
+      </body>
     </html>
   );
 }

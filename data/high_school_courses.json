@@ -1,0 +1,318 @@
+{
+  "courses": [
+    {
+      "id": "ENG9",
+      "name": "English 9",
+      "subject": "English",
+      "grade": 9,
+      "prerequisites": [],
+      "credits": 1
+    },
+    {
+      "id": "ENG10",
+      "name": "English 10",
+      "subject": "English",
+      "grade": 10,
+      "prerequisites": ["ENG9"],
+      "credits": 1
+    },
+    {
+      "id": "ENG11",
+      "name": "English 11",
+      "subject": "English",
+      "grade": 11,
+      "prerequisites": ["ENG10"],
+      "credits": 1
+    },
+    {
+      "id": "ENG12",
+      "name": "English 12",
+      "subject": "English",
+      "grade": 12,
+      "prerequisites": ["ENG11"],
+      "credits": 1
+    },
+    {
+      "id": "ALG1",
+      "name": "Algebra I",
+      "subject": "Math",
+      "grade": 9,
+      "prerequisites": [],
+      "credits": 1
+    },
+    {
+      "id": "GEO",
+      "name": "Geometry",
+      "subject": "Math",
+      "grade": 10,
+      "prerequisites": ["ALG1"],
+      "credits": 1
+    },
+    {
+      "id": "ALG2",
+      "name": "Algebra II",
+      "subject": "Math",
+      "grade": 11,
+      "prerequisites": ["GEO"],
+      "credits": 1
+    },
+    {
+      "id": "PRECALC",
+      "name": "Pre-Calculus",
+      "subject": "Math",
+      "grade": 12,
+      "prerequisites": ["ALG2"],
+      "credits": 1
+    },
+    {
+      "id": "CALC",
+      "name": "AP Calculus AB",
+      "subject": "Math",
+      "grade": 12,
+      "prerequisites": ["PRECALC"],
+      "credits": 1,
+      "advanced": true
+    },
+    {
+      "id": "STATS",
+      "name": "AP Statistics",
+      "subject": "Math",
+      "grade": 12,
+      "prerequisites": ["ALG2"],
+      "credits": 1,
+      "advanced": true
+    },
+    {
+      "id": "BIO",
+      "name": "Biology",
+      "subject": "Science",
+      "grade": 9,
+      "prerequisites": [],
+      "credits": 1
+    },
+    {
+      "id": "CHEM",
+      "name": "Chemistry",
+      "subject": "Science",
+      "grade": 10,
+      "prerequisites": ["BIO"],
+      "credits": 1
+    },
+    {
+      "id": "PHYS",
+      "name": "Physics",
+      "subject": "Science",
+      "grade": 11,
+      "prerequisites": ["CHEM", "ALG2"],
+      "credits": 1
+    },
+    {
+      "id": "AP_BIO",
+      "name": "AP Biology",
+      "subject": "Science",
+      "grade": 12,
+      "prerequisites": ["BIO", "CHEM"],
+      "credits": 1,
+      "advanced": true
+    },
+    {
+      "id": "AP_CHEM",
+      "name": "AP Chemistry",
+      "subject": "Science",
+      "grade": 12,
+      "prerequisites": ["CHEM", "ALG2"],
+      "credits": 1,
+      "advanced": true
+    },
+    {
+      "id": "AP_PHYS",
+      "name": "AP Physics",
+      "subject": "Science",
+      "grade": 12,
+      "prerequisites": ["PHYS", "PRECALC"],
+      "credits": 1,
+      "advanced": true
+    },
+    {
+      "id": "WORLD_HIST",
+      "name": "World History",
+      "subject": "Social Studies",
+      "grade": 9,
+      "prerequisites": [],
+      "credits": 1
+    },
+    {
+      "id": "US_HIST",
+      "name": "US History",
+      "subject": "Social Studies",
+      "grade": 10,
+      "prerequisites": ["WORLD_HIST"],
+      "credits": 1
+    },
+    {
+      "id": "US_GOV",
+      "name": "US Government",
+      "subject": "Social Studies",
+      "grade": 11,
+      "prerequisites": ["US_HIST"],
+      "credits": 0.5
+    },
+    {
+      "id": "ECON",
+      "name": "Economics",
+      "subject": "Social Studies",
+      "grade": 11,
+      "prerequisites": [],
+      "credits": 0.5
+    },
+    {
+      "id": "AP_EURO",
+      "name": "AP European History",
+      "subject": "Social Studies",
+      "grade": 12,
+      "prerequisites": ["WORLD_HIST"],
+      "credits": 1,
+      "advanced": true
+    },
+    {
+      "id": "SPAN1",
+      "name": "Spanish I",
+      "subject": "Foreign Language",
+      "grade": 9,
+      "prerequisites": [],
+      "credits": 1
+    },
+    {
+      "id": "SPAN2",
+      "name": "Spanish II",
+      "subject": "Foreign Language",
+      "grade": 10,
+      "prerequisites": ["SPAN1"],
+      "credits": 1
+    },
+    {
+      "id": "SPAN3",
+      "name": "Spanish III",
+      "subject": "Foreign Language",
+      "grade": 11,
+      "prerequisites": ["SPAN2"],
+      "credits": 1
+    },
+    {
+      "id": "AP_SPAN",
+      "name": "AP Spanish",
+      "subject": "Foreign Language",
+      "grade": 12,
+      "prerequisites": ["SPAN3"],
+      "credits": 1,
+      "advanced": true
+    },
+    {
+      "id": "CS_INTRO",
+      "name": "Introduction to Computer Science",
+      "subject": "Elective",
+      "grade": 9,
+      "prerequisites": [],
+      "credits": 1
+    },
+    {
+      "id": "AP_CSP",
+      "name": "AP Computer Science Principles",
+      "subject": "Elective",
+      "grade": 10,
+      "prerequisites": ["CS_INTRO"],
+      "credits": 1,
+      "advanced": true
+    },
+    {
+      "id": "AP_CSA",
+      "name": "AP Computer Science A",
+      "subject": "Elective",
+      "grade": 11,
+      "prerequisites": ["AP_CSP"],
+      "credits": 1,
+      "advanced": true
+    },
+    {
+      "id": "ART",
+      "name": "Art",
+      "subject": "Elective",
+      "grade": 9,
+      "prerequisites": [],
+      "credits": 1
+    },
+    {
+      "id": "MUSIC",
+      "name": "Music",
+      "subject": "Elective",
+      "grade": 9,
+      "prerequisites": [],
+      "credits": 1
+    },
+    {
+      "id": "BUS_INTRO",
+      "name": "Introduction to Business",
+      "subject": "Elective",
+      "grade": 9,
+      "prerequisites": [],
+      "credits": 1
+    },
+    {
+      "id": "MARKETING",
+      "name": "Marketing",
+      "subject": "Elective",
+      "grade": 10,
+      "prerequisites": ["BUS_INTRO"],
+      "credits": 1
+    },
+    {
+      "id": "ACCOUNTING",
+      "name": "Accounting",
+      "subject": "Elective",
+      "grade": 11,
+      "prerequisites": ["BUS_INTRO"],
+      "credits": 1
+    },
+    {
+      "id": "ENG_INTRO",
+      "name": "Introduction to Engineering",
+      "subject": "Elective",
+      "grade": 9,
+      "prerequisites": [],
+      "credits": 1
+    },
+    {
+      "id": "ROBOTICS",
+      "name": "Robotics",
+      "subject": "Elective",
+      "grade": 10,
+      "prerequisites": ["ENG_INTRO"],
+      "credits": 1
+    },
+    {
+      "id": "HEALTH",
+      "name": "Health",
+      "subject": "Required",
+      "grade": 9,
+      "prerequisites": [],
+      "credits": 0.5
+    },
+    {
+      "id": "PE9",
+      "name": "Physical Education 9",
+      "subject": "Required",
+      "grade": 9,
+      "prerequisites": [],
+      "credits": 0.5
+    },
+    {
+      "id": "PE10",
+      "name": "Physical Education 10",
+      "subject": "Required",
+      "grade": 10,
+      "prerequisites": [],
+      "credits": 0.5
+    }
+  ]
+}
+
