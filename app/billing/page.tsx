@@ -6,10 +6,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '../components/Logo';
 import { useSubscription } from '../providers/SubscriptionProvider';
-import { loadStripe } from '@stripe/stripe-js';
 import { FaComments, FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaCheck, FaCrown, FaStar, FaRocket, FaSignOutAlt, FaCog, FaSpinner } from 'react-icons/fa';
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 export default function BillingPage() {
   const { data: session, status } = useSession();
@@ -98,61 +95,16 @@ export default function BillingPage() {
   ];
 
   const handleSelectPlan = async (selectedTier: 'free' | 'basic' | 'premium', priceId?: string) => {
-    // DEMO MODE - No actual payments processed
+    // MOCK PAYMENT - Just a demo popup
     setLoading(selectedTier);
     
     setTimeout(() => {
       upgradeTo(selectedTier);
       setLoading(null);
       
-      if (selectedTier === 'free') {
-        alert('✅ Demo: Switched to Free plan!\n\nNote: This is a demonstration. No actual payment or downgrade occurred.');
-      } else {
-        alert(`✅ Demo: Upgraded to ${selectedTier.charAt(0).toUpperCase() + selectedTier.slice(1)} plan!\n\nNote: This is a demonstration. No actual payment was processed.\n\nIn production, this would:\n• Redirect to Stripe checkout\n• Process payment of ${selectedTier === 'basic' ? '$9.99' : '$19.99'}/month\n• Activate premium features\n• Send confirmation email`);
-      }
-    }, 1500);
-
-    // REAL STRIPE INTEGRATION (Currently disabled for demo)
-    /*
-    if (selectedTier === 'free') {
-      if (confirm('Are you sure you want to downgrade to the free plan?')) {
-        upgradeTo('free');
-        alert('Downgraded to Free plan.');
-      }
-      return;
-    }
-
-    if (!priceId) {
-      alert('Payment system not configured. Price ID missing.');
-      return;
-    }
-
-    setLoading(selectedTier);
-
-    try {
-      const response = await fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId, tier: selectedTier }),
-      });
-
-      const { sessionId } = await response.json();
-
-      const stripe = await stripePromise;
-      if (stripe) {
-        const { error } = await stripe.redirectToCheckout({ sessionId });
-        if (error) {
-          console.error('Stripe redirect error:', error);
-          alert('Payment failed. Please try again.');
-        }
-      }
-    } catch (error) {
-      console.error('Checkout error:', error);
-      alert('Something went wrong. Please try again.');
-    } finally {
-      setLoading(null);
-    }
-    */
+      const tierName = selectedTier.charAt(0).toUpperCase() + selectedTier.slice(1);
+      alert(`🎉 Welcome to the ${tierName} plan!\n\nYour account has been updated.\n\n(This is a demo - no actual payment was processed)`);
+    }, 1000);
   };
 
   if (status === 'loading') {

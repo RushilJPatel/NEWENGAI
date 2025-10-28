@@ -13,14 +13,9 @@ export default function PaymentSuccess() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (sessionId) {
-      // Verify payment session
-      // In production, you'd verify this on the server
-      setTimeout(() => setLoading(false), 2000);
-    } else {
-      setLoading(false);
-    }
-  }, [sessionId]);
+    // Just show success message (demo mode)
+    setTimeout(() => setLoading(false), 1500);
+  }, []);
 
   if (loading) {
     return (
