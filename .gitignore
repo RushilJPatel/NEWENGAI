@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env*.local
+# .env*.local  # TEMPORARILY DISABLED FOR SETUP
 
 # vercel
 .vercel
