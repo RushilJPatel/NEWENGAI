@@ -29,8 +29,8 @@ export async function POST(request: Request) {
     const hsCourses = JSON.parse(fs.readFileSync(hsCoursesPath, 'utf8'));
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    // Use stable model name
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
+    // Use stable production model
+    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
 
     // Build conversation history for context
     const conversationHistory = messages
@@ -88,7 +88,7 @@ Student's current question: ${userMessage}
 
 Provide a helpful, detailed response:`;
 
-    console.log('Calling Gemini API with model: gemini-1.5-pro');
+    console.log('Calling Gemini API with model: gemini-pro');
     const result = await model.generateContent(systemPrompt);
     const response = await result.response;
     const text = response.text();

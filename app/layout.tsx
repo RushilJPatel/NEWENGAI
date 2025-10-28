@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { SessionProvider } from './providers/SessionProvider';
+import { SubscriptionProvider } from './providers/SubscriptionProvider';
 
 export const metadata: Metadata = {
   title: 'College Compass',
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <SessionProvider>{children}</SessionProvider>
+        <SessionProvider>
+          <SubscriptionProvider>{children}</SubscriptionProvider>
+        </SessionProvider>
       </body>
     </html>
   );

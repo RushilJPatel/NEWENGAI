@@ -41,14 +41,14 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-secondary-50 via-white to-primary-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full">
         {/* Logo/Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
             <Logo size={60} />
           </div>
-          <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
             College Compass
           </h1>
           <p className="text-gray-600 text-lg">
@@ -63,8 +63,8 @@ export default function LoginPage() {
               onClick={() => setIsSignup(false)}
               className={`flex-1 py-2 px-4 rounded-lg font-semibold transition-all ${
                 !isSignup
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  ? 'bg-primary-600 text-white shadow-md'
+                  : 'bg-secondary-100 text-secondary-700 hover:bg-secondary-200'
               }`}
             >
               Login
@@ -73,8 +73,8 @@ export default function LoginPage() {
               onClick={() => setIsSignup(true)}
               className={`flex-1 py-2 px-4 rounded-lg font-semibold transition-all ${
                 isSignup
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  ? 'bg-primary-600 text-white shadow-md'
+                  : 'bg-secondary-100 text-secondary-700 hover:bg-secondary-200'
               }`}
             >
               Sign Up
@@ -92,7 +92,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-indigo-600 focus:outline-none"
+                className="w-full px-4 py-3 border-2 border-secondary-300 rounded-lg focus:border-primary-600 focus:outline-none"
                 placeholder="your@email.com"
               />
             </div>
@@ -107,7 +107,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-indigo-600 focus:outline-none"
+                className="w-full px-4 py-3 border-2 border-secondary-300 rounded-lg focus:border-primary-600 focus:outline-none"
                 placeholder="••••••••"
               />
             </div>
@@ -121,7 +121,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:transform-none"
+              className="w-full py-3 bg-gradient-to-r from-primary-600 to-accent-600 text-white font-bold rounded-lg hover:from-primary-700 hover:to-accent-700 transition-all transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:transform-none"
             >
               {loading ? '⏳ Loading...' : (isSignup ? '🚀 Create Account' : '🔑 Sign In')}
             </button>

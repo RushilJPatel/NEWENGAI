@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '../components/Logo';
-import { FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaPlus, FaPaperPlane, FaGraduationCap, FaBullseye, FaDollarSign, FaFileAlt, FaUniversity, FaSignOutAlt } from 'react-icons/fa';
+import { FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaPlus, FaPaperPlane, FaGraduationCap, FaBullseye, FaDollarSign, FaFileAlt, FaUniversity, FaSignOutAlt, FaCrown } from 'react-icons/fa';
 
 interface Message {
   id: string;
@@ -110,14 +110,14 @@ export default function DashboardPage() {
 
   if (status === 'loading') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center">
-        <div className="text-2xl text-gray-600">Loading...</div>
+      <div className="min-h-screen bg-gradient-to-br from-secondary-50 via-white to-primary-50 flex items-center justify-center">
+        <div className="text-2xl text-secondary-600">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-secondary-50 via-white to-primary-50">
       <div className="flex h-screen">
         {/* Sidebar */}
         <div className="w-80 bg-white border-r border-gray-200 p-6 overflow-y-auto">
@@ -133,17 +133,20 @@ export default function DashboardPage() {
           <div className="mb-6">
             <h3 className="font-semibold text-gray-700 mb-3">Quick Access</h3>
             <div className="space-y-2">
-              <Link href="/tracker" className="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-all text-sm">
+              <Link href="/tracker" className="flex items-center gap-2 px-4 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-all text-sm">
                 <FaClipboardList /> Application Tracker
               </Link>
-              <Link href="/essays" className="flex items-center gap-2 px-4 py-2 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition-all text-sm">
+              <Link href="/essays" className="flex items-center gap-2 px-4 py-2 bg-accent-50 text-accent-700 rounded-lg hover:bg-accent-100 transition-all text-sm">
                 <FaPencilAlt /> Essay Hub
               </Link>
-              <Link href="/timeline" className="flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-all text-sm">
+              <Link href="/timeline" className="flex items-center gap-2 px-4 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-all text-sm">
                 <FaCalendarAlt /> Timeline
               </Link>
-              <Link href="/resources" className="flex items-center gap-2 px-4 py-2 bg-orange-50 text-orange-700 rounded-lg hover:bg-orange-100 transition-all text-sm">
+              <Link href="/resources" className="flex items-center gap-2 px-4 py-2 bg-accent-50 text-accent-700 rounded-lg hover:bg-accent-100 transition-all text-sm">
                 <FaBook /> Resources
+              </Link>
+              <Link href="/billing" className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-lg hover:from-primary-700 hover:to-accent-700 transition-all text-sm shadow-md">
+                <FaCrown /> Billing & Plans
               </Link>
             </div>
           </div>
@@ -157,7 +160,7 @@ export default function DashboardPage() {
                 timestamp: new Date()
               }]);
             }}
-            className="flex items-center justify-center gap-2 w-full mb-4 px-4 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all font-semibold"
+            className="flex items-center justify-center gap-2 w-full mb-4 px-4 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-all font-semibold"
           >
             <FaPlus /> New Conversation
           </button>
@@ -180,7 +183,7 @@ export default function DashboardPage() {
           <div className="mb-6">
             <button
               onClick={() => setShowTimeline(!showTimeline)}
-              className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-all font-semibold"
+              className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-accent-100 text-accent-700 rounded-lg hover:bg-accent-200 transition-all font-semibold"
             >
               <FaCalendarAlt /> Application Timeline
             </button>
@@ -204,11 +207,11 @@ export default function DashboardPage() {
                 className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div
-                  className={`max-w-3xl px-6 py-4 rounded-2xl ${
-                    message.role === 'user'
-                      ? 'bg-indigo-600 text-white'
-                      : 'bg-white text-gray-800 shadow-md'
-                  }`}
+                          className={`max-w-3xl px-6 py-4 rounded-2xl ${
+                            message.role === 'user'
+                              ? 'bg-primary-600 text-white'
+                              : 'bg-white text-secondary-800 shadow-md'
+                          }`}
                 >
                   {message.role === 'assistant' && (
                     <div className="flex items-center mb-2">
@@ -217,7 +220,7 @@ export default function DashboardPage() {
                     </div>
                   )}
                   <div className="whitespace-pre-wrap">{message.content}</div>
-                  <div className={`text-xs mt-2 ${message.role === 'user' ? 'text-indigo-200' : 'text-gray-400'}`}>
+                  <div className={`text-xs mt-2 ${message.role === 'user' ? 'text-primary-200' : 'text-secondary-400'}`}>
                     {message.timestamp.toLocaleTimeString()}
                   </div>
                 </div>
@@ -225,7 +228,7 @@ export default function DashboardPage() {
             ))}
             {loading && (
               <div className="flex justify-start">
-                <div className="max-w-3xl px-6 py-4 rounded-2xl bg-white text-gray-800 shadow-md">
+                <div className="max-w-3xl px-6 py-4 rounded-2xl bg-white text-secondary-800 shadow-md">
                   <div className="flex items-center">
                     <span className="text-2xl mr-2">🤖</span>
                     <span className="text-gray-600">Thinking...</span>
@@ -250,14 +253,14 @@ export default function DashboardPage() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Ask me anything about college planning..."
-                  className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-indigo-600 focus:outline-none resize-none"
+                  className="flex-1 px-4 py-3 border-2 border-secondary-300 rounded-lg focus:border-primary-600 focus:outline-none resize-none"
                   rows={2}
                   disabled={loading}
                 />
                 <button
                   onClick={handleSendMessage}
                   disabled={loading || !input.trim()}
-                  className="flex items-center gap-2 px-8 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 px-8 py-3 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <FaPaperPlane /> Send
                 </button>
