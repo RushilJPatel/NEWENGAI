@@ -5,7 +5,8 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '../components/Logo';
-import { FaComments, FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaLightbulb } from 'react-icons/fa';
+import { useSubscription } from '../providers/SubscriptionProvider';
+import { FaComments, FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaLightbulb, FaCrown, FaLock } from 'react-icons/fa';
 
 interface EssayPrompt {
   id: string;
@@ -17,6 +18,7 @@ interface EssayPrompt {
 export default function EssayHub() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const { tier, hasAccess } = useSubscription();
   const [prompts, setPrompts] = useState<EssayPrompt[]>([]);
   const [selectedPrompt, setSelectedPrompt] = useState<EssayPrompt | null>(null);
 
@@ -181,8 +183,21 @@ export default function EssayHub() {
             <div className="bg-white rounded-xl shadow-lg p-6 sticky top-4">
               <h2 className="text-2xl font-bold text-gray-800 mb-4">Common App Prompts</h2>
               <p className="text-sm text-gray-600 mb-4">2025-2026 Academic Year • 650 words max</p>
+              
+              {/* Free Tier Limit Notice */}
+              {tier === 'free' && (
+                <div className="mb-4 p-3 bg-yellow-50 border-2 border-yellow-300 rounded-lg">
+                  <div className="flex items-center gap-2 text-yellow-800 font-semibold text-sm mb-1">
+                    <FaLock /> Limited Access
+                  </div>
+                  <p className="text-yellow-700 text-xs">
+                    Free plan shows 2 of 7 prompts. Upgrade to see all!
+                  </p>
+                </div>
+              )}
+              
               <div className="space-y-3">
-                {prompts.map((prompt, idx) => (
+                {(tier === 'free' ? prompts.slice(0, 2) : prompts).map((prompt, idx) => (
                   <button
                     key={prompt.id}
                     onClick={() => setSelectedPrompt(prompt)}
@@ -196,6 +211,31 @@ export default function EssayHub() {
                     <div className="text-sm text-gray-600 mt-1 line-clamp-2">{prompt.text}</div>
                   </button>
                 ))}
+                
+                {/* Locked Prompts for Free Tier */}
+                {tier === 'free' && prompts.length > 2 && (
+                  <div className="relative">
+                    <div className="opacity-50 pointer-events-none space-y-3">
+                      {prompts.slice(2, 4).map((prompt, idx) => (
+                        <div
+                          key={prompt.id}
+                          className="w-full text-left p-4 rounded-lg bg-gray-50 border-2 border-transparent"
+                        >
+                          <div className="font-bold text-gray-800">Prompt {idx + 3}</div>
+                          <div className="text-sm text-gray-600 mt-1 line-clamp-2">{prompt.text}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75 rounded-lg">
+                      <Link
+                        href="/billing"
+                        className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-lg hover:shadow-lg transition-all font-semibold"
+                      >
+                        <FaCrown /> Unlock All 7 Prompts
+                      </Link>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="mt-6 p-4 bg-green-50 rounded-lg border-2 border-green-500">

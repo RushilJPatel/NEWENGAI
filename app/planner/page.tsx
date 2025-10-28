@@ -3,6 +3,8 @@
 import { useSession, signOut } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useSubscription } from '../providers/SubscriptionProvider';
+import UpgradePrompt from '../components/UpgradePrompt';
 
 interface Course {
   id: string;
@@ -30,6 +32,7 @@ interface Major {
 export default function PlannerPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const { tier, hasAccess } = useSubscription();
   const [majors, setMajors] = useState<Major[]>([]);
   const [allCourses, setAllCourses] = useState<Course[]>([]);
   const [selectedMajor, setSelectedMajor] = useState<Major | null>(null);
@@ -65,6 +68,12 @@ export default function PlannerPage() {
   };
 
   const handleSelectMajor = async (major: Major) => {
+    // Check tier access
+    if (!hasAccess('schedule_generator')) {
+      alert(`🔒 Schedule Generator is a ${tier === 'free' ? 'Basic' : 'Premium'} Feature!\n\nUpgrade to generate personalized 4-year schedules based on your target colleges and major.\n\nVisit the Billing page to upgrade.`);
+      return;
+    }
+
     setSelectedMajor(major);
     setLoading(true);
     

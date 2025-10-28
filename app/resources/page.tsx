@@ -5,11 +5,13 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '../components/Logo';
-import { FaComments, FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaSignOutAlt, FaRobot } from 'react-icons/fa';
+import { useSubscription } from '../providers/SubscriptionProvider';
+import { FaComments, FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaSignOutAlt, FaRobot, FaCrown, FaLock } from 'react-icons/fa';
 
 export default function Resources() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const { tier, hasAccess } = useSubscription();
   const [activeCategory, setActiveCategory] = useState('all');
 
   useEffect(() => {
@@ -565,11 +567,28 @@ export default function Resources() {
     ]
   };
 
+  // Tier-based resource limits
+  const resourceLimits = {
+    free: { guides: 3, tools: 2, videos: 2, links: 3 },
+    basic: { guides: 10, tools: 10, videos: 10, links: 10 },
+    premium: { guides: Infinity, tools: Infinity, videos: Infinity, links: Infinity }
+  };
+
+  const limits = resourceLimits[tier];
+
   const filteredResources = {
-    guides: activeCategory === 'all' || activeCategory === 'guide' ? resources.guides : [],
-    tools: activeCategory === 'all' || activeCategory === 'tool' ? resources.tools : [],
-    videos: activeCategory === 'all' || activeCategory === 'video' ? resources.videos : [],
-    links: activeCategory === 'all' || activeCategory === 'link' ? resources.links : []
+    guides: (activeCategory === 'all' || activeCategory === 'guide' ? resources.guides : []).slice(0, limits.guides),
+    tools: (activeCategory === 'all' || activeCategory === 'tool' ? resources.tools : []).slice(0, limits.tools),
+    videos: (activeCategory === 'all' || activeCategory === 'video' ? resources.videos : []).slice(0, limits.videos),
+    links: (activeCategory === 'all' || activeCategory === 'link' ? resources.links : []).slice(0, limits.links)
+  };
+
+  // Count total resources available vs shown
+  const totalCounts = {
+    guides: resources.guides.length,
+    tools: resources.tools.length,
+    videos: resources.videos.length,
+    links: resources.links.length
   };
 
   // Auth loading check disabled
@@ -647,6 +666,31 @@ export default function Resources() {
             <FaBook className="text-primary-600" /> Resources Library
           </h1>
           <p className="text-sm sm:text-base text-gray-600">Comprehensive guides, tools, videos, and links for your college journey</p>
+          
+          {/* Tier-based Access Notice */}
+          {tier !== 'premium' && (
+            <div className="mt-4 p-4 bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-300 rounded-lg">
+              <div className="flex items-center justify-between flex-wrap gap-3">
+                <div>
+                  <div className="flex items-center gap-2 text-yellow-800 font-semibold mb-1">
+                    <FaLock /> Limited Access ({tier === 'free' ? 'Free' : 'Basic'} Plan)
+                  </div>
+                  <p className="text-yellow-700 text-sm">
+                    {tier === 'free' 
+                      ? `Showing ${limits.guides} of ${totalCounts.guides} guides, ${limits.tools} of ${totalCounts.tools} tools. Upgrade to see all ${totalCounts.guides + totalCounts.tools + totalCounts.videos + totalCounts.links}+ resources!`
+                      : `Showing ${limits.guides} of ${totalCounts.guides} guides, ${limits.tools} of ${totalCounts.tools} tools. Upgrade to Premium for unlimited access!`
+                    }
+                  </p>
+                </div>
+                <Link
+                  href="/billing"
+                  className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-lg hover:shadow-lg transition-all font-semibold whitespace-nowrap"
+                >
+                  <FaCrown /> {tier === 'free' ? 'Upgrade to Basic' : 'Upgrade to Premium'}
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Stats */}

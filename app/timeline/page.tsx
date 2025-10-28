@@ -5,7 +5,8 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '../components/Logo';
-import { FaComments, FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaCheckCircle, FaRegCircle, FaGraduationCap } from 'react-icons/fa';
+import { useSubscription } from '../providers/SubscriptionProvider';
+import { FaComments, FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaCheckCircle, FaRegCircle, FaGraduationCap, FaCrown } from 'react-icons/fa';
 
 interface Task {
   id: string;
@@ -20,6 +21,7 @@ type GradeLevel = '9' | '10' | '11' | '12';
 export default function Timeline() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const { tier, hasAccess } = useSubscription();
   const [gradeLevel, setGradeLevel] = useState<GradeLevel>('12');
   const [tasks, setTasks] = useState<{ [grade: string]: { [key: string]: Task[] } }>({});
 
@@ -187,6 +189,12 @@ export default function Timeline() {
   }, [gradeLevel, tasks]);
 
   const toggleTask = (sectionKey: string, taskId: string) => {
+    // Free tier can only VIEW timeline, not track progress
+    if (tier === 'free') {
+      alert(`🔒 Progress Tracking is a Premium Feature!\n\nUpgrade to Basic ($9.99/mo) to:\n• Check off completed tasks\n• Track your progress\n• Get personalized recommendations\n\nVisit the Billing page to upgrade.`);
+      return;
+    }
+
     setTasks(prev => ({
       ...prev,
       [gradeLevel]: {
@@ -265,6 +273,22 @@ export default function Timeline() {
             <FaCalendarAlt className="text-primary-600" /> College Application Timeline
           </h1>
           <p className="text-gray-600">Your personalized roadmap based on your grade level</p>
+          
+          {/* Free Tier Notice */}
+          {tier === 'free' && (
+            <div className="mt-4 p-4 bg-yellow-50 border-2 border-yellow-300 rounded-lg flex items-center justify-between">
+              <div>
+                <p className="text-yellow-800 font-semibold">📖 View-Only Mode (Free Plan)</p>
+                <p className="text-yellow-700 text-sm">Upgrade to Basic to check off tasks and track your progress!</p>
+              </div>
+              <Link
+                href="/billing"
+                className="flex items-center gap-2 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-all font-semibold whitespace-nowrap"
+              >
+                <FaCrown /> Upgrade
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* Grade Selector */}

@@ -41,6 +41,39 @@ export default function DashboardPage() {
     }
   }, [status, router]);
 
+  // Load and manage daily message count for free tier
+  useEffect(() => {
+    if (tier === 'free') {
+      const stored = localStorage.getItem('ai_message_count');
+      if (stored) {
+        try {
+          const data = JSON.parse(stored);
+          const lastDate = new Date(data.date);
+          const today = new Date();
+          
+          // Check if it's a new day (reset counter)
+          if (lastDate.toDateString() !== today.toDateString()) {
+            setMessageCount(0);
+            localStorage.setItem('ai_message_count', JSON.stringify({ count: 0, date: today.toISOString() }));
+          } else {
+            setMessageCount(data.count);
+          }
+        } catch (e) {
+          setMessageCount(0);
+        }
+      } else {
+        localStorage.setItem('ai_message_count', JSON.stringify({ count: 0, date: new Date().toISOString() }));
+      }
+    }
+  }, [tier]);
+
+  // Save message count to localStorage whenever it changes
+  useEffect(() => {
+    if (tier === 'free' && messageCount > 0) {
+      localStorage.setItem('ai_message_count', JSON.stringify({ count: messageCount, date: new Date().toISOString() }));
+    }
+  }, [messageCount, tier]);
+
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
