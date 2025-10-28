@@ -7,14 +7,19 @@ export async function POST(request: Request) {
   try {
     const { userMessage, messages } = await request.json();
 
+    console.log('Chat API called with message:', userMessage);
+
     const apiKey = process.env.GEMINI_API_KEY;
     
     if (!apiKey) {
+      console.error('GEMINI_API_KEY not found in environment variables');
       return NextResponse.json(
         { response: "Sorry, the AI service is not configured. Please add your GEMINI_API_KEY to the environment variables." },
         { status: 500 }
       );
     }
+
+    console.log('API Key found, proceeding with Gemini call');
 
     // Load college requirements data
     const requirementsPath = path.join(process.cwd(), 'data', 'college_requirements.json');
@@ -82,15 +87,18 @@ Student's current question: ${userMessage}
 
 Provide a helpful, detailed response:`;
 
+    console.log('Calling Gemini API...');
     const result = await model.generateContent(systemPrompt);
     const response = await result.response;
     const text = response.text();
 
+    console.log('Gemini response received successfully');
     return NextResponse.json({ response: text });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error in chat API:', error);
+    console.error('Error details:', error?.message, error?.response?.data);
     return NextResponse.json(
-      { response: "I'm having trouble right now. Could you try rephrasing your question?" },
+      { response: `I'm having trouble right now. Error: ${error?.message || 'Unknown error'}. Please try again or check the server logs.` },
       { status: 500 }
     );
   }
