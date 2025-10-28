@@ -106,7 +106,7 @@ export default function PlannerPage() {
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-5xl font-bold bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
               🎓 High School Planner AI
             </h1>
             <p className="text-gray-600 mt-2">Welcome, {session?.user?.name || session?.user?.email}!</p>
@@ -135,12 +135,12 @@ export default function PlannerPage() {
                   <button
                     key={major.id}
                     onClick={() => handleSelectMajor(major)}
-                    className="p-6 bg-gradient-to-br from-white to-gray-50 rounded-xl border-2 border-gray-200 hover:border-indigo-500 hover:shadow-xl transition-all transform hover:-translate-y-1 text-left"
+                    className="p-6 bg-gradient-to-br from-white to-gray-50 rounded-xl border-2 border-gray-200 hover:border-primary-500 hover:shadow-xl transition-all transform hover:-translate-y-1 text-left"
                   >
                     <div className="text-5xl mb-3">{major.icon}</div>
                     <h3 className="text-xl font-bold text-gray-800 mb-2">{major.name}</h3>
                     <p className="text-sm text-gray-600">{major.description}</p>
-                    <div className="mt-4 text-sm text-indigo-600 font-semibold">
+                    <div className="mt-4 text-sm text-primary-600 font-semibold">
                       {major.totalCredits} total credits
                     </div>
                   </button>
@@ -189,7 +189,7 @@ export default function PlannerPage() {
                       <h3 className="text-2xl font-bold text-gray-800">
                         Grade {grade} 🎯
                       </h3>
-                      <span className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-semibold">
+                      <span className="px-3 py-1 bg-primary-100 text-primary-800 rounded-full text-sm font-semibold">
                         {totalCredits} credits
                       </span>
                     </div>
@@ -204,7 +204,7 @@ export default function PlannerPage() {
                             key={courseId}
                             className={`p-4 rounded-lg border-2 ${
                               course.advanced
-                                ? 'bg-gradient-to-r from-purple-50 to-pink-50 border-purple-300'
+                                ? 'bg-gradient-to-r from-accent-50 to-primary-50 border-primary-300'
                                 : 'bg-gray-50 border-gray-200'
                             }`}
                           >
@@ -233,7 +233,7 @@ export default function PlannerPage() {
 
             {/* AI Suggestions */}
             {schedule.aiSuggestion && (
-              <div className="mt-6 bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl shadow-xl p-8 border-2 border-purple-200">
+              <div className="mt-6 bg-gradient-to-r from-accent-50 to-primary-50 rounded-2xl shadow-xl p-8 border-2 border-primary-200">
                 <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
                   🤖 AI-Powered Insights
                 </h3>
@@ -247,13 +247,13 @@ export default function PlannerPage() {
             <div className="mt-6 flex gap-4 justify-center">
               <button
                 onClick={() => window.print()}
-                className="px-8 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-all transform hover:scale-105 shadow-lg"
+                className="px-8 py-3 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700 transition-all transform hover:scale-105 shadow-lg"
               >
                 📄 Print Schedule
               </button>
               <button
                 onClick={() => alert('Customization coming soon!')}
-                className="px-8 py-3 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition-all transform hover:scale-105 shadow-lg"
+                className="px-8 py-3 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700 transition-all transform hover:scale-105 shadow-lg"
               >
                 ✏️ Customize Schedule
               </button>
@@ -268,7 +268,7 @@ export default function PlannerPage() {
             <div className="text-gray-600">AI is creating the perfect schedule for you</div>
             <div className="mt-6">
               <div className="w-64 h-2 bg-gray-200 rounded-full mx-auto overflow-hidden">
-                <div className="h-full bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full animate-pulse"></div>
+                <div className="h-full bg-gradient-to-r from-primary-600 to-accent-600 rounded-full animate-pulse"></div>
               </div>
             </div>
           </div>

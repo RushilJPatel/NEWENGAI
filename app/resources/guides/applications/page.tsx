@@ -21,28 +21,28 @@ export default function ApplicationsGuide() {
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+      <div className="min-h-screen bg-gradient-to-br from-secondary-50 via-white to-primary-50">
         {/* Consistent Navigation */}
         <nav className="bg-white border-b border-gray-200">
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <div className="flex items-center space-x-8">
-              <Link href="/dashboard" className="text-2xl font-bold text-indigo-600 flex items-center">
+              <Link href="/dashboard" className="text-2xl font-bold text-primary-600 flex items-center">
                 🧭 <span className="ml-2">College Compass</span>
               </Link>
               <div className="hidden md:flex space-x-4">
-                <Link href="/dashboard" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+                <Link href="/dashboard" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                   💬 AI Chat
                 </Link>
-                <Link href="/tracker" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+                <Link href="/tracker" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                   📋 Tracker
                 </Link>
-                <Link href="/essays" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+                <Link href="/essays" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                   ✍️ Essays
                 </Link>
-                <Link href="/timeline" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+                <Link href="/timeline" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                   📅 Timeline
                 </Link>
-                <Link href="/resources" className="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-lg font-semibold">
+                <Link href="/resources" className="px-4 py-2 bg-primary-100 text-primary-600 rounded-lg font-semibold">
                   📚 Resources
                 </Link>
               </div>
@@ -51,7 +51,7 @@ export default function ApplicationsGuide() {
         </nav>
 
         <div className="container mx-auto max-w-4xl p-4 sm:p-8">
-        <Link href="/resources" className="inline-flex items-center text-indigo-600 hover:text-indigo-700 mb-6">
+        <Link href="/resources" className="inline-flex items-center text-primary-600 hover:text-primary-700 mb-6">
           ← Back to Resources
         </Link>
 
@@ -65,7 +65,7 @@ export default function ApplicationsGuide() {
           </div>
 
           <div className="prose prose-lg max-w-none">
-            <h2 className="text-2xl font-bold text-indigo-600 mt-8 mb-4">📋 Application Types</h2>
+            <h2 className="text-2xl font-bold text-primary-600 mt-8 mb-4">📋 Application Types</h2>
             <div className="bg-blue-50 p-4 rounded-lg mb-4">
               <h3 className="font-bold text-lg">Early Decision (ED)</h3>
               <ul className="ml-4">
@@ -108,7 +108,7 @@ export default function ApplicationsGuide() {
               </ul>
             </div>
 
-            <h2 className="text-2xl font-bold text-indigo-600 mt-8 mb-4">🎯 Creating a Balanced College List</h2>
+            <h2 className="text-2xl font-bold text-primary-600 mt-8 mb-4">🎯 Creating a Balanced College List</h2>
             <p className="mb-4">Apply to <strong>8-12 schools</strong> total with this breakdown:</p>
             
             <div className="grid md:grid-cols-3 gap-4 mb-6">
@@ -126,7 +126,7 @@ export default function ApplicationsGuide() {
               </div>
             </div>
 
-            <h2 className="text-2xl font-bold text-indigo-600 mt-8 mb-4">📝 Common Application Sections</h2>
+            <h2 className="text-2xl font-bold text-primary-600 mt-8 mb-4">📝 Common Application Sections</h2>
             
             <div className="space-y-4">
               <div className="border-l-4 border-indigo-500 pl-4">
@@ -176,7 +176,7 @@ export default function ApplicationsGuide() {
               </div>
             </div>
 
-            <h2 className="text-2xl font-bold text-indigo-600 mt-8 mb-4">📅 Timeline</h2>
+            <h2 className="text-2xl font-bold text-primary-600 mt-8 mb-4">📅 Timeline</h2>
             
             <div className="space-y-3">
               <div className="bg-gradient-to-r from-blue-100 to-blue-50 p-3 rounded">
@@ -194,15 +194,15 @@ export default function ApplicationsGuide() {
               <div className="bg-gradient-to-r from-red-100 to-red-50 p-3 rounded">
                 <strong>November 1:</strong> EA/ED DEADLINE! Submit before 11:59 PM local time
               </div>
-              <div className="bg-gradient-to-r from-purple-100 to-purple-50 p-3 rounded">
+              <div className="bg-gradient-to-r from-primary-100 to-primary-50 p-3 rounded">
                 <strong>November 30:</strong> UC System deadline (all 9 UCs)
               </div>
-              <div className="bg-gradient-to-r from-indigo-100 to-indigo-50 p-3 rounded">
+              <div className="bg-gradient-to-r from-primary-100 to-primary-50 p-3 rounded">
                 <strong>December-January:</strong> Finish RD apps, send mid-year grades
               </div>
             </div>
 
-            <h2 className="text-2xl font-bold text-indigo-600 mt-8 mb-4">✅ Final Checklist</h2>
+            <h2 className="text-2xl font-bold text-primary-600 mt-8 mb-4">✅ Final Checklist</h2>
             
             <div className="bg-gray-50 p-6 rounded-lg">
               <ul className="space-y-2">
@@ -218,10 +218,10 @@ export default function ApplicationsGuide() {
               </ul>
             </div>
 
-            <div className="mt-8 p-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg text-center">
+            <div className="mt-8 p-6 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-lg text-center">
               <h3 className="text-2xl font-bold mb-2">Need Help?</h3>
               <p className="mb-4">Our AI can answer specific questions about YOUR application!</p>
-              <Link href="/dashboard" className="inline-block px-6 py-3 bg-white text-indigo-600 font-bold rounded-lg hover:bg-gray-100">
+              <Link href="/dashboard" className="inline-block px-6 py-3 bg-white text-primary-600 font-bold rounded-lg hover:bg-gray-100">
                 Chat with AI Advisor →
               </Link>
             </div>

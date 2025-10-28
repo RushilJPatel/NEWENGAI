@@ -135,24 +135,24 @@ export default function EssayHub() {
       <nav className="bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-8">
-            <Link href="/dashboard" className="text-2xl font-bold text-indigo-600 flex items-center gap-2">
+            <Link href="/dashboard" className="text-2xl font-bold text-primary-600 flex items-center gap-2">
               <Logo size={32} />
               <span>College Compass</span>
             </Link>
             <div className="hidden md:flex space-x-4">
-              <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-primary-600">
                 <FaComments /> AI Chat
               </Link>
-              <Link href="/tracker" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/tracker" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-primary-600">
                 <FaClipboardList /> Tracker
               </Link>
-              <Link href="/essays" className="flex items-center gap-2 px-4 py-2 bg-indigo-100 text-indigo-600 rounded-lg font-semibold">
+              <Link href="/essays" className="flex items-center gap-2 px-4 py-2 bg-primary-100 text-primary-600 rounded-lg font-semibold">
                 <FaPencilAlt /> Essays
               </Link>
-              <Link href="/timeline" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/timeline" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-primary-600">
                 <FaCalendarAlt /> Timeline
               </Link>
-              <Link href="/resources" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/resources" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-primary-600">
                 <FaBook /> Resources
               </Link>
             </div>
@@ -170,7 +170,7 @@ export default function EssayHub() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-2 flex items-center gap-3">
-            <FaPencilAlt className="text-indigo-600" /> Essay Hub
+            <FaPencilAlt className="text-primary-600" /> Essay Hub
           </h1>
           <p className="text-gray-600">Common App prompts, writing tips, and examples to craft your perfect essay</p>
         </div>
@@ -188,7 +188,7 @@ export default function EssayHub() {
                     onClick={() => setSelectedPrompt(prompt)}
                     className={`w-full text-left p-4 rounded-lg transition-all ${
                       selectedPrompt?.id === prompt.id
-                        ? 'bg-indigo-100 border-2 border-indigo-600'
+                        ? 'bg-primary-100 border-2 border-indigo-600'
                         : 'bg-gray-50 hover:bg-gray-100 border-2 border-transparent'
                     }`}
                   >
@@ -223,7 +223,7 @@ export default function EssayHub() {
                 <div className="bg-white rounded-xl shadow-lg p-8">
                   <div className="flex items-center justify-between mb-4">
                     <h2 className="text-2xl font-bold text-gray-800">Prompt {prompts.findIndex(p => p.id === selectedPrompt.id) + 1}</h2>
-                    <span className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-semibold">
+                    <span className="px-3 py-1 bg-primary-100 text-indigo-800 rounded-full text-sm font-semibold">
                       650 words max
                     </span>
                   </div>
@@ -247,7 +247,7 @@ export default function EssayHub() {
                 </div>
 
                 {/* Writing Guidelines */}
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl shadow-lg p-8 border-2 border-purple-200">
+                <div className="bg-gradient-to-r from-accent-50 to-primary-50 rounded-xl shadow-lg p-8 border-2 border-accent-200">
                   <h3 className="text-2xl font-bold text-gray-800 mb-4">📝 Essay Writing Guidelines</h3>
                   <div className="space-y-4">
                     <div className="bg-white p-4 rounded-lg">
@@ -285,7 +285,7 @@ export default function EssayHub() {
                       <p className="text-gray-700 italic mb-2">"The first time I failed, I was seven years old..."</p>
                       <p className="text-sm text-gray-600">Sets up a story arc about growth and resilience</p>
                     </div>
-                    <div className="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-500">
+                    <div className="p-4 bg-accent-50 rounded-lg border-l-4 border-accent-500">
                       <p className="text-gray-700 italic mb-2">"My grandmother's hands tell stories in a language I can't speak..."</p>
                       <p className="text-sm text-gray-600">Poetic, visual, hints at cultural heritage</p>
                     </div>

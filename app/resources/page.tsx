@@ -583,24 +583,24 @@ export default function Resources() {
       <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-8">
-            <Link href="/dashboard" className="text-2xl font-bold text-indigo-600 flex items-center gap-2">
+            <Link href="/dashboard" className="text-2xl font-bold text-primary-600 flex items-center gap-2">
               <Logo size={32} />
               <span>College Compass</span>
             </Link>
             <div className="hidden md:flex space-x-4">
-              <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600 transition-colors">
+              <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-primary-600 transition-colors">
                 <FaComments /> AI Chat
               </Link>
-              <Link href="/tracker" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600 transition-colors">
+              <Link href="/tracker" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-primary-600 transition-colors">
                 <FaClipboardList /> Tracker
               </Link>
-              <Link href="/essays" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600 transition-colors">
+              <Link href="/essays" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-primary-600 transition-colors">
                 <FaPencilAlt /> Essays
               </Link>
-              <Link href="/timeline" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600 transition-colors">
+              <Link href="/timeline" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-primary-600 transition-colors">
                 <FaCalendarAlt /> Timeline
               </Link>
-              <Link href="/resources" className="flex items-center gap-2 px-4 py-2 bg-indigo-100 text-indigo-600 rounded-lg font-semibold">
+              <Link href="/resources" className="flex items-center gap-2 px-4 py-2 bg-primary-100 text-primary-600 rounded-lg font-semibold">
                 <FaBook /> Resources
               </Link>
             </div>
@@ -633,7 +633,7 @@ export default function Resources() {
             <FaCalendarAlt className="text-xl mb-1" />
             <span>Timeline</span>
           </Link>
-          <Link href="/resources" className="flex flex-col items-center text-xs text-indigo-600 font-semibold py-2 bg-indigo-50">
+          <Link href="/resources" className="flex flex-col items-center text-xs text-primary-600 font-semibold py-2 bg-primary-50">
             <FaBook className="text-xl mb-1" />
             <span>Resources</span>
           </Link>
@@ -644,7 +644,7 @@ export default function Resources() {
         {/* Header */}
         <div className="mb-6 sm:mb-8">
           <h1 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-2 flex items-center gap-3">
-            <FaBook className="text-indigo-600" /> Resources Library
+            <FaBook className="text-primary-600" /> Resources Library
           </h1>
           <p className="text-sm sm:text-base text-gray-600">Comprehensive guides, tools, videos, and links for your college journey</p>
         </div>
@@ -683,7 +683,7 @@ export default function Resources() {
               onClick={() => setActiveCategory(cat.id)}
               className={`px-4 sm:px-6 py-2 rounded-lg text-sm sm:text-base font-semibold whitespace-nowrap transition-all ${
                 activeCategory === cat.id
-                  ? 'bg-indigo-600 text-white shadow-lg'
+                  ? 'bg-primary-600 text-white shadow-lg'
                   : 'bg-white text-gray-700 hover:bg-gray-100'
               }`}
             >
@@ -703,12 +703,12 @@ export default function Resources() {
                   <div className="flex items-start">
                     <div className="text-3xl sm:text-5xl mr-3 sm:mr-4 group-hover:scale-110 transition-transform flex-shrink-0">{resource.icon}</div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-base sm:text-xl font-bold text-gray-800 mb-1 sm:mb-2 group-hover:text-indigo-600 transition-colors">
+                      <h3 className="text-base sm:text-xl font-bold text-gray-800 mb-1 sm:mb-2 group-hover:text-primary-600 transition-colors">
                         {resource.title}
                       </h3>
                       <p className="text-sm sm:text-base text-gray-600 mb-2 sm:mb-3">{resource.description}</p>
                       <p className="text-xs sm:text-sm text-gray-500 italic">{resource.content}</p>
-                      <div className="mt-3 sm:mt-4 text-indigo-600 text-sm sm:text-base font-semibold hover:text-indigo-700 flex items-center">
+                      <div className="mt-3 sm:mt-4 text-primary-600 text-sm sm:text-base font-semibold hover:text-primary-700 flex items-center">
                         {resource.url ? 'Read Full Guide' : 'Ask AI'} <span className="ml-2">→</span>
                       </div>
                     </div>
@@ -744,12 +744,12 @@ export default function Resources() {
                   href={resource.url}
                   target={resource.url?.startsWith('http') ? '_blank' : '_self'}
                   rel={resource.url?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg sm:rounded-xl shadow-lg p-4 sm:p-6 hover:shadow-2xl transition-all border-2 border-purple-200 group"
+                  className="bg-gradient-to-br from-accent-50 to-primary-50 rounded-lg sm:rounded-xl shadow-lg p-4 sm:p-6 hover:shadow-2xl transition-all border-2 border-accent-200 group"
                 >
                   <div className="flex items-start">
                     <div className="text-3xl sm:text-5xl mr-3 sm:mr-4 group-hover:scale-110 transition-transform flex-shrink-0">{resource.icon}</div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-base sm:text-xl font-bold text-gray-800 mb-1 sm:mb-2 group-hover:text-purple-600 transition-colors">
+                      <h3 className="text-base sm:text-xl font-bold text-gray-800 mb-1 sm:mb-2 group-hover:text-accent-600 transition-colors">
                         {resource.title}
                       </h3>
                       <p className="text-sm sm:text-base text-gray-600 mb-2 sm:mb-3">{resource.description}</p>
@@ -771,7 +771,7 @@ export default function Resources() {
             <h2 className="text-xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-6">🎥 Video Tutorials</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               {filteredResources.videos.map((resource, idx) => (
-                <div key={idx} className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg sm:rounded-xl shadow-lg p-4 sm:p-6 hover:shadow-2xl transition-all cursor-pointer border-2 border-blue-200 group">
+                <div key={idx} className="bg-gradient-to-br from-secondary-50 to-primary-50 rounded-lg sm:rounded-xl shadow-lg p-4 sm:p-6 hover:shadow-2xl transition-all cursor-pointer border-2 border-blue-200 group">
                   <div className="flex items-start">
                     <div className="text-3xl sm:text-5xl mr-3 sm:mr-4 group-hover:scale-110 transition-transform flex-shrink-0">{resource.icon}</div>
                     <div className="flex-1 min-w-0">
@@ -825,7 +825,7 @@ export default function Resources() {
         )}
 
         {/* Ask AI Section */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg sm:rounded-xl shadow-2xl p-6 sm:p-8 text-white text-center">
+        <div className="bg-gradient-to-r from-primary-600 to-accent-600 rounded-lg sm:rounded-xl shadow-2xl p-6 sm:p-8 text-white text-center">
           <div className="flex justify-center mb-3 sm:mb-4">
             <FaRobot className="text-4xl sm:text-6xl" />
           </div>
@@ -833,7 +833,7 @@ export default function Resources() {
           <p className="text-base sm:text-xl mb-4 sm:mb-6 opacity-90">Our AI chatbot can answer specific questions about YOUR situation!</p>
           <Link
             href="/dashboard"
-            className="inline-flex items-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-white text-indigo-600 font-bold text-base sm:text-lg rounded-lg hover:bg-gray-100 transition-all shadow-lg transform hover:scale-105"
+            className="inline-flex items-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-white text-primary-600 font-bold text-base sm:text-lg rounded-lg hover:bg-gray-100 transition-all shadow-lg transform hover:scale-105"
           >
             <FaComments /> Chat with AI Now
           </Link>

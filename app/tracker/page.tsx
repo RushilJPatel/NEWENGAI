@@ -178,7 +178,7 @@ export default function ApplicationTracker() {
       'Early Decision': 'bg-purple-100 text-purple-700 border-purple-300',
       'Regular Decision': 'bg-blue-100 text-blue-700 border-blue-300',
       'Rolling': 'bg-gray-100 text-gray-700 border-gray-300',
-      'ED2': 'bg-indigo-100 text-indigo-700 border-indigo-300'
+      'ED2': 'bg-primary-100 text-primary-700 border-primary-300'
     };
     return colors[type] || 'bg-gray-100 text-gray-700 border-gray-300';
   };
@@ -384,24 +384,24 @@ export default function ApplicationTracker() {
       <nav className="bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-8">
-            <Link href="/dashboard" className="text-2xl font-bold text-indigo-600 flex items-center gap-2">
+            <Link href="/dashboard" className="text-2xl font-bold text-primary-600 flex items-center gap-2">
               <Logo size={32} />
               <span>College Compass</span>
             </Link>
             <div className="hidden md:flex space-x-4">
-              <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-primary-600">
                 <FaComments /> AI Chat
               </Link>
-              <Link href="/tracker" className="flex items-center gap-2 px-4 py-2 bg-indigo-100 text-indigo-600 rounded-lg font-semibold">
+              <Link href="/tracker" className="flex items-center gap-2 px-4 py-2 bg-primary-100 text-primary-600 rounded-lg font-semibold">
                 <FaClipboardList /> Tracker
               </Link>
-              <Link href="/essays" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/essays" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-primary-600">
                 <FaPencilAlt /> Essays
               </Link>
-              <Link href="/timeline" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/timeline" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-primary-600">
                 <FaCalendarAlt /> Timeline
               </Link>
-              <Link href="/resources" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/resources" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-primary-600">
                 <FaBook /> Resources
               </Link>
             </div>
@@ -419,7 +419,7 @@ export default function ApplicationTracker() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-2 flex items-center gap-3">
-            <FaClipboardList className="text-indigo-600" /> Application Tracker
+            <FaClipboardList className="text-primary-600" /> Application Tracker
           </h1>
           <p className="text-gray-600">Track applications, checklists, and deadlines all in one place</p>
         </div>
@@ -427,7 +427,7 @@ export default function ApplicationTracker() {
         {/* Stats Cards */}
         <div className="grid md:grid-cols-4 gap-4 mb-8">
           <div className="bg-white rounded-xl shadow-md p-6 text-center">
-            <div className="text-4xl font-bold text-indigo-600 mb-2">{stats.total}</div>
+            <div className="text-4xl font-bold text-primary-600 mb-2">{stats.total}</div>
             <div className="text-gray-600">Total Applications</div>
           </div>
           <div className="bg-white rounded-xl shadow-md p-6 text-center">
@@ -451,13 +451,13 @@ export default function ApplicationTracker() {
               loadColleges();
               setShowCollegeModal(true);
             }}
-            className="flex items-center gap-2 px-6 py-3 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition-all shadow-lg"
+            className="flex items-center gap-2 px-6 py-3 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700 transition-all shadow-lg"
           >
             <FaBook /> Browse College Database
           </button>
           <button
             onClick={openAddModal}
-            className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-all shadow-lg"
+            className="flex items-center gap-2 px-6 py-3 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700 transition-all shadow-lg"
           >
             <FaPlus /> Add Custom Application
           </button>
@@ -546,11 +546,11 @@ export default function ApplicationTracker() {
                     <div className="mb-2">
                       <div className="flex items-center justify-between mb-1">
                         <span className="text-sm font-semibold text-gray-700">Checklist Progress</span>
-                        <span className="text-sm font-bold text-indigo-600">{Math.round(progress.percentage)}%</span>
+                        <span className="text-sm font-bold text-primary-600">{Math.round(progress.percentage)}%</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-3">
                         <div
-                          className="bg-gradient-to-r from-indigo-500 to-purple-500 h-3 rounded-full transition-all duration-500"
+                          className="bg-gradient-to-r from-primary-500 to-accent-500 h-3 rounded-full transition-all duration-500"
                           style={{ width: `${progress.percentage}%` }}
                         ></div>
                       </div>
@@ -596,7 +596,7 @@ export default function ApplicationTracker() {
                 {/* Expand/Collapse Button */}
                 <button
                   onClick={() => setExpandedApp(isExpanded ? null : app.id)}
-                  className="w-full mb-4 px-4 py-2 bg-indigo-100 text-indigo-700 font-semibold rounded-lg hover:bg-indigo-200 transition-all"
+                  className="w-full mb-4 px-4 py-2 bg-primary-100 text-primary-700 font-semibold rounded-lg hover:bg-primary-200 transition-all"
                 >
                   {isExpanded ? '▼ Hide Detailed Checklists' : '▶ Show Detailed Checklists'}
                 </button>
@@ -694,9 +694,9 @@ export default function ApplicationTracker() {
 
                     {/* Test Scores */}
                     {app.requirements.testScores !== 'Test-Blind' && (
-                      <div className="bg-white p-4 rounded-lg border-2 border-indigo-200">
+                      <div className="bg-white p-4 rounded-lg border-2 border-primary-200">
                         <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
-                          <FaClipboardList className="text-indigo-600" /> Test Scores Checklist ({app.requirements.testScores})
+                          <FaClipboardList className="text-primary-600" /> Test Scores Checklist ({app.requirements.testScores})
                         </h4>
                         <div className="space-y-2">
                           {Object.entries(app.checklist.testScores).map(([key, value]) => (
@@ -786,7 +786,7 @@ export default function ApplicationTracker() {
                   <select
                     value={app.status}
                     onChange={(e) => handleStatusUpdate(app.id, e.target.value as Application['status'])}
-                    className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-semibold cursor-pointer"
+                    className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 font-semibold cursor-pointer"
                   >
                     <option value="Not Started">Not Started</option>
                     <option value="In Progress">In Progress</option>
@@ -827,13 +827,13 @@ export default function ApplicationTracker() {
                   loadColleges();
                   setShowCollegeModal(true);
                 }}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700"
               >
                 <FaBook /> Browse Colleges
               </button>
               <button
                 onClick={openAddModal}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700"
               >
                 <FaPlus /> Add Application
               </button>
@@ -869,7 +869,7 @@ export default function ApplicationTracker() {
                     type="text"
                     value={formData.collegeName}
                     onChange={(e) => setFormData({ ...formData, collegeName: e.target.value })}
-                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-indigo-600 focus:outline-none"
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-primary-600 focus:outline-none"
                     placeholder="e.g., Stanford University"
                   />
                 </div>
@@ -883,7 +883,7 @@ export default function ApplicationTracker() {
                     type="date"
                     value={formData.deadline}
                     onChange={(e) => setFormData({ ...formData, deadline: e.target.value })}
-                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-indigo-600 focus:outline-none"
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-primary-600 focus:outline-none"
                   />
                 </div>
 
@@ -900,7 +900,7 @@ export default function ApplicationTracker() {
                           ...formData,
                           importantDates: { ...formData.importantDates, transcriptDeadline: e.target.value }
                         })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded focus:border-indigo-600 focus:outline-none text-sm"
+                        className="w-full px-3 py-2 border border-gray-300 rounded focus:border-primary-600 focus:outline-none text-sm"
                       />
                     </div>
                     <div>
@@ -912,7 +912,7 @@ export default function ApplicationTracker() {
                           ...formData,
                           importantDates: { ...formData.importantDates, recommendationDeadline: e.target.value }
                         })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded focus:border-indigo-600 focus:outline-none text-sm"
+                        className="w-full px-3 py-2 border border-gray-300 rounded focus:border-primary-600 focus:outline-none text-sm"
                       />
                     </div>
                     <div>
@@ -924,7 +924,7 @@ export default function ApplicationTracker() {
                           ...formData,
                           importantDates: { ...formData.importantDates, testScoreDeadline: e.target.value }
                         })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded focus:border-indigo-600 focus:outline-none text-sm"
+                        className="w-full px-3 py-2 border border-gray-300 rounded focus:border-primary-600 focus:outline-none text-sm"
                       />
                     </div>
                     <div>
@@ -936,7 +936,7 @@ export default function ApplicationTracker() {
                           ...formData,
                           importantDates: { ...formData.importantDates, financialAidDeadline: e.target.value }
                         })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded focus:border-indigo-600 focus:outline-none text-sm"
+                        className="w-full px-3 py-2 border border-gray-300 rounded focus:border-primary-600 focus:outline-none text-sm"
                       />
                     </div>
                   </div>
@@ -950,7 +950,7 @@ export default function ApplicationTracker() {
                   <select
                     value={formData.type}
                     onChange={(e) => setFormData({ ...formData, type: e.target.value as Application['type'] })}
-                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-indigo-600 focus:outline-none"
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-primary-600 focus:outline-none"
                   >
                     <option value="Early Action">Early Action</option>
                     <option value="Early Decision">Early Decision</option>
@@ -968,7 +968,7 @@ export default function ApplicationTracker() {
                   <select
                     value={formData.status}
                     onChange={(e) => setFormData({ ...formData, status: e.target.value as Application['status'] })}
-                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-indigo-600 focus:outline-none"
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-primary-600 focus:outline-none"
                   >
                     <option value="Not Started">Not Started</option>
                     <option value="In Progress">In Progress</option>
@@ -1011,7 +1011,7 @@ export default function ApplicationTracker() {
                           ...formData,
                           requirements: { ...formData.requirements, recommendations: parseInt(e.target.value) || 0 }
                         })}
-                        className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-indigo-600 focus:outline-none"
+                        className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-primary-600 focus:outline-none"
                       />
                     </div>
 
@@ -1028,7 +1028,7 @@ export default function ApplicationTracker() {
                           ...formData,
                           requirements: { ...formData.requirements, supplements: parseInt(e.target.value) || 0 }
                         })}
-                        className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-indigo-600 focus:outline-none"
+                        className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-primary-600 focus:outline-none"
                       />
                     </div>
 
@@ -1055,7 +1055,7 @@ export default function ApplicationTracker() {
                           ...formData,
                           requirements: { ...formData.requirements, testScores: e.target.value as 'Required' | 'Optional' | 'Test-Blind' }
                         })}
-                        className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-indigo-600 focus:outline-none"
+                        className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-primary-600 focus:outline-none"
                       >
                         <option value="Required">Required</option>
                         <option value="Optional">Test-Optional</option>
@@ -1073,7 +1073,7 @@ export default function ApplicationTracker() {
                   <textarea
                     value={formData.notes}
                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-indigo-600 focus:outline-none"
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-primary-600 focus:outline-none"
                     rows={3}
                     placeholder="Add any additional notes about this application..."
                   />
@@ -1083,7 +1083,7 @@ export default function ApplicationTracker() {
                 <div className="flex gap-3 pt-4">
                   <button
                     onClick={handleSave}
-                    className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700"
+                    className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700"
                   >
                     <FaCheck /> {editingApp ? 'Save Changes' : 'Add Application'}
                   </button>
@@ -1127,14 +1127,14 @@ export default function ApplicationTracker() {
                     loadColleges(e.target.value);
                   }}
                   placeholder="Search colleges by name or location..."
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-indigo-600 focus:outline-none text-lg"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary-600 focus:outline-none text-lg"
                 />
               </div>
 
               {/* College Cards */}
               <div className="grid md:grid-cols-2 gap-4 max-h-[60vh] overflow-y-auto">
                 {colleges.map((college) => (
-                  <div key={college.id} className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-lg p-5 border-2 border-indigo-200 hover:border-indigo-400 transition-all">
+                  <div key={college.id} className="bg-gradient-to-br from-primary-50 to-accent-50 rounded-lg p-5 border-2 border-primary-200 hover:border-primary-400 transition-all">
                     <h3 className="text-xl font-bold text-gray-800 mb-2">{college.name}</h3>
                     <div className="space-y-2 mb-4">
                       <p className="text-sm text-gray-700">📍 {college.location}</p>
@@ -1144,7 +1144,7 @@ export default function ApplicationTracker() {
                     </div>
                     <button
                       onClick={() => addFromDatabase(college)}
-                      className="w-full px-4 py-2 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-all"
+                      className="w-full px-4 py-2 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-all"
                     >
                       Add to Tracker
                     </button>

@@ -104,28 +104,28 @@ export default function GPACalculator() {
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50">
+      <div className="min-h-screen bg-gradient-to-br from-secondary-50 via-white to-primary-50">
         {/* Consistent Navigation */}
       <nav className="bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-8">
-            <Link href="/dashboard" className="text-2xl font-bold text-indigo-600 flex items-center">
+            <Link href="/dashboard" className="text-2xl font-bold text-primary-600 flex items-center">
               🎓 <span className="ml-2">College Planner AI</span>
             </Link>
             <div className="hidden md:flex space-x-4">
-              <Link href="/dashboard" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/dashboard" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                 💬 AI Chat
               </Link>
-              <Link href="/tracker" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/tracker" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                 📋 Tracker
               </Link>
-              <Link href="/essays" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/essays" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                 ✍️ Essays
               </Link>
-              <Link href="/timeline" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/timeline" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                 📅 Timeline
               </Link>
-              <Link href="/resources" className="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-lg font-semibold">
+              <Link href="/resources" className="px-4 py-2 bg-primary-100 text-primary-600 rounded-lg font-semibold">
                 📚 Resources
               </Link>
             </div>
@@ -134,7 +134,7 @@ export default function GPACalculator() {
       </nav>
 
       <div className="container mx-auto max-w-6xl p-4 sm:p-8">
-        <Link href="/resources" className="inline-flex items-center text-indigo-600 hover:text-indigo-700 mb-6">
+        <Link href="/resources" className="inline-flex items-center text-primary-600 hover:text-primary-700 mb-6">
           ← Back to Resources
         </Link>
 
@@ -244,7 +244,7 @@ export default function GPACalculator() {
             <div className="flex gap-3">
               <button
                 onClick={addCourse}
-                className="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-all"
+                className="px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-all"
               >
                 + Add Course
               </button>
@@ -261,7 +261,7 @@ export default function GPACalculator() {
           <div className="mb-8">
             <button
               onClick={calculateGPA}
-              className="w-full py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-xl font-bold rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg"
+              className="w-full py-4 bg-gradient-to-r from-primary-600 to-accent-600 text-white text-xl font-bold rounded-lg hover:from-primary-700 hover:to-accent-700 transition-all shadow-lg"
             >
               Calculate GPA
             </button>
@@ -276,7 +276,7 @@ export default function GPACalculator() {
                 <p className="mt-4 text-sm opacity-90">Out of 4.0 scale (no bonus for honors/AP)</p>
               </div>
 
-              <div className="bg-gradient-to-br from-purple-500 to-purple-600 text-white p-8 rounded-xl shadow-lg">
+              <div className="bg-gradient-to-br from-primary-500 to-primary-600 text-white p-8 rounded-xl shadow-lg">
                 <h3 className="text-xl font-semibold mb-2 opacity-90">Weighted GPA</h3>
                 <div className="text-6xl font-bold">{weightedGPA?.toFixed(3)}</div>
                 <p className="mt-4 text-sm opacity-90">With honors (+0.5) and AP (+1.0) bonuses</p>
@@ -290,7 +290,7 @@ export default function GPACalculator() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-sm">
               {Object.entries(gradePoints).map(([grade, points]) => (
                 <div key={grade} className="bg-white p-2 rounded text-center border">
-                  <div className="font-bold text-indigo-600">{grade}</div>
+                  <div className="font-bold text-primary-600">{grade}</div>
                   <div className="text-gray-600">{points.toFixed(1)}</div>
                 </div>
               ))}

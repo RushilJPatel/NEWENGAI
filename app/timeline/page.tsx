@@ -227,24 +227,24 @@ export default function Timeline() {
       <nav className="bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-8">
-            <Link href="/dashboard" className="text-2xl font-bold text-indigo-600 flex items-center gap-2">
+            <Link href="/dashboard" className="text-2xl font-bold text-primary-600 flex items-center gap-2">
               <Logo size={32} />
               <span>College Compass</span>
             </Link>
             <div className="hidden md:flex space-x-4">
-              <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-primary-600">
                 <FaComments /> AI Chat
               </Link>
-              <Link href="/tracker" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/tracker" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-primary-600">
                 <FaClipboardList /> Tracker
               </Link>
-              <Link href="/essays" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/essays" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-primary-600">
                 <FaPencilAlt /> Essays
               </Link>
-              <Link href="/timeline" className="flex items-center gap-2 px-4 py-2 bg-indigo-100 text-indigo-600 rounded-lg font-semibold">
+              <Link href="/timeline" className="flex items-center gap-2 px-4 py-2 bg-primary-100 text-primary-600 rounded-lg font-semibold">
                 <FaCalendarAlt /> Timeline
               </Link>
-              <Link href="/resources" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/resources" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-primary-600">
                 <FaBook /> Resources
               </Link>
             </div>
@@ -262,7 +262,7 @@ export default function Timeline() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-2 flex items-center gap-3">
-            <FaCalendarAlt className="text-indigo-600" /> College Application Timeline
+            <FaCalendarAlt className="text-primary-600" /> College Application Timeline
           </h1>
           <p className="text-gray-600">Your personalized roadmap based on your grade level</p>
         </div>
@@ -270,7 +270,7 @@ export default function Timeline() {
         {/* Grade Selector */}
         <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <FaGraduationCap className="text-2xl text-indigo-600" />
+            <FaGraduationCap className="text-2xl text-primary-600" />
             <h2 className="text-2xl font-bold text-gray-800">Select Your Grade Level</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -280,8 +280,8 @@ export default function Timeline() {
                 onClick={() => setGradeLevel(grade)}
                 className={`p-4 rounded-lg border-2 transition-all text-center ${
                   gradeLevel === grade
-                    ? 'border-indigo-600 bg-indigo-50 text-indigo-700 font-bold shadow-md'
-                    : 'border-gray-200 bg-white text-gray-700 hover:border-indigo-300'
+                    ? 'border-primary-600 bg-primary-50 text-primary-700 font-bold shadow-md'
+                    : 'border-gray-200 bg-white text-gray-700 hover:border-primary-300'
                 }`}
               >
                 <div className="text-3xl font-bold mb-1">{grade}th</div>
@@ -299,11 +299,11 @@ export default function Timeline() {
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Your Progress</h2>
           <div className="flex items-center justify-between mb-2">
             <span className="text-gray-600">Overall Completion</span>
-            <span className="text-2xl font-bold text-indigo-600">{Math.round(overallProgress)}%</span>
+            <span className="text-2xl font-bold text-primary-600">{Math.round(overallProgress)}%</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-4">
             <div
-              className="bg-gradient-to-r from-indigo-500 to-purple-500 h-4 rounded-full transition-all duration-500"
+              className="bg-gradient-to-r from-primary-500 to-accent-500 h-4 rounded-full transition-all duration-500"
               style={{ width: `${overallProgress}%` }}
             ></div>
           </div>
@@ -322,7 +322,7 @@ export default function Timeline() {
                   <h2 className={`text-2xl font-bold ${isUrgent ? 'text-red-600' : 'text-gray-800'}`}>
                     {isUrgent && '⚠️ '}{section}
                   </h2>
-                  <span className="text-lg font-semibold text-indigo-600">
+                  <span className="text-lg font-semibold text-primary-600">
                     {progress.completed}/{progress.total}
                   </span>
                 </div>
@@ -339,7 +339,7 @@ export default function Timeline() {
                       className={`flex items-start p-4 rounded-lg border-2 transition-all cursor-pointer ${
                         task.completed
                           ? 'bg-green-50 border-green-300'
-                          : 'bg-gray-50 border-gray-200 hover:border-indigo-300'
+                          : 'bg-gray-50 border-gray-200 hover:border-primary-300'
                       }`}
                       onClick={() => toggleTask(section, task.id)}
                     >
@@ -366,12 +366,12 @@ export default function Timeline() {
         </div>
 
         {/* Help CTA */}
-        <div className="mt-12 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl shadow-2xl p-8 text-white text-center">
+        <div className="mt-12 bg-gradient-to-r from-primary-600 to-accent-600 rounded-xl shadow-2xl p-8 text-white text-center">
           <h3 className="text-3xl font-bold mb-4">Need Personalized Guidance?</h3>
           <p className="text-xl mb-6 opacity-90">Our AI advisor can help you create a custom plan based on your goals!</p>
           <Link
             href="/dashboard"
-            className="inline-block px-8 py-4 bg-white text-indigo-600 font-bold text-lg rounded-lg hover:bg-gray-100 transition-all shadow-lg transform hover:scale-105"
+            className="inline-block px-8 py-4 bg-white text-primary-600 font-bold text-lg rounded-lg hover:bg-gray-100 transition-all shadow-lg transform hover:scale-105"
           >
             Chat with AI Advisor →
           </Link>

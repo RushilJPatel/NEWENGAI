@@ -331,7 +331,7 @@ export default function DashboardPage() {
 function TimelineSection({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
-      <h3 className="text-xl font-bold text-indigo-600 mb-3">{title}</h3>
+      <h3 className="text-xl font-bold text-primary-600 mb-3">{title}</h3>
       <ul className="space-y-2">
         {items.map((item, idx) => (
           <li key={idx} className="flex items-start">

@@ -47,23 +47,23 @@ export default function EssayWordCounter() {
       <nav className="bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-8">
-            <Link href="/dashboard" className="text-2xl font-bold text-indigo-600 flex items-center">
+            <Link href="/dashboard" className="text-2xl font-bold text-primary-600 flex items-center">
               🎓 <span className="ml-2">College Planner AI</span>
             </Link>
             <div className="hidden md:flex space-x-4">
-              <Link href="/dashboard" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/dashboard" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                 💬 AI Chat
               </Link>
-              <Link href="/tracker" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/tracker" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                 📋 Tracker
               </Link>
-              <Link href="/essays" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/essays" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                 ✍️ Essays
               </Link>
-              <Link href="/timeline" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/timeline" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                 📅 Timeline
               </Link>
-              <Link href="/resources" className="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-lg font-semibold">
+              <Link href="/resources" className="px-4 py-2 bg-primary-100 text-primary-600 rounded-lg font-semibold">
                 📚 Resources
               </Link>
             </div>
@@ -72,7 +72,7 @@ export default function EssayWordCounter() {
       </nav>
 
       <div className="container mx-auto max-w-5xl p-4 sm:p-8">
-        <Link href="/resources" className="inline-flex items-center text-indigo-600 hover:text-indigo-700 mb-6">
+        <Link href="/resources" className="inline-flex items-center text-primary-600 hover:text-primary-700 mb-6">
           ← Back to Resources
         </Link>
 
@@ -119,7 +119,7 @@ export default function EssayWordCounter() {
 
           {/* Count Display */}
           <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-gradient-to-br from-indigo-500 to-purple-500 text-white p-6 rounded-xl shadow-lg">
+            <div className="bg-gradient-to-br from-primary-500 to-accent-500 text-white p-6 rounded-xl shadow-lg">
               <h3 className="text-xl font-semibold mb-2 opacity-90">Word Count</h3>
               <div className="text-5xl font-bold">{wordCount}</div>
               <p className="mt-2 text-sm opacity-90">words</p>
@@ -208,9 +208,9 @@ export default function EssayWordCounter() {
           </div>
 
           {/* Tips */}
-          <div className="mt-8 bg-indigo-50 border-l-4 border-indigo-500 p-4 rounded">
-            <h3 className="font-bold text-indigo-900 mb-2">💡 Essay Writing Tips:</h3>
-            <ul className="text-sm text-indigo-800 space-y-1">
+          <div className="mt-8 bg-primary-50 border-l-4 border-indigo-500 p-4 rounded">
+            <h3 className="font-bold text-primary-900 mb-2">💡 Essay Writing Tips:</h3>
+            <ul className="text-sm text-primary-800 space-y-1">
               <li>• Aim for 90-100% of the word limit to show thoroughness</li>
               <li>• Quality over quantity - every word should add value</li>
               <li>• Going slightly over (650→655) is usually fine, but don't push it</li>
@@ -221,7 +221,7 @@ export default function EssayWordCounter() {
 
           {/* Link to Essay Hub */}
           <div className="mt-6 text-center">
-            <Link href="/essays" className="inline-block px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700">
+            <Link href="/essays" className="inline-block px-6 py-3 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700">
               View Essay Prompts & Tips →
             </Link>
           </div>

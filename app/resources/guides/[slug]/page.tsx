@@ -117,28 +117,28 @@ export default function GuidePage() {
   if (!guide) {
     return (
       <>
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+        <div className="min-h-screen bg-gradient-to-br from-secondary-50 via-white to-primary-50">
           {/* Consistent Navigation */}
         <nav className="bg-white border-b border-gray-200">
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <div className="flex items-center space-x-8">
-              <Link href="/dashboard" className="text-2xl font-bold text-indigo-600 flex items-center">
+              <Link href="/dashboard" className="text-2xl font-bold text-primary-600 flex items-center">
                 🎓 <span className="ml-2">College Compass</span>
               </Link>
               <div className="hidden md:flex space-x-4">
-                <Link href="/dashboard" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+                <Link href="/dashboard" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                   💬 AI Chat
                 </Link>
-                <Link href="/tracker" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+                <Link href="/tracker" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                   📋 Tracker
                 </Link>
-                <Link href="/essays" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+                <Link href="/essays" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                   ✍️ Essays
                 </Link>
-                <Link href="/timeline" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+                <Link href="/timeline" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                   📅 Timeline
                 </Link>
-                <Link href="/resources" className="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-lg font-semibold">
+                <Link href="/resources" className="px-4 py-2 bg-primary-100 text-primary-600 rounded-lg font-semibold">
                   📚 Resources
                 </Link>
               </div>
@@ -147,13 +147,13 @@ export default function GuidePage() {
         </nav>
 
         <div className="container mx-auto max-w-4xl p-4 sm:p-8">
-          <Link href="/resources" className="inline-flex items-center text-indigo-600 hover:text-indigo-700 mb-6">
+          <Link href="/resources" className="inline-flex items-center text-primary-600 hover:text-primary-700 mb-6">
             ← Back to Resources
           </Link>
           <div className="bg-white rounded-xl shadow-2xl p-6 sm:p-10 text-center">
             <h1 className="text-3xl font-bold text-gray-800 mb-4">Guide Coming Soon!</h1>
             <p className="text-gray-600 mb-6">This guide is currently being developed. Check back soon!</p>
-            <Link href="/dashboard" className="inline-block px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700">
+            <Link href="/dashboard" className="inline-block px-6 py-3 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700">
               Chat with AI for Help →
             </Link>
           </div>
@@ -165,28 +165,28 @@ export default function GuidePage() {
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+      <div className="min-h-screen bg-gradient-to-br from-secondary-50 via-white to-primary-50">
         {/* Consistent Navigation */}
       <nav className="bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-8">
-            <Link href="/dashboard" className="text-2xl font-bold text-indigo-600 flex items-center">
+            <Link href="/dashboard" className="text-2xl font-bold text-primary-600 flex items-center">
               🎓 <span className="ml-2">College Compass</span>
             </Link>
             <div className="hidden md:flex space-x-4">
-              <Link href="/dashboard" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/dashboard" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                 💬 AI Chat
               </Link>
-              <Link href="/tracker" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/tracker" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                 📋 Tracker
               </Link>
-              <Link href="/essays" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/essays" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                 ✍️ Essays
               </Link>
-              <Link href="/timeline" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+              <Link href="/timeline" className="px-4 py-2 text-gray-600 hover:text-primary-600">
                 📅 Timeline
               </Link>
-              <Link href="/resources" className="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-lg font-semibold">
+              <Link href="/resources" className="px-4 py-2 bg-primary-100 text-primary-600 rounded-lg font-semibold">
                 📚 Resources
               </Link>
             </div>
@@ -195,7 +195,7 @@ export default function GuidePage() {
       </nav>
 
       <div className="container mx-auto max-w-4xl p-4 sm:p-8">
-        <Link href="/resources" className="inline-flex items-center text-indigo-600 hover:text-indigo-700 mb-6">
+        <Link href="/resources" className="inline-flex items-center text-primary-600 hover:text-primary-700 mb-6">
           ← Back to Resources
         </Link>
 
@@ -211,7 +211,7 @@ export default function GuidePage() {
           <div className="prose prose-lg max-w-none">
             {guide.sections?.map((section: any, idx: number) => (
               <div key={idx} className="mb-8">
-                <h2 className="text-2xl font-bold text-indigo-600 mb-4">{section.title}</h2>
+                <h2 className="text-2xl font-bold text-primary-600 mb-4">{section.title}</h2>
                 {section.content && (
                   <p className="mb-4 whitespace-pre-line">{section.content}</p>
                 )}
@@ -224,10 +224,10 @@ export default function GuidePage() {
               </div>
             ))}
 
-            <div className="mt-8 p-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg text-center">
+            <div className="mt-8 p-6 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-lg text-center">
               <h3 className="text-2xl font-bold mb-2">Need Personalized Advice?</h3>
               <p className="mb-4">Our AI can answer specific questions about YOUR situation!</p>
-              <Link href="/dashboard" className="inline-block px-6 py-3 bg-white text-indigo-600 font-bold rounded-lg hover:bg-gray-100">
+              <Link href="/dashboard" className="inline-block px-6 py-3 bg-white text-primary-600 font-bold rounded-lg hover:bg-gray-100">
                 Chat with AI Advisor →
               </Link>
             </div>
