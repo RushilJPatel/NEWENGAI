@@ -1,13 +1,28 @@
 import { NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { getServerSession } from 'next-auth';
 import fs from 'fs';
 import path from 'path';
+import connectDB from '@/lib/mongodb';
+import UserProfile from '@/models/UserProfile';
 
 export async function POST(request: Request) {
   try {
-    const { userMessage, messages } = await request.json();
+    const session = await getServerSession();
+    const { userMessage, messages, saveHistory = false } = await request.json();
 
     console.log('Chat API called with message:', userMessage);
+
+    // Load user profile for personalized responses
+    let userProfile = null;
+    if (session?.user?.email) {
+      try {
+        await connectDB();
+        userProfile = await UserProfile.findOne({ email: session.user.email });
+      } catch (error) {
+        console.error('Error loading user profile:', error);
+      }
+    }
 
     const apiKey = process.env.GEMINI_API_KEY;
     
@@ -29,8 +44,8 @@ export async function POST(request: Request) {
     const hsCourses = JSON.parse(fs.readFileSync(hsCoursesPath, 'utf8'));
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    // Use latest stable production model (Gemini 1.5 Pro)
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
+    // Use Gemini 1.5 Flash (faster, more reliable)
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
     // Build conversation history for context
     const conversationHistory = messages
@@ -38,57 +53,105 @@ export async function POST(request: Request) {
       .map((msg: any) => `${msg.role === 'user' ? 'Student' : 'Advisor'}: ${msg.content}`)
       .join('\n\n');
 
-    const systemPrompt = `You are an expert College Planning AI Advisor helping high school students plan their 4-year academic path and navigate college applications. You have access to:
+    // Build personalized context from user profile
+    let profileContext = '';
+    if (userProfile) {
+      profileContext = `
+**STUDENT PROFILE:**
+- Current Grade: ${userProfile.currentGrade}
+- GPA: ${userProfile.currentGPA}
+- Target Colleges: ${userProfile.targetColleges.join(', ')}
+- Intended Major: ${userProfile.intendedMajor}
+- Career Aspirations: ${userProfile.careerAspirations}
+- Strongest Subjects: ${userProfile.strongestSubjects.join(', ')}
+- Academic Interests: ${userProfile.academicInterests.join(', ')}
+- AP/Honors Courses Taken: ${userProfile.apCoursesTaken.join(', ')}
+- Study Time Per Day: ${userProfile.studyTimePerDay}
+- Homework Load: ${userProfile.homeworkLoad}
+- Learning Style: ${userProfile.learningStyle}
+- Preferred Locations: ${userProfile.preferredLocation.join(', ')}
+- Hobbies: ${userProfile.hobbies.join(', ')}
+- Extracurriculars: ${userProfile.extracurriculars.join(', ')}
+- Athletic Interest: ${userProfile.athleticInterest ? `Yes - ${userProfile.athleticSport}` : 'No'}
+- Financial Aid Needed: ${userProfile.financialAidNeeded ? 'Yes' : 'No'}
+- Challenges: ${userProfile.challenges.join(', ')}
+- Goals: ${userProfile.goals.join(', ')}
+
+**IMPORTANT:** Use this profile information to provide HIGHLY PERSONALIZED advice. Reference their specific goals, challenges, and interests in your responses.
+`;
+    }
+
+    const systemPrompt = `You are College Compass AI - an expert college planning advisor EXCLUSIVELY for high school students preparing for college. You ONLY answer questions related to:
+
+✅ ALLOWED TOPICS:
+- College applications, admissions, requirements
+- High school course planning and 4-year schedules
+- SAT/ACT test preparation and strategies
+- College essays and personal statements
+- Extracurricular activities for college applications
+- Financial aid, scholarships, FAFSA
+- College selection and fit
+- Major and career planning for college
+- Campus visits and college tours
+- Recommendation letters
+- College interviews
+- GPA and transcript management
+- AP/IB courses and exam strategies
+- College deadlines and timelines
+- Dormitory life and college preparation
+
+❌ REFUSE TO ANSWER:
+- General homework help
+- Non-college academic questions
+- Personal advice unrelated to college
+- Entertainment, games, jokes
+- Current events unrelated to education
+- Anything outside college planning
+
+**If asked about non-college topics, politely respond:**
+"I'm College Compass AI, and I specialize exclusively in college planning and applications. I can help you with college selection, applications, essays, test prep, financial aid, and creating your 4-year high school schedule. What college-related questions can I help you with today?"
+
+**Your SPECIAL ABILITY - Personalized 4-Year Schedule Generation:**
+
+${profileContext}
+
+When generating a 4-year plan, create a COMPREHENSIVE and DETAILED schedule with:
+   - **Year-by-year course breakdown** (9th, 10th, 11th, 12th grades or remaining years)
+   - **Specific course names** from available courses database
+   - **AP/IB/Honors placement strategy** aligned with target college requirements
+   - **Course rationale** - explain why each course matters for their target colleges
+   - **Prerequisites and progressions** - ensure logical course sequences
+   - **Difficulty ramping** - balance rigor with their current workload and study time
+   - **Extracurricular recommendations** - aligned with their interests and college goals
+   - **Test prep timeline** (SAT/ACT/AP exams) - customized to their schedule
+   - **Application timeline** for senior year
+   - **Summer activities** - internships, programs, volunteering suggestions
+   - **Leadership opportunities** - based on their extracurriculars
+   - **Academic competitions** - relevant to their major interest
+   
+**When creating the plan:**
+- ALWAYS reference their profile data (GPA, target colleges, major, etc.)
+- Account for their study time availability and current homework load
+- Suggest courses that align with their strongest subjects and learning style
+- Address their stated challenges and help them achieve their goals
+- If they need financial aid, suggest scholarship-relevant activities
+- If they have athletic interests, account for practice time
+- Adapt the plan to their preferred college locations and types
 
 **College Requirements Database:**
 ${JSON.stringify(collegeRequirements, null, 2)}
 
 **Available High School Courses:**
 ${JSON.stringify(hsCourses.courses.slice(0, 20), null, 2)}
-(and more courses available)
-
-You provide:
-
-1. **4-Year High School Schedules** customized for target colleges
-2. **Step-by-step guidance** on college applications
-3. **Personalized advice** on choosing colleges and majors
-4. **Course recommendations** based on college requirements
-5. **Essay writing tips** and brainstorming help
-6. **Timeline and deadline** management
-7. **Financial aid and scholarship** guidance
-8. **SAT/ACT prep** advice
-9. **Interview preparation** tips
-10. **Campus visit** recommendations
-
-When creating 4-year schedules:
-- Ask what colleges they're interested in (or college type if unsure)
-- Reference the college requirements database
-- Create year-by-year breakdown (Grade 9, 10, 11, 12)
-- Include specific course names from the available courses
-- Explain WHY certain courses are recommended for their target schools
-- Adjust rigor based on college selectivity
-- Include prerequisites and progressions
-- Add AP courses strategically (junior/senior year)
-
-Guidelines:
-- Be encouraging and supportive
-- Provide actionable, specific advice
-- Break down complex processes into clear steps
-- When asked about schedules, create COMPLETE 4-year plans
-- Ask clarifying questions when needed
-- Suggest next steps after answering
-- Be conversational and friendly
-- Include emojis occasionally to be relatable
-- Format schedules clearly with headers for each year
 
 Previous conversation:
 ${conversationHistory}
 
-Student's current question: ${userMessage}
+Student's question: ${userMessage}
 
-Provide a helpful, detailed response:`;
+REMEMBER: Only answer college-related questions. Be encouraging, specific, and actionable.`;
 
-    console.log('Calling Gemini API with model: gemini-1.5-pro');
+    console.log('Calling Gemini API with model: gemini-1.5-flash');
     const result = await model.generateContent(systemPrompt);
     const response = await result.response;
     const text = response.text();

@@ -6,9 +6,8 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '../components/Logo';
 import PremiumBadge from '../components/PremiumBadge';
-import OnboardingForm from '../components/OnboardingForm';
 import { useSubscription } from '../providers/SubscriptionProvider';
-import { FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaPlus, FaPaperPlane, FaGraduationCap, FaBullseye, FaDollarSign, FaFileAlt, FaUniversity, FaSignOutAlt, FaCrown, FaSave, FaHistory, FaTrash } from 'react-icons/fa';
+import { FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaPlus, FaPaperPlane, FaGraduationCap, FaBullseye, FaDollarSign, FaFileAlt, FaUniversity, FaSignOutAlt, FaCrown } from 'react-icons/fa';
 
 interface Message {
   id: string;
@@ -23,13 +22,6 @@ export default function DashboardPage() {
   const { tier, hasAccess } = useSubscription();
   const [messageCount, setMessageCount] = useState(0);
   const MESSAGE_LIMITS = { free: 10, basic: Infinity, premium: Infinity };
-  const [showOnboarding, setShowOnboarding] = useState(false);
-  const [userProfile, setUserProfile] = useState<any>(null);
-  const [conversationId, setConversationId] = useState<string>('');
-  const [conversationTitle, setConversationTitle] = useState('New Conversation');
-  const [chatHistories, setChatHistories] = useState<any[]>([]);
-  const [showHistory, setShowHistory] = useState(false);
-  const [savingChat, setSavingChat] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -48,123 +40,6 @@ export default function DashboardPage() {
       router.push('/login');
     }
   }, [status, router]);
-
-  // Load user profile and check if onboarding is completed
-  useEffect(() => {
-    if (session?.user?.email) {
-      loadUserProfile();
-      if (tier !== 'free') {
-        loadChatHistories();
-      }
-    }
-  }, [session, tier]);
-
-  const loadUserProfile = async () => {
-    try {
-      const response = await fetch('/api/profile');
-      const data = await response.json();
-      if (data.profile) {
-        setUserProfile(data.profile);
-        if (!data.profile.onboardingCompleted) {
-          setShowOnboarding(true);
-        }
-      } else {
-        // New user, show onboarding
-        setShowOnboarding(true);
-      }
-    } catch (error) {
-      console.error('Error loading profile:', error);
-    }
-  };
-
-  const loadChatHistories = async () => {
-    try {
-      const response = await fetch('/api/chat-history');
-      const data = await response.json();
-      if (data.histories) {
-        setChatHistories(data.histories);
-      }
-    } catch (error) {
-      console.error('Error loading chat histories:', error);
-    }
-  };
-
-  const handleOnboardingComplete = (data: any) => {
-    setUserProfile(data);
-    setShowOnboarding(false);
-    // Start a new conversation with the profile data
-    const welcomeMessage: Message = {
-      id: Date.now().toString(),
-      role: 'assistant',
-      content: `Great! I've got your profile. I'm ready to help you build your personalized 4-year college plan!\n\nBased on your information:\n- Grade: ${data.currentGrade}\n- Target Colleges: ${data.targetColleges.join(', ')}\n- Intended Major: ${data.intendedMajor}\n- Current GPA: ${data.currentGPA}\n\nI can now create a customized academic roadmap tailored specifically to your goals!\n\n**To get started, try asking:**\n- "Create my complete 4-year high school plan"\n- "What courses should I take to get into ${data.targetColleges[0] || 'my target colleges'}?"\n- "Help me plan my schedule for next year"\n\nWhat would you like to work on first?`,
-      timestamp: new Date()
-    };
-    setMessages([welcomeMessage]);
-  };
-
-  const saveConversation = async () => {
-    if (tier === 'free') {
-      alert('Chat history saving is a Premium feature!\n\nUpgrade to Basic or Premium to:\n✓ Save unlimited conversations\n✓ Resume chats anytime\n✓ Access chat history across devices\n\nVisit the Billing page to upgrade!');
-      return;
-    }
-
-    if (messages.length <= 1) return;
-
-    setSavingChat(true);
-    try {
-      const title = conversationTitle === 'New Conversation' 
-        ? messages[1]?.content.substring(0, 50) + '...' || 'Untitled Chat'
-        : conversationTitle;
-
-      const id = conversationId || `conv_${Date.now()}`;
-
-      await fetch('/api/chat-history', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          conversationId: id,
-          messages: messages,
-          title: title
-        })
-      });
-
-      setConversationId(id);
-      setConversationTitle(title);
-      loadChatHistories();
-      alert('Conversation saved successfully!');
-    } catch (error) {
-      console.error('Error saving conversation:', error);
-      alert('Failed to save conversation');
-    } finally {
-      setSavingChat(false);
-    }
-  };
-
-  const loadConversation = async (convId: string) => {
-    try {
-      const response = await fetch(`/api/chat-history/${convId}`);
-      const data = await response.json();
-      if (data.chatHistory) {
-        setMessages(data.chatHistory.messages);
-        setConversationId(convId);
-        setConversationTitle(data.chatHistory.title);
-        setShowHistory(false);
-      }
-    } catch (error) {
-      console.error('Error loading conversation:', error);
-    }
-  };
-
-  const deleteConversation = async (convId: string) => {
-    if (!confirm('Are you sure you want to delete this conversation?')) return;
-    
-    try {
-      await fetch(`/api/chat-history/${convId}`, { method: 'DELETE' });
-      loadChatHistories();
-    } catch (error) {
-      console.error('Error deleting conversation:', error);
-    }
-  };
 
   // Load and manage daily message count for free tier
   useEffect(() => {
@@ -356,41 +231,11 @@ export default function DashboardPage() {
                 content: "Hi! I'm your College Planning AI Assistant!\n\nI can help you with:\n• Create custom 4-year high school schedules based on your target colleges\n• College recommendations and requirements\n• Application process and essays\n• Financial aid and scholarships\n• SAT/ACT prep strategies\n• Major selection and career planning\n• Timeline and deadlines\n\n**Try asking me:**\n\"Create a 4-year schedule for me targeting [college name]\"\n\"What courses should I take to apply to [college type]?\"\n\nWhat colleges are you interested in?",
                 timestamp: new Date()
               }]);
-              setConversationId('');
-              setConversationTitle('New Conversation');
             }}
             className="flex items-center justify-center gap-3 w-full mb-6 px-6 py-4 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-all font-bold text-base shadow-lg"
           >
             <FaPlus className="text-lg" /> New Conversation
           </button>
-
-          {tier !== 'free' && (
-            <>
-              <button
-                onClick={() => setShowHistory(!showHistory)}
-                className="flex items-center justify-center gap-3 w-full mb-4 px-6 py-3 bg-accent-600 text-white rounded-lg hover:bg-accent-700 transition-all font-semibold text-base"
-              >
-                <FaHistory className="text-lg" /> Chat History ({chatHistories.length})
-              </button>
-
-              <button
-                onClick={saveConversation}
-                disabled={savingChat || messages.length <= 1}
-                className="flex items-center justify-center gap-3 w-full mb-6 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all font-semibold text-base disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <FaSave className="text-lg" /> {savingChat ? 'Saving...' : 'Save Chat'}
-              </button>
-            </>
-          )}
-
-          {!userProfile?.onboardingCompleted && (
-            <button
-              onClick={() => setShowOnboarding(true)}
-              className="flex items-center justify-center gap-3 w-full mb-6 px-6 py-4 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-lg hover:from-primary-700 hover:to-accent-700 transition-all font-bold text-base shadow-lg"
-            >
-              <FaGraduationCap className="text-lg" /> Complete Your Profile
-            </button>
-          )}
 
           <div className="mb-6">
             <h3 className="text-lg font-bold text-gray-800 mb-4">Quick Topics</h3>
@@ -498,59 +343,6 @@ export default function DashboardPage() {
             </div>
           </div>
         </div>
-
-        {/* Onboarding Modal */}
-        {showOnboarding && (
-          <OnboardingForm
-            onComplete={handleOnboardingComplete}
-            onClose={() => setShowOnboarding(false)}
-          />
-        )}
-
-        {/* Chat History Modal */}
-        {showHistory && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[80vh] overflow-y-auto p-8">
-              <div className="flex justify-between items-center mb-6">
-                <h2 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
-                  <FaHistory /> Your Chat History
-                </h2>
-                <button
-                  onClick={() => setShowHistory(false)}
-                  className="text-gray-500 hover:text-gray-700 text-2xl"
-                >
-                  ×
-                </button>
-              </div>
-
-              {chatHistories.length === 0 ? (
-                <p className="text-gray-600 text-center py-8">No saved conversations yet. Start chatting and click "Save Chat" to preserve your conversations!</p>
-              ) : (
-                <div className="space-y-3">
-                  {chatHistories.map((chat: any) => (
-                    <div key={chat.conversationId} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all">
-                      <button
-                        onClick={() => loadConversation(chat.conversationId)}
-                        className="flex-1 text-left"
-                      >
-                        <div className="font-semibold text-gray-800">{chat.title}</div>
-                        <div className="text-sm text-gray-500">
-                          Last active: {new Date(chat.lastActive).toLocaleDateString()}
-                        </div>
-                      </button>
-                      <button
-                        onClick={() => deleteConversation(chat.conversationId)}
-                        className="ml-4 p-2 text-red-600 hover:bg-red-50 rounded-lg transition-all"
-                      >
-                        <FaTrash />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        )}
 
         {/* Timeline Modal */}
         {showTimeline && (
