@@ -32,43 +32,92 @@ export default function EssayHub() {
         id: '1',
         year: '2025-2026',
         text: 'Some students have a background, identity, interest, or talent that is so meaningful they believe their application would be incomplete without it. If this sounds like you, then please share your story.',
-        tips: ['Focus on self-reflection and personal growth', 'Be specific with vivid examples', 'Show how this shapes your perspective and future goals']
+        tips: [
+          'Start with a specific moment or scene that captures your background/identity',
+          'Avoid generic statements - be vulnerable and deeply personal',
+          'Connect your background to HOW you think, not just what you do',
+          'Show evolution: How has your understanding of this identity changed over time?',
+          'End by tying it to your future: How will this shape your college experience?',
+          'Common topics: cultural identity, family background, LGBTQ+ identity, unique talent, socioeconomic challenges'
+        ]
       },
       {
         id: '2',
         year: '2025-2026',
         text: 'The lessons we take from obstacles we encounter can be fundamental to later success. Recount a time when you faced a challenge, setback, or failure. How did it affect you, and what did you learn from the experience?',
-        tips: ['Focus on the learning and growth, not the failure itself', 'Be honest and vulnerable about the challenge', 'Show resilience, maturity, and self-awareness']
+        tips: [
+          'Pick a real failure - not a humble-brag (e.g., "I got a B+")',
+          'Spend MORE time on reflection than describing the failure',
+          'Show specific actions you took to overcome or learn from it',
+          'Avoid: blaming others, making excuses, or being overly dramatic',
+          'Best approach: academic setback, competition loss, rejection, family challenge',
+          'Demonstrate resilience through concrete examples of what you changed'
+        ]
       },
       {
         id: '3',
         year: '2025-2026',
         text: 'Reflect on a time when you questioned or challenged a belief or idea. What prompted your thinking? What was the outcome?',
-        tips: ['Show intellectual curiosity and courage', 'Demonstrate critical thinking skills', 'Explain your reasoning process step-by-step']
+        tips: [
+          'Pick a belief YOU held, not just something you debated with someone',
+          'Show your thought process: What evidence made you question it?',
+          'Be nuanced - avoid political rants or overly controversial topics',
+          'Great examples: changing views on education, religion, social issues, family traditions',
+          'Include what prompted the questioning (book, experience, conversation)',
+          'Show intellectual humility - it\'s okay if your new view evolved further'
+        ]
       },
       {
         id: '4',
         year: '2025-2026',
         text: 'Reflect on something that someone has done for you that has made you happy or thankful in a surprising way. How has this gratitude affected or motivated you?',
-        tips: ['Show emotional intelligence and humility', 'Connect gratitude to personal values', 'Demonstrate how it motivated positive action']
+        tips: [
+          'The "surprising" part is key - should be unexpected kindness',
+          'Focus on small, specific acts (not "my mom always supports me")',
+          'Show how it changed your behavior or perspective',
+          'Pay it forward: How did you show gratitude or help others?',
+          'Good examples: teacher who stayed late, stranger\'s kindness, sibling\'s sacrifice',
+          'Avoid: sounding entitled or not connecting it to personal growth'
+        ]
       },
       {
         id: '5',
         year: '2025-2026',
         text: 'Discuss an accomplishment, event, or realization that sparked a period of personal growth and a new understanding of yourself or others.',
-        tips: ['Focus on the transformation, not just the event', 'Be deeply introspective', 'Show maturity and new perspective gained']
+        tips: [
+          'Focus on the SPARK that led to growth, not just listing achievements',
+          'Can be a small moment (realization) or big event (winning/losing something)',
+          'Show a clear before/after: Who were you before vs. after?',
+          'Examples: leadership failure that taught you, conversation that shifted perspective, project that revealed passion',
+          'Be specific about what understanding changed',
+          'Spend 40% on event, 60% on the growth/reflection'
+        ]
       },
       {
         id: '6',
         year: '2025-2026',
         text: 'Describe a topic, idea, or concept you find so engaging that it makes you lose all track of time. Why does it captivate you? What or who do you turn to when you want to learn more?',
-        tips: ['Show genuine passion and enthusiasm', 'Demonstrate intellectual curiosity', 'Connect to academic interests or intended major']
+        tips: [
+          'This is the "why this major?" essay in disguise',
+          'Show DEPTH: specific aspects, not surface-level interest',
+          'Include resources you seek out: specific books, YouTubers, professors, online courses',
+          'Explain the WHY: What about this topic fascinates you intellectually?',
+          'Connect to broader questions or future goals',
+          'Examples: specific CS topic, historical era, mathematical concept, design principle'
+        ]
       },
       {
         id: '7',
         year: '2025-2026',
         text: 'Share an essay on any topic of your choice. It can be one you\'ve already written, one that responds to a different prompt, or one of your own design.',
-        tips: ['Make it uniquely yours - be creative!', 'Still follow essay best practices', 'Choose a meaningful topic that reveals who you are']
+        tips: [
+          'Only use this if your story truly doesn\'t fit the other 6 prompts',
+          'You STILL need intro, body, reflection, and conclusion',
+          'Creative topics: unique hobby, family tradition, philosophical question, unusual experience',
+          'Don\'t just submit a creative writing piece - it must reveal WHO you are',
+          'Structure is still important even with freedom',
+          'Ask yourself: Could this fit prompts 1-6? If yes, use those instead for clarity'
+        ]
       }
     ]);
   };

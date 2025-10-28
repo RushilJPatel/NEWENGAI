@@ -195,6 +195,70 @@ export default function Resources() {
         category: 'tool',
         url: 'https://bigfuture.collegeboard.org/college-search',
         content: 'Discover colleges you might not have considered based on your academic profile, interests, location preferences, and budget.'
+      },
+      { 
+        title: 'AP Credit Policy Checker', 
+        description: 'Check which colleges accept your AP scores and how much credit you get.', 
+        icon: '🏆', 
+        category: 'tool',
+        url: 'https://apstudents.collegeboard.org/getting-credit-placement/search-policies',
+        content: 'Not all colleges give the same credit! Some require 4+, others accept 3+. Check before deciding which APs to take.'
+      },
+      { 
+        title: 'Common Data Set Browser', 
+        description: 'Access detailed admissions statistics that colleges report annually.', 
+        icon: '📈', 
+        category: 'tool',
+        url: '/dashboard',
+        content: 'Find exact acceptance rates, SAT ranges, class rank percentiles, and more. Search "[college name] common data set" on Google.'
+      },
+      { 
+        title: 'Major to Career Mapper', 
+        description: 'See what careers graduates from each major actually pursue.', 
+        icon: '💼', 
+        category: 'tool',
+        url: 'https://www.bls.gov/ooh/',
+        content: 'Bureau of Labor Statistics shows salary, growth, and requirements for 800+ careers. Connect majors to real job outcomes.'
+      },
+      { 
+        title: 'College Essay Topic Brainstorm Tool', 
+        description: 'Answer questions to find your best essay topics and stories.', 
+        icon: '💭', 
+        category: 'tool',
+        url: '/essays',
+        content: 'Stuck on what to write about? Use guided prompts to uncover meaningful experiences you might have overlooked.'
+      },
+      { 
+        title: 'Financial Aid Appeal Letter Generator', 
+        description: 'Get help writing appeals when aid packages aren\'t enough.', 
+        icon: '📝', 
+        category: 'tool',
+        url: '/dashboard',
+        content: 'If circumstances changed or you have better offers, you can appeal! Learn what to include and how to write professionally.'
+      },
+      { 
+        title: 'Supplemental Essay Database', 
+        description: 'Browse all supplemental prompts for 500+ colleges in one place.', 
+        icon: '📚', 
+        category: 'tool',
+        url: 'https://www.collegeessayguy.com/supplemental-essay-prompts',
+        content: 'Plan ahead! See what essays you\'ll need to write before applying. Many schools ask "Why us?" and community questions.'
+      },
+      { 
+        title: 'College Debt Calculator', 
+        description: 'Calculate monthly loan payments and see if your degree is worth the debt.', 
+        icon: '💵', 
+        category: 'tool',
+        url: 'https://studentaid.gov/loan-simulator/',
+        content: 'See how much you\'ll pay monthly for 10, 20, or 25 years. Compare salary expectations vs debt burden.'
+      },
+      { 
+        title: 'Virtual College Tour Platform', 
+        description: 'Take 360° tours of college campuses from your phone or computer.', 
+        icon: '🌐', 
+        category: 'tool',
+        url: 'https://www.youvisit.com/collegesearch/',
+        content: 'Can\'t visit in person? Virtual tours show dorms, dining halls, classrooms, and campus life at 1,000+ schools.'
       }
     ],
     videos: [
@@ -261,6 +325,70 @@ export default function Resources() {
         category: 'video',
         platform: 'College Websites',
         content: 'Most colleges offer virtual tours. Check CampusReel.com and YouVisit.com for student-made tours. See dorms, dining halls, libraries, and more!'
+      },
+      { 
+        title: 'Common App Tutorial: Step-by-Step', 
+        description: '30-min walkthrough: Complete the Common App without mistakes.', 
+        icon: '📋', 
+        category: 'video',
+        platform: 'YouTube',
+        content: 'Screen recording showing EVERY section: personal info, family, education, activities (with examples), honors, essay, supplements, recommenders.'
+      },
+      { 
+        title: 'How to Ask for Letters of Recommendation', 
+        description: '8-min guide: The RIGHT way to ask teachers and avoid awkwardness.', 
+        icon: '✉️', 
+        category: 'video',
+        platform: 'YouTube',
+        content: 'When to ask (spring junior year!), who to ask, how to ask professionally, what to provide (brag sheet), and how to follow up/thank them.'
+      },
+      { 
+        title: 'Understanding College Admission Statistics', 
+        description: '15-min breakdown: What acceptance rates really mean and how to interpret data.', 
+        icon: '📊', 
+        category: 'video',
+        platform: 'YouTube',
+        content: 'Overall vs major-specific rates, EA vs RD rates, yield rates, waitlist acceptance rates, and how demographics affect your odds.'
+      },
+      { 
+        title: 'SAT Reading & Writing Strategies', 
+        description: '45-min masterclass: Proven techniques to boost your score by 100+ points.', 
+        icon: '📖', 
+        category: 'video',
+        platform: 'Khan Academy / YouTube',
+        content: 'Reading: annotation techniques, time management, trap answers. Writing: grammar rules, question types, and punctuation patterns.'
+      },
+      { 
+        title: 'SAT Math Problem Solving Techniques', 
+        description: '40-min tutorial: Common question types and how to solve them fast.', 
+        icon: '🔢', 
+        category: 'video',
+        platform: 'Khan Academy / YouTube',
+        content: 'Algebra, geometry, data analysis, and advanced math. Calculator vs no-calculator strategies. Plug-in and backsolving methods.'
+      },
+      { 
+        title: 'Building Your Extracurricular Profile', 
+        description: '18-min guide: Create meaningful ECs that colleges actually care about.', 
+        icon: '🌟', 
+        category: 'video',
+        platform: 'YouTube',
+        content: 'Depth vs breadth, demonstrating leadership, starting projects, research opportunities, and avoiding resume padding. Real examples shown.'
+      },
+      { 
+        title: 'Negotiating Financial Aid Offers', 
+        description: '12-min expert advice: How to ask for more money (and actually get it).', 
+        icon: '💰', 
+        category: 'video',
+        platform: 'YouTube',
+        content: 'Who can negotiate (depends on school), what to say in your letter, comparing offers, and when need-based vs merit aid matters.'
+      },
+      { 
+        title: 'First-Generation College Student Guide', 
+        description: '20-min comprehensive overview: Everything first-gen students need to know.', 
+        icon: '🎓', 
+        category: 'video',
+        platform: 'YouTube',
+        content: 'Unique challenges, special programs, QuestBridge, application fee waivers, finding mentors, and resources specifically for first-gen students.'
       }
     ],
     links: [
@@ -359,6 +487,62 @@ export default function Resources() {
         icon: '📊', 
         category: 'link',
         details: 'See real data: average cost after aid, graduation rates, typical debt, earnings 2 years and 10 years after graduation.'
+      },
+      { 
+        title: 'QuestBridge - For High-Achieving Low-Income Students', 
+        description: 'Full scholarships to top colleges for students with financial need.', 
+        url: 'https://www.questbridge.org', 
+        icon: '🌉', 
+        category: 'link',
+        details: 'Match to full-ride scholarships at 50+ top schools. Application due in Sept/Oct. Income typically <$65k. 4.0 GPA preferred.'
+      },
+      { 
+        title: 'College Confidential Forums', 
+        description: 'Ask questions and connect with students, parents, and counselors.', 
+        url: 'https://www.collegeconfidential.com', 
+        icon: '💬', 
+        category: 'link',
+        details: 'Forums for every college, admissions advice, results threads (see who got in where), and "chance me" discussions.'
+      },
+      { 
+        title: 'U.S. News College Rankings', 
+        description: 'Comprehensive rankings by category, major, and specialty programs.', 
+        url: 'https://www.usnews.com/best-colleges', 
+        icon: '🏅', 
+        category: 'link',
+        details: 'National universities, liberal arts, regional, and by-major rankings. See methodology and compare schools side-by-side.'
+      },
+      { 
+        title: 'Cappex - Scholarship & College Search', 
+        description: 'Match with colleges and scholarships based on your profile.', 
+        url: 'https://www.cappex.com', 
+        icon: '🎯', 
+        category: 'link',
+        details: 'Get matched to scholarships and colleges. See your admission chances. Request info from schools. Free personality quiz.'
+      },
+      { 
+        title: 'Posse Foundation - Leadership Scholarships', 
+        description: 'Full-tuition scholarships for students with leadership potential.', 
+        url: 'https://www.possefoundation.org', 
+        icon: '👥', 
+        category: 'link',
+        details: 'Nominate yourself through your school. Attend in cohorts of 10. Partner schools include top universities. Due Aug/Sept.'
+      },
+      { 
+        title: 'College Board Opportunity Scholarships', 
+        description: 'Win scholarships just for taking steps in the college process.', 
+        url: 'https://opportunity.collegeboard.org', 
+        icon: '🎁', 
+        category: 'link',
+        details: 'Free money for completing FAFSA, applying to colleges, etc. $40k grand prizes. Open to class of 2026.'
+      },
+      { 
+        title: 'Naviance / Scoir - Your School\'s Platform', 
+        description: 'Most high schools use these for transcripts, college research, and applications.', 
+        url: '/dashboard', 
+        icon: '🏫', 
+        category: 'link',
+        details: 'Check with your counselor! See scattergrams (who got in from your school), request transcripts, and track deadlines.'
       }
     ]
   };
