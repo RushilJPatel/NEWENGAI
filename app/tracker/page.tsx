@@ -28,22 +28,22 @@ export default function ApplicationTracker() {
     {
       id: '1',
       collegeName: 'Stanford University',
-      deadline: '2025-01-05',
+      deadline: '2026-01-05',
       type: 'Regular Decision',
-      status: 'In Progress',
+      status: 'Not Started',
       requirements: {
         essay: true,
-        recommendations: 2,
+        recommendations: 3,
         supplements: 3,
         transcript: true,
         testScores: false
       },
-      notes: 'Focus on entrepreneurship essay'
+      notes: 'Test-optional. Focus on intellectual vitality essays.'
     },
     {
       id: '2',
       collegeName: 'MIT',
-      deadline: '2025-01-01',
+      deadline: '2026-01-01',
       type: 'Regular Decision',
       status: 'Not Started',
       requirements: {
@@ -53,7 +53,52 @@ export default function ApplicationTracker() {
         transcript: true,
         testScores: true
       },
-      notes: ''
+      notes: 'SAT/ACT required. Strong STEM focus needed.'
+    },
+    {
+      id: '3',
+      collegeName: 'Harvard College',
+      deadline: '2025-11-01',
+      type: 'Early Action',
+      status: 'In Progress',
+      requirements: {
+        essay: true,
+        recommendations: 2,
+        supplements: 2,
+        transcript: true,
+        testScores: false
+      },
+      notes: 'EA deadline Nov 1! Test-optional.'
+    },
+    {
+      id: '4',
+      collegeName: 'UC Berkeley',
+      deadline: '2025-11-30',
+      type: 'Regular Decision',
+      status: 'In Progress',
+      requirements: {
+        essay: true,
+        recommendations: 0,
+        supplements: 4,
+        transcript: true,
+        testScores: false
+      },
+      notes: 'UC PIQs - 4 essays, 350 words each. No letters of rec.'
+    },
+    {
+      id: '5',
+      collegeName: 'University of Michigan',
+      deadline: '2025-11-01',
+      type: 'Early Action',
+      status: 'Not Started',
+      requirements: {
+        essay: true,
+        recommendations: 1,
+        supplements: 2,
+        transcript: true,
+        testScores: false
+      },
+      notes: 'EA Nov 1. Test-optional. Ross pre-admit if interested in business.'
     }
   ]);
   const [showAddModal, setShowAddModal] = useState(false);
@@ -62,7 +107,19 @@ export default function ApplicationTracker() {
     if (status === 'unauthenticated') {
       router.push('/login');
     }
+    // Load saved applications from localStorage
+    const saved = localStorage.getItem('college_applications');
+    if (saved) {
+      setApplications(JSON.parse(saved));
+    }
   }, [status, router]);
+
+  // Save to localStorage whenever applications change
+  useEffect(() => {
+    if (applications.length > 0) {
+      localStorage.setItem('college_applications', JSON.stringify(applications));
+    }
+  }, [applications]);
 
   const getStatusColor = (status: Application['status']) => {
     const colors = {

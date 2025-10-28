@@ -30,21 +30,45 @@ export default function EssayHub() {
     setPrompts([
       {
         id: '1',
-        year: '2024-2025',
+        year: '2025-2026',
         text: 'Some students have a background, identity, interest, or talent that is so meaningful they believe their application would be incomplete without it. If this sounds like you, then please share your story.',
-        tips: ['Focus on self-reflection and personal growth', 'Be specific with examples', 'Show how this shapes your perspective']
+        tips: ['Focus on self-reflection and personal growth', 'Be specific with vivid examples', 'Show how this shapes your perspective and future goals']
       },
       {
         id: '2',
-        year: '2024-2025',
+        year: '2025-2026',
         text: 'The lessons we take from obstacles we encounter can be fundamental to later success. Recount a time when you faced a challenge, setback, or failure. How did it affect you, and what did you learn from the experience?',
-        tips: ['Focus on the learning and growth', 'Be honest about the challenge', 'Show resilience and maturity']
+        tips: ['Focus on the learning and growth, not the failure itself', 'Be honest and vulnerable about the challenge', 'Show resilience, maturity, and self-awareness']
       },
       {
         id: '3',
-        year: '2024-2025',
+        year: '2025-2026',
         text: 'Reflect on a time when you questioned or challenged a belief or idea. What prompted your thinking? What was the outcome?',
-        tips: ['Show intellectual curiosity', 'Demonstrate critical thinking', 'Explain your reasoning process']
+        tips: ['Show intellectual curiosity and courage', 'Demonstrate critical thinking skills', 'Explain your reasoning process step-by-step']
+      },
+      {
+        id: '4',
+        year: '2025-2026',
+        text: 'Reflect on something that someone has done for you that has made you happy or thankful in a surprising way. How has this gratitude affected or motivated you?',
+        tips: ['Show emotional intelligence and humility', 'Connect gratitude to personal values', 'Demonstrate how it motivated positive action']
+      },
+      {
+        id: '5',
+        year: '2025-2026',
+        text: 'Discuss an accomplishment, event, or realization that sparked a period of personal growth and a new understanding of yourself or others.',
+        tips: ['Focus on the transformation, not just the event', 'Be deeply introspective', 'Show maturity and new perspective gained']
+      },
+      {
+        id: '6',
+        year: '2025-2026',
+        text: 'Describe a topic, idea, or concept you find so engaging that it makes you lose all track of time. Why does it captivate you? What or who do you turn to when you want to learn more?',
+        tips: ['Show genuine passion and enthusiasm', 'Demonstrate intellectual curiosity', 'Connect to academic interests or intended major']
+      },
+      {
+        id: '7',
+        year: '2025-2026',
+        text: 'Share an essay on any topic of your choice. It can be one you\'ve already written, one that responds to a different prompt, or one of your own design.',
+        tips: ['Make it uniquely yours - be creative!', 'Still follow essay best practices', 'Choose a meaningful topic that reveals who you are']
       }
     ]);
   };
@@ -101,7 +125,7 @@ export default function EssayHub() {
           <div className="lg:col-span-1">
             <div className="bg-white rounded-xl shadow-lg p-6 sticky top-4">
               <h2 className="text-2xl font-bold text-gray-800 mb-4">Common App Prompts</h2>
-              <p className="text-sm text-gray-600 mb-4">2024-2025 Academic Year • 650 words max</p>
+              <p className="text-sm text-gray-600 mb-4">2025-2026 Academic Year • 650 words max</p>
               <div className="space-y-3">
                 {prompts.map((prompt, idx) => (
                   <button

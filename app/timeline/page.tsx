@@ -17,42 +17,48 @@ export default function Timeline() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const [tasks, setTasks] = useState<{ [key: string]: Task[] }>({
-    'Junior Year - Fall': [
-      { id: '1', title: 'Take PSAT', description: 'Practice for SAT and qualify for National Merit', completed: false, month: 'October' },
-      { id: '2', title: 'Start College Research', description: 'Create initial list of 15-20 colleges', completed: false, month: 'September-November' },
-      { id: '3', title: 'Meet with Counselor', description: 'Discuss college plans and course selection', completed: false, month: 'November' }
+    'NOW - October 2025': [
+      { id: '1', title: 'Request Recommendations', description: 'Ask 2-3 teachers NOW if applying early (due by Oct 20)', completed: false, month: 'October 15, 2025' },
+      { id: '2', title: 'Complete Applications', description: 'Fill out all Common App forms', completed: false, month: 'October 15-25, 2025' },
+      { id: '3', title: 'Write Supplemental Essays', description: 'Complete all school-specific essays for EA/ED', completed: false, month: 'October 20-30, 2025' },
+      { id: '4', title: 'Complete FAFSA', description: 'FAFSA opens October 1st - submit ASAP', completed: false, month: 'October 1-31, 2025' },
+      { id: '5', title: 'CSS Profile (if needed)', description: 'Submit CSS Profile for private schools', completed: false, month: 'October 15-31, 2025' }
     ],
-    'Junior Year - Spring': [
-      { id: '4', title: 'Take SAT/ACT', description: 'First official test attempt', completed: false, month: 'March-May' },
-      { id: '5', title: 'Visit Colleges', description: 'Tour 3-5 schools during spring break', completed: false, month: 'March-April' },
-      { id: '6', title: 'AP Exams', description: 'Prepare and take AP exams', completed: false, month: 'May' },
-      { id: '7', title: 'Plan Summer Activities', description: 'Secure internship, job, or volunteer position', completed: false, month: 'April-May' }
+    'November 2025 - URGENT': [
+      { id: '6', title: 'Submit Early Action/Decision', description: 'DEADLINE: November 1, 2025 - TONIGHT if Oct 31!', completed: false, month: 'November 1, 2025' },
+      { id: '7', title: 'UC Applications Due', description: 'DEADLINE: November 30, 2025 for all UC schools', completed: false, month: 'November 30, 2025' },
+      { id: '8', title: 'Check Application Status', description: 'Verify all materials submitted and received', completed: false, month: 'November 5-10, 2025' },
+      { id: '9', title: 'Start Regular Decision Apps', description: 'Begin non-EA/ED applications', completed: false, month: 'November 10-30, 2025' }
     ],
-    'Junior Summer': [
-      { id: '8', title: 'Retake SAT/ACT', description: 'Improve scores if needed', completed: false, month: 'June-August' },
-      { id: '9', title: 'Start College Essay', description: 'Brainstorm and draft Common App essay', completed: false, month: 'July-August' },
-      { id: '10', title: 'Finalize College List', description: 'Narrow down to 8-12 schools', completed: false, month: 'July-August' },
-      { id: '11', title: 'Create Common App Account', description: 'Set up application portal', completed: false, month: 'August' }
+    'December 2025': [
+      { id: '10', title: 'Submit More Applications', description: 'Complete additional regular decision apps', completed: false, month: 'December 1-20, 2025' },
+      { id: '11', title: 'Await EA/ED Decisions', description: 'Decisions release mid-December', completed: false, month: 'December 15, 2025' },
+      { id: '12', title: 'Send Mid-Year Grades', description: 'Request counselor to send after semester ends', completed: false, month: 'December 20-31, 2025' },
+      { id: '13', title: 'Finalize RD List', description: 'Adjust list based on EA/ED results', completed: false, month: 'December 16-31, 2025' }
     ],
-    'Senior Year - Fall': [
-      { id: '12', title: 'Request Recommendations', description: 'Ask 2-3 teachers (by mid-September)', completed: false, month: 'August-September' },
-      { id: '13', title: 'Complete Applications', description: 'Fill out all application forms', completed: false, month: 'September-November' },
-      { id: '14', title: 'Write Supplemental Essays', description: 'Complete all school-specific essays', completed: false, month: 'October-November' },
-      { id: '15', title: 'Submit Early Action/Decision', description: 'Submit EA/ED apps by Nov 1', completed: false, month: 'November 1' },
-      { id: '16', title: 'Complete FAFSA', description: 'Submit financial aid application', completed: false, month: 'October-December' }
+    'January 2026': [
+      { id: '14', title: 'Submit Regular Decision', description: 'MOST DEADLINES: January 1-15, 2026', completed: false, month: 'January 1-15, 2026' },
+      { id: '15', title: 'Check Application Status', description: 'Verify all RD materials received', completed: false, month: 'January 10-20, 2026' },
+      { id: '16', title: 'Update Schools on Achievements', description: 'Send updates on new awards/accomplishments', completed: false, month: 'January 15-31, 2026' },
+      { id: '17', title: 'Interviews', description: 'Complete alumni or admissions interviews', completed: false, month: 'January-February 2026' }
     ],
-    'Senior Year - Winter': [
-      { id: '17', title: 'Submit Regular Decision', description: 'Submit RD apps by Jan 1', completed: false, month: 'January 1' },
-      { id: '18', title: 'Check Application Status', description: 'Verify all materials received', completed: false, month: 'January' },
-      { id: '19', title: 'Send Mid-Year Grades', description: 'Counselor submits mid-year report', completed: false, month: 'January-February' },
-      { id: '20', title: 'Await EA/ED Decisions', description: 'Receive early decisions', completed: false, month: 'December-January' }
+    'February-March 2026': [
+      { id: '18', title: 'Send Mid-Year Report', description: 'Counselor submits mid-year grades', completed: false, month: 'February 1-15, 2026' },
+      { id: '19', title: 'Review Financial Aid Awards', description: 'Check student portals for aid packages', completed: false, month: 'March 1-31, 2026' },
+      { id: '20', title: 'Start Receiving Decisions', description: 'Regular decisions release late March', completed: false, month: 'March 20-31, 2026' },
+      { id: '21', title: 'Plan Campus Visits', description: 'Schedule admitted student day visits', completed: false, month: 'March 25-31, 2026' }
     ],
-    'Senior Year - Spring': [
-      { id: '21', title: 'Receive Decisions', description: 'Regular decision notifications', completed: false, month: 'March-April' },
-      { id: '22', title: 'Visit Admitted Schools', description: 'Attend admitted student days', completed: false, month: 'April' },
-      { id: '23', title: 'Compare Financial Aid', description: 'Review and negotiate offers', completed: false, month: 'April' },
-      { id: '24', title: 'Make Final Decision', description: 'Commit to a school by May 1', completed: false, month: 'May 1' },
-      { id: '25', title: 'Send Deposit', description: 'Submit enrollment deposit', completed: false, month: 'May 1' }
+    'April 2026 - DECISION TIME': [
+      { id: '22', title: 'Receive All Decisions', description: 'Most decisions by early April', completed: false, month: 'April 1-5, 2026' },
+      { id: '23', title: 'Visit Admitted Schools', description: 'Attend admitted student days (book now!)', completed: false, month: 'April 5-25, 2026' },
+      { id: '24', title: 'Compare Financial Aid', description: 'Review and negotiate offers if needed', completed: false, month: 'April 1-25, 2026' },
+      { id: '25', title: 'Make Final Decision', description: 'DEADLINE: May 1, 2026 - National Decision Day', completed: false, month: 'April 28, 2026' }
+    ],
+    'May 2026 - COMMIT!': [
+      { id: '26', title: 'Submit Enrollment Deposit', description: 'FINAL DEADLINE: May 1, 2026', completed: false, month: 'May 1, 2026' },
+      { id: '27', title: 'Decline Other Offers', description: 'Withdraw from waitlists and other schools', completed: false, month: 'May 1-5, 2026' },
+      { id: '28', title: 'Submit Housing Forms', description: 'Complete housing applications', completed: false, month: 'May 5-15, 2026' },
+      { id: '29', title: 'Register for Orientation', description: 'Sign up for summer orientation', completed: false, month: 'May 10-31, 2026' }
     ]
   });
 
@@ -60,7 +66,19 @@ export default function Timeline() {
     if (status === 'unauthenticated') {
       router.push('/login');
     }
+    // Load saved progress from localStorage
+    const saved = localStorage.getItem('timeline_progress');
+    if (saved) {
+      setTasks(JSON.parse(saved));
+    }
   }, [status, router]);
+
+  // Save to localStorage whenever tasks change
+  useEffect(() => {
+    if (Object.keys(tasks).length > 0) {
+      localStorage.setItem('timeline_progress', JSON.stringify(tasks));
+    }
+  }, [tasks]);
 
   const toggleTask = (sectionKey: string, taskId: string) => {
     setTasks(prev => ({
