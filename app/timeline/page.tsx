@@ -18,7 +18,7 @@ interface Task {
 type GradeLevel = '9' | '10' | '11' | '12';
 
 export default function Timeline() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
   const [gradeLevel, setGradeLevel] = useState<GradeLevel>('12');
   const [tasks, setTasks] = useState<{ [grade: string]: { [key: string]: Task[] } }>({});
@@ -155,10 +155,9 @@ export default function Timeline() {
   };
 
   useEffect(() => {
-    // Auth temporarily disabled
-    // if (status === 'unauthenticated') {
-    //   router.push('/login');
-    // }
+    if (status === 'unauthenticated') {
+      router.push('/login');
+    }
     // Load saved grade level and progress
     const savedGrade = localStorage.getItem('timeline_grade');
     const savedTasks = localStorage.getItem('timeline_tasks');
@@ -177,7 +176,7 @@ export default function Timeline() {
       });
       setTasks(initialTasks);
     }
-  }, []); // Auth disabled, removed dependencies
+  }, [status, router]);
 
   // Save to localStorage whenever grade or tasks change
   useEffect(() => {

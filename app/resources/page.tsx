@@ -8,16 +8,15 @@ import Logo from '../components/Logo';
 import { FaComments, FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaSignOutAlt, FaRobot } from 'react-icons/fa';
 
 export default function Resources() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
   const [activeCategory, setActiveCategory] = useState('all');
 
-  // Auth temporarily disabled
-  // useEffect(() => {
-  //   if (status === 'unauthenticated') {
-  //     router.push('/login');
-  //   }
-  // }, [status, router]);
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/login');
+    }
+  }, [status, router]);
 
   const resources = {
     guides: [

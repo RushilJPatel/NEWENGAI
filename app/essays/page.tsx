@@ -15,18 +15,17 @@ interface EssayPrompt {
 }
 
 export default function EssayHub() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
   const [prompts, setPrompts] = useState<EssayPrompt[]>([]);
   const [selectedPrompt, setSelectedPrompt] = useState<EssayPrompt | null>(null);
 
   useEffect(() => {
-    // Auth temporarily disabled
-    // if (status === 'unauthenticated') {
-    //   router.push('/login');
-    // }
+    if (status === 'unauthenticated') {
+      router.push('/login');
+    }
     loadPrompts();
-  }, []); // Auth disabled, removed dependencies
+  }, [status, router]);
 
   const loadPrompts = async () => {
     // Mock data - in production, load from API

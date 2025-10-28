@@ -79,7 +79,7 @@ interface Application {
 }
 
 export default function ApplicationTracker() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
   const [applications, setApplications] = useState<Application[]>([]);
   const [showModal, setShowModal] = useState(false);
@@ -128,10 +128,9 @@ export default function ApplicationTracker() {
   };
 
   useEffect(() => {
-    // Auth temporarily disabled
-    // if (status === 'unauthenticated') {
-    //   router.push('/login');
-    // }
+    if (status === 'unauthenticated') {
+      router.push('/login');
+    }
     
     const saved = localStorage.getItem('college_applications');
     if (saved) {
@@ -144,7 +143,7 @@ export default function ApplicationTracker() {
       }));
       setApplications(appsWithChecklists);
     }
-  }, []); // Auth disabled, removed dependencies
+  }, [status, router]);
 
   useEffect(() => {
     if (applications.length > 0) {

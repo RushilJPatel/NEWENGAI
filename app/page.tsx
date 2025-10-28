@@ -1,5 +1,6 @@
 'use client';
 
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import './globals.css';
@@ -7,11 +8,15 @@ import Logo from './components/Logo';
 
 export default function Home() {
   const router = useRouter();
+  const { status } = useSession();
 
   useEffect(() => {
-    // Redirect directly to dashboard (auth disabled for now)
-    router.push('/dashboard');
-  }, [router]);
+    if (status === 'authenticated') {
+      router.push('/dashboard');
+    } else if (status === 'unauthenticated') {
+      router.push('/login');
+    }
+  }, [status, router]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center">

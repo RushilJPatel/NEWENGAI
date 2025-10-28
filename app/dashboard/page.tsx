@@ -15,7 +15,7 @@ interface Message {
 }
 
 export default function DashboardPage() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -30,12 +30,11 @@ export default function DashboardPage() {
   const [showTimeline, setShowTimeline] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Auth temporarily disabled
-  // useEffect(() => {
-  //   if (status === 'unauthenticated') {
-  //     router.push('/login');
-  //   }
-  // }, [status, router]);
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/login');
+    }
+  }, [status, router]);
 
   useEffect(() => {
     scrollToBottom();
@@ -109,14 +108,13 @@ export default function DashboardPage() {
     "Tell me about financial aid and scholarships"
   ];
 
-  // Auth loading check disabled
-  // if (status === 'loading') {
-  //   return (
-  //     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center">
-  //       <div className="text-2xl text-gray-600">Loading...</div>
-  //     </div>
-  //   );
-  // }
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center">
+        <div className="text-2xl text-gray-600">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
