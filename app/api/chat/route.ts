@@ -44,8 +44,8 @@ export async function POST(request: Request) {
     const hsCourses = JSON.parse(fs.readFileSync(hsCoursesPath, 'utf8'));
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    // Use Gemini 1.5 Flash (faster, more reliable)
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    // Use Gemini Pro model (most stable and widely available)
+    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
 
     // Build conversation history for context
     const conversationHistory = messages
