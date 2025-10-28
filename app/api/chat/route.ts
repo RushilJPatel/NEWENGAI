@@ -29,8 +29,8 @@ export async function POST(request: Request) {
     const hsCourses = JSON.parse(fs.readFileSync(hsCoursesPath, 'utf8'));
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    // Try the latest available model
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro-latest' });
+    // Use stable model name
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
 
     // Build conversation history for context
     const conversationHistory = messages
@@ -88,7 +88,7 @@ Student's current question: ${userMessage}
 
 Provide a helpful, detailed response:`;
 
-    console.log('Calling Gemini API...');
+    console.log('Calling Gemini API with model: gemini-1.5-pro');
     const result = await model.generateContent(systemPrompt);
     const response = await result.response;
     const text = response.text();
@@ -97,9 +97,13 @@ Provide a helpful, detailed response:`;
     return NextResponse.json({ response: text });
   } catch (error: any) {
     console.error('Error in chat API:', error);
-    console.error('Error details:', error?.message, error?.response?.data);
+    console.error('Error name:', error?.name);
+    console.error('Error message:', error?.message);
+    console.error('Error status:', error?.status);
+    console.error('Full error:', JSON.stringify(error, null, 2));
+    
     return NextResponse.json(
-      { response: `I'm having trouble right now. Error: ${error?.message || 'Unknown error'}. Please try again or check the server logs.` },
+      { response: `Sorry, I'm having trouble connecting to the AI service. This might be because:\n\n1. The Gemini API needs to be enabled in your Google Cloud project\n2. Your API key needs the correct permissions\n\nError: ${error?.message || 'Unknown error'}\n\nPlease visit https://console.cloud.google.com/apis/library/generativelanguage.googleapis.com and enable the API.` },
       { status: 500 }
     );
   }
