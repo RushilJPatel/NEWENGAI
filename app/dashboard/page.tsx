@@ -5,6 +5,8 @@ import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '../components/Logo';
+import PremiumBadge from '../components/PremiumBadge';
+import { useSubscription } from '../providers/SubscriptionProvider';
 import { FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaPlus, FaPaperPlane, FaGraduationCap, FaBullseye, FaDollarSign, FaFileAlt, FaUniversity, FaSignOutAlt, FaCrown } from 'react-icons/fa';
 
 interface Message {
@@ -17,6 +19,7 @@ interface Message {
 export default function DashboardPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const { tier, hasAccess } = useSubscription();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -124,9 +127,10 @@ export default function DashboardPage() {
           <div className="mb-6">
             <div className="flex items-center gap-2 mb-1">
               <Logo size={32} />
-              <h1 className="text-2xl font-bold text-gray-800">College Compass</h1>
+              <h1 className="text-2xl font-bold text-secondary-800">College Compass</h1>
             </div>
-            <p className="text-sm text-gray-600">Hey {session?.user?.name || session?.user?.email}!</p>
+            <p className="text-sm text-secondary-600 mb-2">Hey {session?.user?.name || session?.user?.email}!</p>
+            <PremiumBadge tier={tier} size="md" />
           </div>
 
           {/* Quick Navigation */}
