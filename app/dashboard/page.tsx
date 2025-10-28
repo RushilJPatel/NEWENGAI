@@ -3,6 +3,7 @@
 import { useSession, signOut } from 'next-auth/react';
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 interface Message {
   id: string;
@@ -121,6 +122,25 @@ export default function DashboardPage() {
           <div className="mb-6">
             <h1 className="text-2xl font-bold text-gray-800 mb-1">🎓 College Planner AI</h1>
             <p className="text-sm text-gray-600">Hey {session?.user?.name || session?.user?.email}!</p>
+          </div>
+
+          {/* Quick Navigation */}
+          <div className="mb-6">
+            <h3 className="font-semibold text-gray-700 mb-3">Quick Access</h3>
+            <div className="space-y-2">
+              <Link href="/tracker" className="block px-4 py-2 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-all text-sm">
+                📋 Application Tracker
+              </Link>
+              <Link href="/essays" className="block px-4 py-2 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition-all text-sm">
+                ✍️ Essay Hub
+              </Link>
+              <Link href="/timeline" className="block px-4 py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-all text-sm">
+                📅 Timeline
+              </Link>
+              <Link href="/resources" className="block px-4 py-2 bg-orange-50 text-orange-700 rounded-lg hover:bg-orange-100 transition-all text-sm">
+                📚 Resources
+              </Link>
+            </div>
           </div>
 
           <button
