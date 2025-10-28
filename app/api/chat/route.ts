@@ -1,13 +1,28 @@
 import { NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { getServerSession } from 'next-auth';
 import fs from 'fs';
 import path from 'path';
+import connectDB from '@/lib/mongodb';
+import UserProfile from '@/models/UserProfile';
 
 export async function POST(request: Request) {
   try {
-    const { userMessage, messages } = await request.json();
+    const session = await getServerSession();
+    const { userMessage, messages, saveHistory = false } = await request.json();
 
     console.log('Chat API called with message:', userMessage);
+
+    // Load user profile for personalized responses
+    let userProfile = null;
+    if (session?.user?.email) {
+      try {
+        await connectDB();
+        userProfile = await UserProfile.findOne({ email: session.user.email });
+      } catch (error) {
+        console.error('Error loading user profile:', error);
+      }
+    }
 
     const apiKey = process.env.GEMINI_API_KEY;
     
@@ -37,6 +52,34 @@ export async function POST(request: Request) {
       .slice(-10) // Keep last 10 messages for context
       .map((msg: any) => `${msg.role === 'user' ? 'Student' : 'Advisor'}: ${msg.content}`)
       .join('\n\n');
+
+    // Build personalized context from user profile
+    let profileContext = '';
+    if (userProfile) {
+      profileContext = `
+**STUDENT PROFILE:**
+- Current Grade: ${userProfile.currentGrade}
+- GPA: ${userProfile.currentGPA}
+- Target Colleges: ${userProfile.targetColleges.join(', ')}
+- Intended Major: ${userProfile.intendedMajor}
+- Career Aspirations: ${userProfile.careerAspirations}
+- Strongest Subjects: ${userProfile.strongestSubjects.join(', ')}
+- Academic Interests: ${userProfile.academicInterests.join(', ')}
+- AP/Honors Courses Taken: ${userProfile.apCoursesTaken.join(', ')}
+- Study Time Per Day: ${userProfile.studyTimePerDay}
+- Homework Load: ${userProfile.homeworkLoad}
+- Learning Style: ${userProfile.learningStyle}
+- Preferred Locations: ${userProfile.preferredLocation.join(', ')}
+- Hobbies: ${userProfile.hobbies.join(', ')}
+- Extracurriculars: ${userProfile.extracurriculars.join(', ')}
+- Athletic Interest: ${userProfile.athleticInterest ? `Yes - ${userProfile.athleticSport}` : 'No'}
+- Financial Aid Needed: ${userProfile.financialAidNeeded ? 'Yes' : 'No'}
+- Challenges: ${userProfile.challenges.join(', ')}
+- Goals: ${userProfile.goals.join(', ')}
+
+**IMPORTANT:** Use this profile information to provide HIGHLY PERSONALIZED advice. Reference their specific goals, challenges, and interests in your responses.
+`;
+    }
 
     const systemPrompt = `You are College Compass AI - an expert college planning advisor EXCLUSIVELY for high school students preparing for college. You ONLY answer questions related to:
 
@@ -70,27 +113,30 @@ export async function POST(request: Request) {
 
 **Your SPECIAL ABILITY - Personalized 4-Year Schedule Generation:**
 
-When a student wants a personalized schedule, follow this process:
+${profileContext}
 
-1. **PROFILE BUILDING** - Ask these questions (one at a time):
-   - "What grade are you currently in? (9th, 10th, 11th, or 12th)"
-   - "What colleges or college types interest you? (Ivy League, UC system, state schools, liberal arts, etc.)"
-   - "What major or career field interests you? (STEM, Business, Arts, Humanities, etc.)"
-   - "What's your current GPA or academic level? (4.0, 3.5, 3.0, etc.)"
-   - "Have you taken any AP/IB courses? Which ones?"
-   - "What are your strongest subjects?"
-   - "Any specific academic interests or passions?"
-
-2. **GENERATE CUSTOM 4-YEAR PLAN** - After gathering info, create a detailed schedule with:
-   - Year-by-year course breakdown (9th, 10th, 11th, 12th grades)
-   - Specific course names from available courses
-   - AP/IB placement strategy
-   - Why each course matters for their target colleges
-   - Prerequisites and progressions
-   - Difficulty ramping aligned with college selectivity
-   - Extracurricular suggestions
-   - Test prep timeline (SAT/ACT)
-   - Application timeline for senior year
+When generating a 4-year plan, create a COMPREHENSIVE and DETAILED schedule with:
+   - **Year-by-year course breakdown** (9th, 10th, 11th, 12th grades or remaining years)
+   - **Specific course names** from available courses database
+   - **AP/IB/Honors placement strategy** aligned with target college requirements
+   - **Course rationale** - explain why each course matters for their target colleges
+   - **Prerequisites and progressions** - ensure logical course sequences
+   - **Difficulty ramping** - balance rigor with their current workload and study time
+   - **Extracurricular recommendations** - aligned with their interests and college goals
+   - **Test prep timeline** (SAT/ACT/AP exams) - customized to their schedule
+   - **Application timeline** for senior year
+   - **Summer activities** - internships, programs, volunteering suggestions
+   - **Leadership opportunities** - based on their extracurriculars
+   - **Academic competitions** - relevant to their major interest
+   
+**When creating the plan:**
+- ALWAYS reference their profile data (GPA, target colleges, major, etc.)
+- Account for their study time availability and current homework load
+- Suggest courses that align with their strongest subjects and learning style
+- Address their stated challenges and help them achieve their goals
+- If they need financial aid, suggest scholarship-relevant activities
+- If they have athletic interests, account for practice time
+- Adapt the plan to their preferred college locations and types
 
 **College Requirements Database:**
 ${JSON.stringify(collegeRequirements, null, 2)}
