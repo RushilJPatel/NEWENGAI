@@ -1,0 +1,170 @@
+{
+  "courses": [
+    {
+      "id": "CS101",
+      "name": "Introduction to Computer Science",
+      "prerequisites": [],
+      "category": "core"
+    },
+    {
+      "id": "CS102",
+      "name": "Data Structures",
+      "prerequisites": ["CS101"],
+      "category": "core"
+    },
+    {
+      "id": "CS201",
+      "name": "Algorithms",
+      "prerequisites": ["CS102"],
+      "category": "core"
+    },
+    {
+      "id": "CS202",
+      "name": "Computer Architecture",
+      "prerequisites": ["CS101"],
+      "category": "core"
+    },
+    {
+      "id": "CS203",
+      "name": "Operating Systems",
+      "prerequisites": ["CS102", "CS202"],
+      "category": "core"
+    },
+    {
+      "id": "CS204",
+      "name": "Database Systems",
+      "prerequisites": ["CS102"],
+      "category": "core"
+    },
+    {
+      "id": "CS301",
+      "name": "Software Engineering",
+      "prerequisites": ["CS201"],
+      "category": "core"
+    },
+    {
+      "id": "CS302",
+      "name": "Computer Networks",
+      "prerequisites": ["CS203"],
+      "category": "core"
+    },
+    {
+      "id": "CS401",
+      "name": "Theory of Computation",
+      "prerequisites": ["CS201"],
+      "category": "core"
+    },
+    {
+      "id": "CS402",
+      "name": "Compilers",
+      "prerequisites": ["CS201", "CS401"],
+      "category": "core"
+    },
+    {
+      "id": "AI101",
+      "name": "Introduction to Artificial Intelligence",
+      "prerequisites": ["CS102"],
+      "category": "ai",
+      "keywords": ["ai", "machine learning", "artificial intelligence"]
+    },
+    {
+      "id": "AI201",
+      "name": "Machine Learning",
+      "prerequisites": ["AI101", "CS201"],
+      "category": "ai",
+      "keywords": ["ai", "machine learning", "ml", "data science"]
+    },
+    {
+      "id": "AI301",
+      "name": "Deep Learning",
+      "prerequisites": ["AI201"],
+      "category": "ai",
+      "keywords": ["ai", "deep learning", "neural networks", "dl"]
+    },
+    {
+      "id": "AI302",
+      "name": "Natural Language Processing",
+      "prerequisites": ["AI201"],
+      "category": "ai",
+      "keywords": ["ai", "nlp", "language", "text"]
+    },
+    {
+      "id": "AI303",
+      "name": "Computer Vision",
+      "prerequisites": ["AI201"],
+      "category": "ai",
+      "keywords": ["ai", "computer vision", "image", "cv"]
+    },
+    {
+      "id": "SEC101",
+      "name": "Introduction to Cybersecurity",
+      "prerequisites": ["CS102"],
+      "category": "security",
+      "keywords": ["security", "cybersecurity", "hacking", "encryption"]
+    },
+    {
+      "id": "SEC201",
+      "name": "Network Security",
+      "prerequisites": ["CS302", "SEC101"],
+      "category": "security",
+      "keywords": ["security", "network", "cybersecurity"]
+    },
+    {
+      "id": "SEC301",
+      "name": "Cryptography",
+      "prerequisites": ["SEC101"],
+      "category": "security",
+      "keywords": ["security", "crypto", "encryption", "cryptography"]
+    },
+    {
+      "id": "DATA101",
+      "name": "Introduction to Data Science",
+      "prerequisites": ["CS102"],
+      "category": "data",
+      "keywords": ["data", "data science", "analytics", "statistics"]
+    },
+    {
+      "id": "DATA201",
+      "name": "Big Data Analytics",
+      "prerequisites": ["DATA101", "CS204"],
+      "category": "data",
+      "keywords": ["data", "big data", "analytics", "hadoop"]
+    },
+    {
+      "id": "DATA301",
+      "name": "Data Mining",
+      "prerequisites": ["DATA101"],
+      "category": "data",
+      "keywords": ["data", "mining", "data science"]
+    },
+    {
+      "id": "WEB101",
+      "name": "Web Development",
+      "prerequisites": ["CS101"],
+      "category": "web",
+      "keywords": ["web", "frontend", "backend", "fullstack"]
+    },
+    {
+      "id": "WEB201",
+      "name": "Mobile App Development",
+      "prerequisites": ["CS102"],
+      "category": "web",
+      "keywords": ["mobile", "app", "ios", "android"]
+    },
+    {
+      "id": "GAME101",
+      "name": "Game Development",
+      "prerequisites": ["CS102"],
+      "category": "game",
+      "keywords": ["game", "gaming", "graphics"]
+    },
+    {
+      "id": "GRAPH101",
+      "name": "Computer Graphics",
+      "prerequisites": ["CS102"],
+      "category": "graphics",
+      "keywords": ["graphics", "3d", "rendering", "visualization"]
+    }
+  ]
+}
+

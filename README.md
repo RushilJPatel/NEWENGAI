@@ -1,30 +1,34 @@
-# My First Web App 🚀
+# 🧠 College Planner AI
 
-A beautiful, modern web application built with Next.js 14, React, and Tailwind CSS. Perfect for beginners!
+An intelligent web application that helps CS students plan their degree efficiently with AI-powered course recommendations.
 
 ## ✨ Features
 
-- 🎨 Beautiful, responsive UI with Tailwind CSS
-- ⚡ Fast performance with Next.js 14
-- 📱 Mobile-friendly design
-- 🌈 Smooth animations and transitions
-- 📘 TypeScript for type safety
-- ☁️ Ready to deploy on Vercel
+- 🎓 **Top 20 CS Colleges** - Choose from the best computer science programs
+- 📚 **Course Tracking** - Mark completed courses and see your progress
+- 🤖 **AI-Powered Recommendations** - Get personalized elective suggestions using Google Gemini AI
+- 🎯 **Smart Prerequisites** - Automatically suggests next courses based on what you've completed
+- 🎨 **Beautiful UI** - Modern, responsive design with Tailwind CSS
+- ⚡ **Fast & Efficient** - Built with Next.js 14 for optimal performance
+- ☁️ **Cloud Ready** - Deploy to Vercel in minutes
 
 ## 🛠️ Technologies Used
 
-- **Next.js 14** - React framework for production
+- **Next.js 14** - React framework with API routes
 - **React 18** - JavaScript library for building UIs
-- **TypeScript** - Typed JavaScript
-- **Tailwind CSS** - Utility-first CSS framework
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Beautiful, responsive styling
+- **Google Gemini AI** - Intelligent course recommendations
+- **JSON Data Store** - Simple, fast data management
 
 ## 📋 Prerequisites
 
 Before you begin, make sure you have:
 - Node.js 18.17 or later installed ([Download here](https://nodejs.org/))
 - A text editor (VS Code recommended)
-- A GitHub account (for deployment)
-- A Vercel account (free - sign up at [vercel.com](https://vercel.com))
+- A **Gemini API key** (free - get it from [Google AI Studio](https://makersuite.google.com/app/apikey))
+- A GitHub account (optional, for deployment)
+- A Vercel account (optional, free - sign up at [vercel.com](https://vercel.com))
 
 ## 🚀 Getting Started
 
@@ -36,7 +40,19 @@ First, install all the required packages:
 npm install
 ```
 
-### 2. Run the Development Server
+### 2. Set Up Gemini AI API Key
+
+1. Get a **free** API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Create a `.env.local` file in the root directory (or rename `.env.example` to `.env.local`)
+3. Add your API key:
+
+```env
+GEMINI_API_KEY=your_actual_api_key_here
+```
+
+⚠️ **Important:** Never commit your `.env.local` file to Git!
+
+### 3. Run the Development Server
 
 Start the development server:
 
@@ -46,11 +62,12 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to see your app!
 
-### 3. Edit Your App
+### 4. How to Use
 
-- Edit `app/page.tsx` to modify the home page
-- Edit `app/about/page.tsx` to modify the about page
-- Add new pages by creating new folders in the `app` directory
+1. **Select a College** - Choose from Top 20 CS programs
+2. **Mark Completed Courses** - Click on courses you've finished
+3. **Enter Interests** - Type your interests (e.g., "AI, machine learning, cybersecurity")
+4. **Get Recommendations** - Click the button to receive AI-powered suggestions!
 
 ## 🌐 Deploy to Vercel
 
@@ -62,7 +79,7 @@ Vercel is the easiest way to deploy your Next.js app. It's **completely FREE** f
    ```bash
    git init
    git add .
-   git commit -m "Initial commit"
+   git commit -m "College Planner AI"
    git branch -M main
    git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
    git push -u origin main
@@ -73,11 +90,14 @@ Vercel is the easiest way to deploy your Next.js app. It's **completely FREE** f
    - Click "Sign Up" and sign in with GitHub
    - Click "New Project"
    - Import your GitHub repository
+   - **⚠️ IMPORTANT:** Add your environment variable:
+     - Go to "Environment Variables"
+     - Add: `GEMINI_API_KEY` = `your_actual_api_key`
    - Click "Deploy"
    - Wait 1-2 minutes and your app is live! 🎉
 
 3. **Your app is now live!**
-   - Vercel will give you a URL like: `https://your-app.vercel.app`
+   - Vercel will give you a URL like: `https://college-planner-ai.vercel.app`
    - Every time you push to GitHub, Vercel automatically redeploys!
 
 ### Method 2: Deploy with Vercel CLI
@@ -92,56 +112,75 @@ Vercel is the easiest way to deploy your Next.js app. It's **completely FREE** f
    vercel
    ```
 
-3. **Follow the prompts:**
-   - Login to your Vercel account
-   - Answer the setup questions (press Enter for defaults)
-   - Your app will be deployed!
+3. **Follow the prompts and add environment variables:**
+   ```bash
+   vercel env add GEMINI_API_KEY
+   ```
+
+4. **Deploy again to use the env variable:**
+   ```bash
+   vercel --prod
+   ```
 
 ## 📁 Project Structure
 
 ```
-my-first-app/
+college-planner-ai/
 ├── app/
-│   ├── about/
-│   │   └── page.tsx      # About page
-│   ├── globals.css       # Global styles
-│   ├── layout.tsx        # Root layout
-│   └── page.tsx          # Home page
-├── public/               # Static files
-├── .gitignore           # Git ignore rules
-├── next.config.js       # Next.js configuration
-├── package.json         # Dependencies
-├── tailwind.config.ts   # Tailwind configuration
-└── tsconfig.json        # TypeScript configuration
+│   ├── api/
+│   │   ├── colleges/
+│   │   │   └── route.ts     # Colleges API endpoint
+│   │   ├── courses/
+│   │   │   └── route.ts     # Courses API endpoint
+│   │   └── recommend/
+│   │       └── route.ts     # AI Recommendation API (Gemini)
+│   ├── globals.css          # Global styles
+│   ├── layout.tsx           # Root layout
+│   └── page.tsx             # Main College Planner UI
+├── data/
+│   ├── courses.json         # Course prerequisites data
+│   └── college_curriculums.json  # Top 20 colleges data
+├── .env.local               # API keys (DO NOT COMMIT)
+├── .env.example             # Example environment variables
+├── package.json             # Dependencies
+└── README.md                # This file
 ```
 
 ## 🎨 Customization
 
-### Change Colors
+### Add More Colleges
 
-Edit the color scheme in `app/page.tsx` and `app/about/page.tsx`. Look for Tailwind classes like:
-- `bg-blue-600` → Change to `bg-red-600`, `bg-green-600`, etc.
-- `text-purple-600` → Change to any color you like
+Edit `data/college_curriculums.json` to add more schools:
 
-### Add New Pages
-
-Create a new folder in the `app` directory:
-
-```
-app/
-└── your-page/
-    └── page.tsx
+```json
+{
+  "id": "your-college",
+  "name": "Your College Name",
+  "rank": 21,
+  "requiredCourses": ["CS101", "CS102"],
+  "electiveOptions": ["AI101", "SEC101"]
+}
 ```
 
-Your page will be available at `/your-page`
+### Add More Courses
 
-### Add Images
+Edit `data/courses.json` to add courses:
 
-1. Put images in the `public` folder
-2. Use them like this:
-   ```tsx
-   <img src="/your-image.jpg" alt="Description" />
-   ```
+```json
+{
+  "id": "CS999",
+  "name": "Advanced Topics",
+  "prerequisites": ["CS201"],
+  "category": "core",
+  "keywords": ["advanced", "research"]
+}
+```
+
+### Customize UI Colors
+
+Edit `app/page.tsx` and change Tailwind classes:
+- `bg-indigo-600` → Change to `bg-blue-600`, `bg-red-600`, etc.
+- `from-purple-600` → Change gradient colors
 
 ## 📚 Learn More
 
@@ -171,16 +210,18 @@ npm install
 - Check that your `package.json` has all dependencies
 - Verify you're using Node.js 18.17 or later
 
-## 🎉 Congratulations!
+## 🚀 Future Enhancements
 
-You've just created and deployed your first web app! Here are some ideas for what to build next:
+Ideas to make College Planner AI even better:
 
-- 📝 Personal blog
-- 💼 Portfolio website
-- 🛒 E-commerce store
-- 📱 Social media clone
-- 🎮 Game or interactive app
-- 📊 Dashboard with data visualization
+- 💾 **User Accounts** - Save progress with authentication
+- 📊 **Progress Visualization** - Interactive graphs showing degree completion
+- 🔄 **Course Comparison** - Compare curriculums across colleges
+- 📅 **Semester Planning** - Plan out your entire academic schedule
+- 🎓 **Graduation Tracker** - Track requirements for graduation
+- 📱 **Mobile App** - React Native version
+- 🗣️ **AI Chat** - Chat with AI about course selection
+- 📈 **Career Paths** - Link courses to career outcomes
 
 ## 📝 License
 
