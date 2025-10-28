@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { SessionProvider } from './providers/SessionProvider';
 import { SubscriptionProvider } from './providers/SubscriptionProvider';
+import PlanIndicator from './components/PlanIndicator';
 
 export const metadata: Metadata = {
   title: 'College Compass',
@@ -17,7 +18,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <SessionProvider>
-          <SubscriptionProvider>{children}</SubscriptionProvider>
+          <SubscriptionProvider>
+            {children}
+            <PlanIndicator />
+          </SubscriptionProvider>
         </SessionProvider>
       </body>
     </html>

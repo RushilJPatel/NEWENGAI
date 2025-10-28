@@ -5,7 +5,9 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '../components/Logo';
-import { FaComments, FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaPlus, FaTimes, FaCheck, FaEdit, FaTrash, FaCalendar, FaCheckCircle, FaRegCircle } from 'react-icons/fa';
+import { useSubscription } from '../providers/SubscriptionProvider';
+import UpgradePrompt from '../components/UpgradePrompt';
+import { FaComments, FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaPlus, FaTimes, FaCheck, FaEdit, FaTrash, FaCalendar, FaCheckCircle, FaRegCircle, FaCrown } from 'react-icons/fa';
 
 interface Checklist {
   personalEssay: {
@@ -81,6 +83,7 @@ interface Application {
 export default function ApplicationTracker() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const { tier, hasAccess } = useSubscription();
   const [applications, setApplications] = useState<Application[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [showCollegeModal, setShowCollegeModal] = useState(false);
@@ -263,8 +266,18 @@ export default function ApplicationTracker() {
   };
 
   const openAddModal = () => {
-    setEditingApp(null);
-    setFormData({
+    // Check tier limits
+    const limits = {
+      free: 3,
+      basic: 10,
+      premium: Infinity,
+    };
+
+    const currentLimit = limits[tier];
+    
+    if (hasAccess('track_unlimited_colleges') || applications.length < currentLimit) {
+      setEditingApp(null);
+      setFormData({
       id: Date.now().toString(),
       collegeName: '',
       deadline: '',
@@ -282,6 +295,12 @@ export default function ApplicationTracker() {
       importantDates: {}
     });
     setShowModal(true);
+    } else {
+      // Show upgrade prompt
+      const tierName = tier === 'free' ? 'Basic' : 'Premium';
+      const upgradeMessage = `You've reached your limit of ${currentLimit} college${currentLimit !== 1 ? 's' : ''}!\n\nUpgrade to ${tierName} to track ${tier === 'free' ? '10 colleges' : 'unlimited colleges'}.\n\nVisit the Billing page to upgrade.`;
+      alert(upgradeMessage);
+    }
   };
 
   const openEditModal = (app: Application) => {
@@ -418,10 +437,37 @@ export default function ApplicationTracker() {
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2 flex items-center gap-3">
-            <FaClipboardList className="text-primary-600" /> Application Tracker
-          </h1>
-          <p className="text-gray-600">Track applications, checklists, and deadlines all in one place</p>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-4xl font-bold text-gray-800 mb-2 flex items-center gap-3">
+                <FaClipboardList className="text-primary-600" /> Application Tracker
+              </h1>
+              <p className="text-gray-600">Track applications, checklists, and deadlines all in one place</p>
+            </div>
+            <div className="bg-white rounded-lg shadow-lg p-4 border-2 border-primary-200">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary-600">
+                  {applications.length}
+                  {tier !== 'premium' && (
+                    <span className="text-xl text-secondary-400">
+                      /{tier === 'free' ? '3' : '10'}
+                    </span>
+                  )}
+                </div>
+                <div className="text-xs text-secondary-600 font-semibold">
+                  {tier === 'premium' ? 'Unlimited' : 'Colleges Tracked'}
+                </div>
+                {tier !== 'premium' && applications.length >= (tier === 'free' ? 3 : 10) && (
+                  <Link 
+                    href="/billing"
+                    className="mt-2 inline-flex items-center gap-1 text-xs px-2 py-1 bg-primary-600 text-white rounded hover:bg-primary-700"
+                  >
+                    <FaCrown /> Upgrade
+                  </Link>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Stats Cards */}

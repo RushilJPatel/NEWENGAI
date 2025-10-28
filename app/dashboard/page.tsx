@@ -20,6 +20,8 @@ export default function DashboardPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const { tier, hasAccess } = useSubscription();
+  const [messageCount, setMessageCount] = useState(0);
+  const MESSAGE_LIMITS = { free: 10, basic: Infinity, premium: Infinity };
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -50,6 +52,12 @@ export default function DashboardPage() {
   const handleSendMessage = async () => {
     if (!input.trim() || loading) return;
 
+    // Check message limits for free tier
+    if (tier === 'free' && messageCount >= MESSAGE_LIMITS.free && !hasAccess('unlimited_chat')) {
+      alert(`Free plan limit reached!\n\nYou've used all ${MESSAGE_LIMITS.free} daily AI messages.\n\nUpgrade to Basic ($9.99/mo) for unlimited chat and more features!\n\nVisit the Billing page to upgrade.`);
+      return;
+    }
+
     const userMessage: Message = {
       id: Date.now().toString(),
       role: 'user',
@@ -60,6 +68,11 @@ export default function DashboardPage() {
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setLoading(true);
+    
+    // Increment message count for free tier
+    if (tier === 'free') {
+      setMessageCount(prev => prev + 1);
+    }
 
     try {
       const response = await fetch('/api/chat', {
@@ -132,6 +145,28 @@ export default function DashboardPage() {
             <p className="text-sm text-secondary-600 mb-2">Hey {session?.user?.name || session?.user?.email}!</p>
             <PremiumBadge tier={tier} size="md" />
           </div>
+
+          {/* Message Counter (Free Tier Only) */}
+          {tier === 'free' && (
+            <div className="mb-6 bg-yellow-50 border-2 border-yellow-300 rounded-lg p-4">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-yellow-800">
+                  {messageCount}/{MESSAGE_LIMITS.free}
+                </div>
+                <div className="text-xs text-yellow-700 font-semibold mb-2">
+                  Daily AI Messages
+                </div>
+                {messageCount >= MESSAGE_LIMITS.free * 0.8 && (
+                  <Link
+                    href="/billing"
+                    className="inline-flex items-center gap-1 text-xs px-3 py-1 bg-yellow-600 text-white rounded hover:bg-yellow-700"
+                  >
+                    <FaCrown /> Get Unlimited
+                  </Link>
+                )}
+              </div>
+            </div>
+          )}
 
           {/* Quick Navigation */}
           <div className="mb-6">
