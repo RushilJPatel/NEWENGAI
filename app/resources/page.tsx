@@ -576,43 +576,65 @@ export default function Resources() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-      {/* Mobile-Optimized Navigation */}
-      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-        <div className="container mx-auto px-3 sm:px-4 py-3 flex justify-between items-center">
-          <Link href="/dashboard" className="text-lg sm:text-2xl font-bold text-indigo-600 truncate">
-            🎓 College Planner
-          </Link>
+      {/* Consistent Navigation */}
+      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="flex items-center space-x-8">
+            <Link href="/dashboard" className="text-2xl font-bold text-indigo-600 flex items-center">
+              🎓 <span className="ml-2">College Planner AI</span>
+            </Link>
+            <div className="hidden md:flex space-x-4">
+              <Link href="/dashboard" className="px-4 py-2 text-gray-600 hover:text-indigo-600 transition-colors">
+                💬 AI Chat
+              </Link>
+              <Link href="/tracker" className="px-4 py-2 text-gray-600 hover:text-indigo-600 transition-colors">
+                📋 Tracker
+              </Link>
+              <Link href="/essays" className="px-4 py-2 text-gray-600 hover:text-indigo-600 transition-colors">
+                ✍️ Essays
+              </Link>
+              <Link href="/timeline" className="px-4 py-2 text-gray-600 hover:text-indigo-600 transition-colors">
+                📅 Timeline
+              </Link>
+              <Link href="/resources" className="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-lg font-semibold">
+                📚 Resources
+              </Link>
+            </div>
+          </div>
           <button
             onClick={() => signOut({ callbackUrl: '/login' })}
-            className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-200 text-gray-700 text-sm rounded-lg hover:bg-gray-300 whitespace-nowrap"
+            className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300"
           >
             Sign Out
           </button>
         </div>
-        {/* Mobile Bottom Navigation */}
-        <div className="md:hidden flex justify-around border-t border-gray-200 bg-white py-2">
-          <Link href="/dashboard" className="flex flex-col items-center text-xs text-gray-600">
-            <span className="text-lg">💬</span>
+      </nav>
+
+      {/* Mobile Bottom Navigation */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 safe-area-inset">
+        <div className="flex justify-around py-2">
+          <Link href="/dashboard" className="flex flex-col items-center text-xs text-gray-600 py-2">
+            <span className="text-xl">💬</span>
             <span>Chat</span>
           </Link>
-          <Link href="/tracker" className="flex flex-col items-center text-xs text-gray-600">
-            <span className="text-lg">📋</span>
+          <Link href="/tracker" className="flex flex-col items-center text-xs text-gray-600 py-2">
+            <span className="text-xl">📋</span>
             <span>Tracker</span>
           </Link>
-          <Link href="/essays" className="flex flex-col items-center text-xs text-gray-600">
-            <span className="text-lg">✍️</span>
+          <Link href="/essays" className="flex flex-col items-center text-xs text-gray-600 py-2">
+            <span className="text-xl">✍️</span>
             <span>Essays</span>
           </Link>
-          <Link href="/timeline" className="flex flex-col items-center text-xs text-gray-600">
-            <span className="text-lg">📅</span>
+          <Link href="/timeline" className="flex flex-col items-center text-xs text-gray-600 py-2">
+            <span className="text-xl">📅</span>
             <span>Timeline</span>
           </Link>
-          <Link href="/resources" className="flex flex-col items-center text-xs text-indigo-600 font-semibold">
-            <span className="text-lg">📚</span>
+          <Link href="/resources" className="flex flex-col items-center text-xs text-indigo-600 font-semibold py-2 bg-indigo-50">
+            <span className="text-xl">📚</span>
             <span>Resources</span>
           </Link>
         </div>
-      </nav>
+      </div>
 
       <div className="container mx-auto px-3 sm:px-4 lg:px-8 py-4 sm:py-8 max-w-7xl pb-20 md:pb-8">
         {/* Header */}

@@ -103,8 +103,37 @@ export default function GPACalculator() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 p-4 sm:p-8">
-      <div className="container mx-auto max-w-6xl">
+    <>
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50">
+        {/* Consistent Navigation */}
+      <nav className="bg-white border-b border-gray-200">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="flex items-center space-x-8">
+            <Link href="/dashboard" className="text-2xl font-bold text-indigo-600 flex items-center">
+              🎓 <span className="ml-2">College Planner AI</span>
+            </Link>
+            <div className="hidden md:flex space-x-4">
+              <Link href="/dashboard" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+                💬 AI Chat
+              </Link>
+              <Link href="/tracker" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+                📋 Tracker
+              </Link>
+              <Link href="/essays" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+                ✍️ Essays
+              </Link>
+              <Link href="/timeline" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
+                📅 Timeline
+              </Link>
+              <Link href="/resources" className="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-lg font-semibold">
+                📚 Resources
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div className="container mx-auto max-w-6xl p-4 sm:p-8">
         <Link href="/resources" className="inline-flex items-center text-indigo-600 hover:text-indigo-700 mb-6">
           ← Back to Resources
         </Link>
@@ -281,8 +310,9 @@ export default function GPACalculator() {
             </ul>
           </div>
         </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
