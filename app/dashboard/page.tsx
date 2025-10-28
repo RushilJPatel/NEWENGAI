@@ -137,23 +137,23 @@ export default function DashboardPage() {
       <div className="flex h-screen">
         {/* Sidebar */}
         <div className="w-80 bg-white border-r border-gray-200 p-6 overflow-y-auto">
-          <div className="mb-6">
-            <div className="flex items-center gap-2 mb-1">
-              <Logo size={32} />
-              <h1 className="text-2xl font-bold text-secondary-800">College Compass</h1>
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-2">
+              <Logo size={48} />
+              <h1 className="text-3xl font-bold text-secondary-800">College Compass</h1>
             </div>
-            <p className="text-sm text-secondary-600 mb-2">Hey {session?.user?.name || session?.user?.email}!</p>
-            <PremiumBadge tier={tier} size="md" />
+            <p className="text-base text-secondary-600 mb-3">Hey {session?.user?.name || session?.user?.email}!</p>
+            <PremiumBadge tier={tier} size="lg" />
           </div>
 
           {/* Message Counter (Free Tier Only) */}
           {tier === 'free' && (
-            <div className="mb-6 bg-yellow-50 border-2 border-yellow-300 rounded-lg p-4">
+            <div className="mb-6 bg-yellow-50 border-2 border-yellow-300 rounded-lg p-5">
               <div className="text-center">
-                <div className="text-2xl font-bold text-yellow-800">
+                <div className="text-4xl font-bold text-yellow-800">
                   {messageCount}/{MESSAGE_LIMITS.free}
                 </div>
-                <div className="text-xs text-yellow-700 font-semibold mb-2">
+                <div className="text-sm text-yellow-700 font-semibold mb-3">
                   Daily AI Messages
                 </div>
                 {messageCount >= MESSAGE_LIMITS.free * 0.8 && (
@@ -170,22 +170,22 @@ export default function DashboardPage() {
 
           {/* Quick Navigation */}
           <div className="mb-6">
-            <h3 className="font-semibold text-gray-700 mb-3">Quick Access</h3>
-            <div className="space-y-2">
-              <Link href="/tracker" className="flex items-center gap-2 px-4 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-all text-sm">
-                <FaClipboardList /> Application Tracker
+            <h3 className="text-lg font-bold text-gray-700 mb-4">Quick Access</h3>
+            <div className="space-y-3">
+              <Link href="/tracker" className="flex items-center gap-3 px-5 py-3 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-all text-base font-semibold">
+                <FaClipboardList className="text-lg" /> Application Tracker
               </Link>
-              <Link href="/essays" className="flex items-center gap-2 px-4 py-2 bg-accent-50 text-accent-700 rounded-lg hover:bg-accent-100 transition-all text-sm">
-                <FaPencilAlt /> Essay Hub
+              <Link href="/essays" className="flex items-center gap-3 px-5 py-3 bg-accent-50 text-accent-700 rounded-lg hover:bg-accent-100 transition-all text-base font-semibold">
+                <FaPencilAlt className="text-lg" /> Essay Hub
               </Link>
-              <Link href="/timeline" className="flex items-center gap-2 px-4 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-all text-sm">
-                <FaCalendarAlt /> Timeline
+              <Link href="/timeline" className="flex items-center gap-3 px-5 py-3 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-all text-base font-semibold">
+                <FaCalendarAlt className="text-lg" /> Timeline
               </Link>
-              <Link href="/resources" className="flex items-center gap-2 px-4 py-2 bg-accent-50 text-accent-700 rounded-lg hover:bg-accent-100 transition-all text-sm">
-                <FaBook /> Resources
+              <Link href="/resources" className="flex items-center gap-3 px-5 py-3 bg-accent-50 text-accent-700 rounded-lg hover:bg-accent-100 transition-all text-base font-semibold">
+                <FaBook className="text-lg" /> Resources
               </Link>
-              <Link href="/billing" className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-lg hover:from-primary-700 hover:to-accent-700 transition-all text-sm shadow-md">
-                <FaCrown /> Billing & Plans
+              <Link href="/billing" className="flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-lg hover:from-primary-700 hover:to-accent-700 transition-all text-base font-bold shadow-md">
+                <FaCrown className="text-lg" /> Billing & Plans
               </Link>
             </div>
           </div>
@@ -199,19 +199,19 @@ export default function DashboardPage() {
                 timestamp: new Date()
               }]);
             }}
-            className="flex items-center justify-center gap-2 w-full mb-4 px-4 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-all font-semibold"
+            className="flex items-center justify-center gap-3 w-full mb-6 px-6 py-4 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-all font-bold text-base shadow-lg"
           >
-            <FaPlus /> New Conversation
+            <FaPlus className="text-lg" /> New Conversation
           </button>
 
           <div className="mb-6">
-            <h3 className="font-semibold text-gray-800 mb-3">Quick Topics</h3>
+            <h3 className="text-lg font-bold text-gray-800 mb-4">Quick Topics</h3>
             <div className="space-y-2">
               {quickQuestions.map((question, idx) => (
                 <button
                   key={idx}
                   onClick={() => setInput(question)}
-                  className="w-full text-left px-3 py-2 text-sm bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-700 transition-all"
+                  className="w-full text-left px-4 py-3 text-sm bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-700 transition-all font-medium"
                 >
                   {question}
                 </button>
@@ -245,21 +245,21 @@ export default function DashboardPage() {
                 key={message.id}
                 className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
-                <div
-                          className={`max-w-3xl px-6 py-4 rounded-2xl ${
+                        <div
+                          className={`max-w-4xl px-8 py-6 rounded-2xl ${
                             message.role === 'user'
                               ? 'bg-primary-600 text-white'
-                              : 'bg-white text-secondary-800 shadow-md'
+                              : 'bg-white text-secondary-800 shadow-lg'
                           }`}
                 >
                   {message.role === 'assistant' && (
-                    <div className="flex items-center mb-2">
-                      <Logo size={24} className="mr-2" />
-                      <span className="font-semibold text-sm">College Advisor AI</span>
+                    <div className="flex items-center mb-3">
+                      <Logo size={32} className="mr-2" />
+                      <span className="font-bold text-base">College Advisor AI</span>
                     </div>
                   )}
-                  <div className="whitespace-pre-wrap">{message.content}</div>
-                  <div className={`text-xs mt-2 ${message.role === 'user' ? 'text-primary-200' : 'text-secondary-400'}`}>
+                  <div className="whitespace-pre-wrap text-base leading-relaxed">{message.content}</div>
+                  <div className={`text-sm mt-3 ${message.role === 'user' ? 'text-primary-200' : 'text-secondary-400'}`}>
                     {message.timestamp.toLocaleTimeString()}
                   </div>
                 </div>
@@ -292,16 +292,16 @@ export default function DashboardPage() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Ask me anything about college planning..."
-                  className="flex-1 px-4 py-3 border-2 border-secondary-300 rounded-lg focus:border-primary-600 focus:outline-none resize-none"
-                  rows={2}
+                  className="flex-1 px-6 py-4 text-base border-2 border-secondary-300 rounded-xl focus:border-primary-600 focus:outline-none resize-none"
+                  rows={3}
                   disabled={loading}
                 />
                 <button
                   onClick={handleSendMessage}
                   disabled={loading || !input.trim()}
-                  className="flex items-center gap-2 px-8 py-3 bg-primary-600 text-white font-bold rounded-lg hover:bg-primary-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 px-10 py-4 text-base bg-primary-600 text-white font-bold rounded-xl hover:bg-primary-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                 >
-                  <FaPaperPlane /> Send
+                  <FaPaperPlane className="text-lg" /> Send
                 </button>
               </div>
               <p className="text-xs text-gray-500 mt-2">
