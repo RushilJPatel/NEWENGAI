@@ -4,6 +4,8 @@ import { useSession, signOut } from 'next-auth/react';
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Logo from '../components/Logo';
+import { FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaPlus, FaPaperPlane, FaGraduationCap, FaBullseye, FaDollarSign, FaFileAlt, FaUniversity, FaSignOutAlt } from 'react-icons/fa';
 
 interface Message {
   id: string;
@@ -13,13 +15,13 @@ interface Message {
 }
 
 export default function DashboardPage() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
       role: 'assistant',
-      content: "Hi! I'm your College Planning AI Assistant! 🎓\n\nI can help you with:\n• 📚 Create custom 4-year high school schedules based on your target colleges\n• 🎯 College recommendations and requirements\n• ✍️ Application process and essays\n• 💰 Financial aid and scholarships\n• 📝 SAT/ACT prep strategies\n• 🏫 Major selection and career planning\n• 📅 Timeline and deadlines\n\n**Try asking me:**\n\"Create a 4-year schedule for me targeting [college name]\"\n\"What courses should I take to apply to [college type]?\"\n\nWhat colleges are you interested in?",
+      content: "Hi! I'm your College Planning AI Assistant!\n\nI can help you with:\n• Create custom 4-year high school schedules based on your target colleges\n• College recommendations and requirements\n• Application process and essays\n• Financial aid and scholarships\n• SAT/ACT prep strategies\n• Major selection and career planning\n• Timeline and deadlines\n\n**Try asking me:**\n\"Create a 4-year schedule for me targeting [college name]\"\n\"What courses should I take to apply to [college type]?\"\n\nWhat colleges are you interested in?",
       timestamp: new Date()
     }
   ]);
@@ -28,11 +30,12 @@ export default function DashboardPage() {
   const [showTimeline, setShowTimeline] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.push('/login');
-    }
-  }, [status, router]);
+  // Auth temporarily disabled
+  // useEffect(() => {
+  //   if (status === 'unauthenticated') {
+  //     router.push('/login');
+  //   }
+  // }, [status, router]);
 
   useEffect(() => {
     scrollToBottom();
@@ -106,13 +109,14 @@ export default function DashboardPage() {
     "Tell me about financial aid and scholarships"
   ];
 
-  if (status === 'loading') {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center">
-        <div className="text-2xl text-gray-600">Loading...</div>
-      </div>
-    );
-  }
+  // Auth loading check disabled
+  // if (status === 'loading') {
+  //   return (
+  //     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center">
+  //       <div className="text-2xl text-gray-600">Loading...</div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
@@ -120,7 +124,10 @@ export default function DashboardPage() {
         {/* Sidebar */}
         <div className="w-80 bg-white border-r border-gray-200 p-6 overflow-y-auto">
           <div className="mb-6">
-            <h1 className="text-2xl font-bold text-gray-800 mb-1">🎓 College Planner AI</h1>
+            <div className="flex items-center gap-2 mb-1">
+              <Logo size={32} />
+              <h1 className="text-2xl font-bold text-gray-800">College Compass</h1>
+            </div>
             <p className="text-sm text-gray-600">Hey {session?.user?.name || session?.user?.email}!</p>
           </div>
 
@@ -128,17 +135,17 @@ export default function DashboardPage() {
           <div className="mb-6">
             <h3 className="font-semibold text-gray-700 mb-3">Quick Access</h3>
             <div className="space-y-2">
-              <Link href="/tracker" className="block px-4 py-2 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-all text-sm">
-                📋 Application Tracker
+              <Link href="/tracker" className="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-all text-sm">
+                <FaClipboardList /> Application Tracker
               </Link>
-              <Link href="/essays" className="block px-4 py-2 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition-all text-sm">
-                ✍️ Essay Hub
+              <Link href="/essays" className="flex items-center gap-2 px-4 py-2 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition-all text-sm">
+                <FaPencilAlt /> Essay Hub
               </Link>
-              <Link href="/timeline" className="block px-4 py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-all text-sm">
-                📅 Timeline
+              <Link href="/timeline" className="flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-all text-sm">
+                <FaCalendarAlt /> Timeline
               </Link>
-              <Link href="/resources" className="block px-4 py-2 bg-orange-50 text-orange-700 rounded-lg hover:bg-orange-100 transition-all text-sm">
-                📚 Resources
+              <Link href="/resources" className="flex items-center gap-2 px-4 py-2 bg-orange-50 text-orange-700 rounded-lg hover:bg-orange-100 transition-all text-sm">
+                <FaBook /> Resources
               </Link>
             </div>
           </div>
@@ -148,13 +155,13 @@ export default function DashboardPage() {
               setMessages([{
                 id: Date.now().toString(),
                 role: 'assistant',
-                content: "Hi! I'm your College Planning AI Assistant! 🎓\n\nI can help you with:\n• 📚 Create custom 4-year high school schedules based on your target colleges\n• 🎯 College recommendations and requirements\n• ✍️ Application process and essays\n• 💰 Financial aid and scholarships\n• 📝 SAT/ACT prep strategies\n• 🏫 Major selection and career planning\n• 📅 Timeline and deadlines\n\n**Try asking me:**\n\"Create a 4-year schedule for me targeting [college name]\"\n\"What courses should I take to apply to [college type]?\"\n\nWhat colleges are you interested in?",
+                content: "Hi! I'm your College Planning AI Assistant!\n\nI can help you with:\n• Create custom 4-year high school schedules based on your target colleges\n• College recommendations and requirements\n• Application process and essays\n• Financial aid and scholarships\n• SAT/ACT prep strategies\n• Major selection and career planning\n• Timeline and deadlines\n\n**Try asking me:**\n\"Create a 4-year schedule for me targeting [college name]\"\n\"What courses should I take to apply to [college type]?\"\n\nWhat colleges are you interested in?",
                 timestamp: new Date()
               }]);
             }}
-            className="w-full mb-4 px-4 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all font-semibold"
+            className="flex items-center justify-center gap-2 w-full mb-4 px-4 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all font-semibold"
           >
-            ➕ New Conversation
+            <FaPlus /> New Conversation
           </button>
 
           <div className="mb-6">
@@ -175,17 +182,17 @@ export default function DashboardPage() {
           <div className="mb-6">
             <button
               onClick={() => setShowTimeline(!showTimeline)}
-              className="w-full px-4 py-3 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-all font-semibold"
+              className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-all font-semibold"
             >
-              📅 Application Timeline
+              <FaCalendarAlt /> Application Timeline
             </button>
           </div>
 
           <button
             onClick={() => signOut({ callbackUrl: '/login' })}
-            className="w-full px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-all"
+            className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-all"
           >
-            Sign Out
+            <FaSignOutAlt /> Sign Out
           </button>
         </div>
 
@@ -207,7 +214,7 @@ export default function DashboardPage() {
                 >
                   {message.role === 'assistant' && (
                     <div className="flex items-center mb-2">
-                      <span className="text-2xl mr-2">🤖</span>
+                      <Logo size={24} className="mr-2" />
                       <span className="font-semibold text-sm">College Advisor AI</span>
                     </div>
                   )}
@@ -252,9 +259,9 @@ export default function DashboardPage() {
                 <button
                   onClick={handleSendMessage}
                   disabled={loading || !input.trim()}
-                  className="px-8 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 px-8 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send
+                  <FaPaperPlane /> Send
                 </button>
               </div>
               <p className="text-xs text-gray-500 mt-2">

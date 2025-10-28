@@ -4,17 +4,20 @@ import { useSession, signOut } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Logo from '../components/Logo';
+import { FaComments, FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaSignOutAlt, FaRobot } from 'react-icons/fa';
 
 export default function Resources() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
   const [activeCategory, setActiveCategory] = useState('all');
 
-  useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.push('/login');
-    }
-  }, [status, router]);
+  // Auth temporarily disabled
+  // useEffect(() => {
+  //   if (status === 'unauthenticated') {
+  //     router.push('/login');
+  //   }
+  // }, [status, router]);
 
   const resources = {
     guides: [
@@ -570,9 +573,10 @@ export default function Resources() {
     links: activeCategory === 'all' || activeCategory === 'link' ? resources.links : []
   };
 
-  if (status === 'loading') {
-    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
-  }
+  // Auth loading check disabled
+  // if (status === 'loading') {
+  //   return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  // }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
@@ -580,32 +584,33 @@ export default function Resources() {
       <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-8">
-            <Link href="/dashboard" className="text-2xl font-bold text-indigo-600 flex items-center">
-              🎓 <span className="ml-2">College Planner AI</span>
+            <Link href="/dashboard" className="text-2xl font-bold text-indigo-600 flex items-center gap-2">
+              <Logo size={32} />
+              <span>College Compass</span>
             </Link>
             <div className="hidden md:flex space-x-4">
-              <Link href="/dashboard" className="px-4 py-2 text-gray-600 hover:text-indigo-600 transition-colors">
-                💬 AI Chat
+              <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600 transition-colors">
+                <FaComments /> AI Chat
               </Link>
-              <Link href="/tracker" className="px-4 py-2 text-gray-600 hover:text-indigo-600 transition-colors">
-                📋 Tracker
+              <Link href="/tracker" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600 transition-colors">
+                <FaClipboardList /> Tracker
               </Link>
-              <Link href="/essays" className="px-4 py-2 text-gray-600 hover:text-indigo-600 transition-colors">
-                ✍️ Essays
+              <Link href="/essays" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600 transition-colors">
+                <FaPencilAlt /> Essays
               </Link>
-              <Link href="/timeline" className="px-4 py-2 text-gray-600 hover:text-indigo-600 transition-colors">
-                📅 Timeline
+              <Link href="/timeline" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600 transition-colors">
+                <FaCalendarAlt /> Timeline
               </Link>
-              <Link href="/resources" className="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-lg font-semibold">
-                📚 Resources
+              <Link href="/resources" className="flex items-center gap-2 px-4 py-2 bg-indigo-100 text-indigo-600 rounded-lg font-semibold">
+                <FaBook /> Resources
               </Link>
             </div>
           </div>
           <button
             onClick={() => signOut({ callbackUrl: '/login' })}
-            className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300"
+            className="flex items-center gap-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300"
           >
-            Sign Out
+            <FaSignOutAlt /> Sign Out
           </button>
         </div>
       </nav>
@@ -614,23 +619,23 @@ export default function Resources() {
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 safe-area-inset">
         <div className="flex justify-around py-2">
           <Link href="/dashboard" className="flex flex-col items-center text-xs text-gray-600 py-2">
-            <span className="text-xl">💬</span>
+            <FaComments className="text-xl mb-1" />
             <span>Chat</span>
           </Link>
           <Link href="/tracker" className="flex flex-col items-center text-xs text-gray-600 py-2">
-            <span className="text-xl">📋</span>
+            <FaClipboardList className="text-xl mb-1" />
             <span>Tracker</span>
           </Link>
           <Link href="/essays" className="flex flex-col items-center text-xs text-gray-600 py-2">
-            <span className="text-xl">✍️</span>
+            <FaPencilAlt className="text-xl mb-1" />
             <span>Essays</span>
           </Link>
           <Link href="/timeline" className="flex flex-col items-center text-xs text-gray-600 py-2">
-            <span className="text-xl">📅</span>
+            <FaCalendarAlt className="text-xl mb-1" />
             <span>Timeline</span>
           </Link>
           <Link href="/resources" className="flex flex-col items-center text-xs text-indigo-600 font-semibold py-2 bg-indigo-50">
-            <span className="text-xl">📚</span>
+            <FaBook className="text-xl mb-1" />
             <span>Resources</span>
           </Link>
         </div>
@@ -639,7 +644,9 @@ export default function Resources() {
       <div className="container mx-auto px-3 sm:px-4 lg:px-8 py-4 sm:py-8 max-w-7xl pb-20 md:pb-8">
         {/* Header */}
         <div className="mb-6 sm:mb-8">
-          <h1 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-2">📚 Resources Library</h1>
+          <h1 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-2 flex items-center gap-3">
+            <FaBook className="text-indigo-600" /> Resources Library
+          </h1>
           <p className="text-sm sm:text-base text-gray-600">Comprehensive guides, tools, videos, and links for your college journey</p>
         </div>
 
@@ -820,14 +827,16 @@ export default function Resources() {
 
         {/* Ask AI Section */}
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg sm:rounded-xl shadow-2xl p-6 sm:p-8 text-white text-center">
-          <div className="text-4xl sm:text-6xl mb-3 sm:mb-4">🤖</div>
+          <div className="flex justify-center mb-3 sm:mb-4">
+            <FaRobot className="text-4xl sm:text-6xl" />
+          </div>
           <h3 className="text-xl sm:text-3xl font-bold mb-2 sm:mb-4">Need Personalized Guidance?</h3>
           <p className="text-base sm:text-xl mb-4 sm:mb-6 opacity-90">Our AI chatbot can answer specific questions about YOUR situation!</p>
           <Link
             href="/dashboard"
-            className="inline-block px-6 py-3 sm:px-8 sm:py-4 bg-white text-indigo-600 font-bold text-base sm:text-lg rounded-lg hover:bg-gray-100 transition-all shadow-lg transform hover:scale-105"
+            className="inline-flex items-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-white text-indigo-600 font-bold text-base sm:text-lg rounded-lg hover:bg-gray-100 transition-all shadow-lg transform hover:scale-105"
           >
-            Chat with AI Now →
+            <FaComments /> Chat with AI Now
           </Link>
         </div>
       </div>

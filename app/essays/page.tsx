@@ -4,6 +4,8 @@ import { useSession, signOut } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Logo from '../components/Logo';
+import { FaComments, FaClipboardList, FaPencilAlt, FaCalendarAlt, FaBook, FaLightbulb } from 'react-icons/fa';
 
 interface EssayPrompt {
   id: string;
@@ -13,17 +15,18 @@ interface EssayPrompt {
 }
 
 export default function EssayHub() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
   const [prompts, setPrompts] = useState<EssayPrompt[]>([]);
   const [selectedPrompt, setSelectedPrompt] = useState<EssayPrompt | null>(null);
 
   useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.push('/login');
-    }
+    // Auth temporarily disabled
+    // if (status === 'unauthenticated') {
+    //   router.push('/login');
+    // }
     loadPrompts();
-  }, [status, router]);
+  }, []); // Auth disabled, removed dependencies
 
   const loadPrompts = async () => {
     // Mock data - in production, load from API
@@ -122,9 +125,10 @@ export default function EssayHub() {
     ]);
   };
 
-  if (status === 'loading') {
-    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
-  }
+  // Auth loading check disabled
+  // if (status === 'loading') {
+  //   return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  // }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
@@ -132,24 +136,25 @@ export default function EssayHub() {
       <nav className="bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-8">
-            <Link href="/dashboard" className="text-2xl font-bold text-indigo-600">
-              🎓 College Planner AI
+            <Link href="/dashboard" className="text-2xl font-bold text-indigo-600 flex items-center gap-2">
+              <Logo size={32} />
+              <span>College Compass</span>
             </Link>
             <div className="hidden md:flex space-x-4">
-              <Link href="/dashboard" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
-                💬 AI Chat
+              <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600">
+                <FaComments /> AI Chat
               </Link>
-              <Link href="/tracker" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
-                📋 Tracker
+              <Link href="/tracker" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600">
+                <FaClipboardList /> Tracker
               </Link>
-              <Link href="/essays" className="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-lg font-semibold">
-                ✍️ Essays
+              <Link href="/essays" className="flex items-center gap-2 px-4 py-2 bg-indigo-100 text-indigo-600 rounded-lg font-semibold">
+                <FaPencilAlt /> Essays
               </Link>
-              <Link href="/timeline" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
-                📅 Timeline
+              <Link href="/timeline" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600">
+                <FaCalendarAlt /> Timeline
               </Link>
-              <Link href="/resources" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
-                📚 Resources
+              <Link href="/resources" className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-indigo-600">
+                <FaBook /> Resources
               </Link>
             </div>
           </div>
@@ -165,7 +170,9 @@ export default function EssayHub() {
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">✍️ Essay Hub</h1>
+          <h1 className="text-4xl font-bold text-gray-800 mb-2 flex items-center gap-3">
+            <FaPencilAlt className="text-indigo-600" /> Essay Hub
+          </h1>
           <p className="text-gray-600">Common App prompts, writing tips, and examples to craft your perfect essay</p>
         </div>
 
@@ -193,7 +200,9 @@ export default function EssayHub() {
               </div>
 
               <div className="mt-6 p-4 bg-green-50 rounded-lg border-2 border-green-500">
-                <div className="font-semibold text-green-900 mb-2">💡 Pro Tip</div>
+                <div className="font-semibold text-green-900 mb-2 flex items-center gap-2">
+                  <FaLightbulb /> Pro Tip
+                </div>
                 <div className="text-sm text-green-800">
                   Ask our AI chatbot to help brainstorm ideas for any prompt!
                 </div>
@@ -224,7 +233,9 @@ export default function EssayHub() {
                   </div>
 
                   <div className="border-t pt-6">
-                    <h3 className="text-xl font-bold text-gray-800 mb-4">💡 Writing Tips</h3>
+                    <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                      <FaLightbulb className="text-yellow-500" /> Writing Tips
+                    </h3>
                     <ul className="space-y-3">
                       {selectedPrompt.tips.map((tip, idx) => (
                         <li key={idx} className="flex items-start">
@@ -284,7 +295,9 @@ export default function EssayHub() {
               </>
             ) : (
               <div className="bg-white rounded-xl shadow-lg p-12 text-center">
-                <div className="text-6xl mb-4">✍️</div>
+                <div className="flex justify-center mb-4">
+                  <FaPencilAlt className="text-6xl text-gray-400" />
+                </div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-2">Select a Prompt to Get Started</h3>
                 <p className="text-gray-600">Choose from the Common App prompts on the left to see detailed tips and examples</p>
               </div>

@@ -1,0 +1,531 @@
+{
+  "colleges": [
+    {
+      "id": "stanford",
+      "name": "Stanford University",
+      "location": "Stanford, CA",
+      "type": "Private",
+      "admissionRate": "3.7%",
+      "averageGPA": "3.96",
+      "satRange": "1470-1570",
+      "actRange": "33-35",
+      "testPolicy": "Test-Optional",
+      "applicationTypes": ["Restrictive Early Action", "Regular Decision"],
+      "deadlines": {
+        "REA": "November 1",
+        "RD": "January 5"
+      },
+      "requirements": {
+        "commonApp": true,
+        "personalEssay": true,
+        "supplementalEssays": 3,
+        "recommendations": 3,
+        "transcript": true,
+        "midYearReport": true
+      },
+      "financialAid": {
+        "needBlind": true,
+        "meetsFullNeed": true,
+        "averageAid": "$74,000"
+      },
+      "majors": ["Computer Science", "Engineering", "Biology", "Economics", "Human Biology"],
+      "notes": "Focus on intellectual vitality essays. No interviews offered."
+    },
+    {
+      "id": "mit",
+      "name": "Massachusetts Institute of Technology",
+      "location": "Cambridge, MA",
+      "type": "Private",
+      "admissionRate": "4.0%",
+      "averageGPA": "3.95",
+      "satRange": "1520-1580",
+      "actRange": "34-36",
+      "testPolicy": "Required",
+      "applicationTypes": ["Early Action", "Regular Decision"],
+      "deadlines": {
+        "EA": "November 1",
+        "RD": "January 1"
+      },
+      "requirements": {
+        "commonApp": false,
+        "personalEssay": true,
+        "supplementalEssays": 5,
+        "recommendations": 2,
+        "transcript": true,
+        "midYearReport": true
+      },
+      "financialAid": {
+        "needBlind": true,
+        "meetsFullNeed": true,
+        "averageAid": "$72,000"
+      },
+      "majors": ["Computer Science", "Electrical Engineering", "Mechanical Engineering", "Physics", "Mathematics"],
+      "notes": "Strong STEM focus required. SAT/ACT required."
+    },
+    {
+      "id": "harvard",
+      "name": "Harvard College",
+      "location": "Cambridge, MA",
+      "type": "Private",
+      "admissionRate": "3.2%",
+      "averageGPA": "4.18",
+      "satRange": "1460-1580",
+      "actRange": "33-35",
+      "testPolicy": "Test-Optional",
+      "applicationTypes": ["Restrictive Early Action", "Regular Decision"],
+      "deadlines": {
+        "REA": "November 1",
+        "RD": "January 1"
+      },
+      "requirements": {
+        "commonApp": true,
+        "personalEssay": true,
+        "supplementalEssays": 2,
+        "recommendations": 2,
+        "transcript": true,
+        "midYearReport": true
+      },
+      "financialAid": {
+        "needBlind": true,
+        "meetsFullNeed": true,
+        "averageAid": "$70,000"
+      },
+      "majors": ["Economics", "Computer Science", "Government", "Psychology", "Biology"],
+      "notes": "REA is non-binding. Alumni interviews offered."
+    },
+    {
+      "id": "yale",
+      "name": "Yale University",
+      "location": "New Haven, CT",
+      "type": "Private",
+      "admissionRate": "4.5%",
+      "averageGPA": "4.14",
+      "satRange": "1460-1570",
+      "actRange": "33-35",
+      "testPolicy": "Test-Optional",
+      "applicationTypes": ["Restrictive Early Action", "Regular Decision"],
+      "deadlines": {
+        "REA": "November 1",
+        "RD": "January 2"
+      },
+      "requirements": {
+        "commonApp": true,
+        "personalEssay": true,
+        "supplementalEssays": 2,
+        "recommendations": 2,
+        "transcript": true,
+        "midYearReport": true
+      },
+      "financialAid": {
+        "needBlind": true,
+        "meetsFullNeed": true,
+        "averageAid": "$68,000"
+      },
+      "majors": ["Political Science", "Economics", "History", "Biology", "Psychology"],
+      "notes": "Strong liberal arts focus. Residential college system."
+    },
+    {
+      "id": "princeton",
+      "name": "Princeton University",
+      "location": "Princeton, NJ",
+      "type": "Private",
+      "admissionRate": "3.8%",
+      "averageGPA": "3.95",
+      "satRange": "1470-1570",
+      "actRange": "33-35",
+      "testPolicy": "Test-Optional",
+      "applicationTypes": ["Restrictive Early Action", "Regular Decision"],
+      "deadlines": {
+        "REA": "November 1",
+        "RD": "January 1"
+      },
+      "requirements": {
+        "commonApp": true,
+        "personalEssay": true,
+        "supplementalEssays": 3,
+        "recommendations": 2,
+        "transcript": true,
+        "midYearReport": true
+      },
+      "financialAid": {
+        "needBlind": true,
+        "meetsFullNeed": true,
+        "noLoans": true,
+        "averageAid": "$65,000"
+      },
+      "majors": ["Economics", "Computer Science", "Politics", "History", "Physics"],
+      "notes": "No graduate business or law schools. Strong undergraduate focus."
+    },
+    {
+      "id": "uc-berkeley",
+      "name": "UC Berkeley",
+      "location": "Berkeley, CA",
+      "type": "Public",
+      "admissionRate": "11.4%",
+      "averageGPA": "4.25",
+      "satRange": "1330-1530",
+      "actRange": "29-35",
+      "testPolicy": "Test-Blind",
+      "applicationTypes": ["Regular Decision"],
+      "deadlines": {
+        "RD": "November 30"
+      },
+      "requirements": {
+        "commonApp": false,
+        "personalEssay": true,
+        "supplementalEssays": 4,
+        "recommendations": 0,
+        "transcript": true,
+        "midYearReport": false
+      },
+      "financialAid": {
+        "needBlind": false,
+        "meetsFullNeed": true,
+        "averageAid": "$32,000"
+      },
+      "majors": ["Computer Science", "Engineering", "Business", "Biology", "Economics"],
+      "notes": "UC PIQs - 4 essays, 350 words each. No letters of recommendation. Test-blind."
+    },
+    {
+      "id": "ucla",
+      "name": "UCLA",
+      "location": "Los Angeles, CA",
+      "type": "Public",
+      "admissionRate": "8.6%",
+      "averageGPA": "4.18",
+      "satRange": "1290-1510",
+      "actRange": "27-34",
+      "testPolicy": "Test-Blind",
+      "applicationTypes": ["Regular Decision"],
+      "deadlines": {
+        "RD": "November 30"
+      },
+      "requirements": {
+        "commonApp": false,
+        "personalEssay": true,
+        "supplementalEssays": 4,
+        "recommendations": 0,
+        "transcript": true,
+        "midYearReport": false
+      },
+      "financialAid": {
+        "needBlind": false,
+        "meetsFullNeed": true,
+        "averageAid": "$30,000"
+      },
+      "majors": ["Business Economics", "Psychology", "Biology", "Political Science", "Economics"],
+      "notes": "Most selective UC campus. Film school is highly competitive."
+    },
+    {
+      "id": "umich",
+      "name": "University of Michigan",
+      "location": "Ann Arbor, MI",
+      "type": "Public",
+      "admissionRate": "17.7%",
+      "averageGPA": "3.90",
+      "satRange": "1340-1530",
+      "actRange": "31-34",
+      "testPolicy": "Test-Optional",
+      "applicationTypes": ["Early Action", "Regular Decision"],
+      "deadlines": {
+        "EA": "November 1",
+        "RD": "February 1"
+      },
+      "requirements": {
+        "commonApp": true,
+        "personalEssay": true,
+        "supplementalEssays": 2,
+        "recommendations": 1,
+        "transcript": true,
+        "midYearReport": true
+      },
+      "financialAid": {
+        "needBlind": false,
+        "meetsFullNeed": false,
+        "averageAid": "$28,000"
+      },
+      "majors": ["Engineering", "Business (Ross)", "Computer Science", "Psychology", "Economics"],
+      "notes": "Ross School of Business has separate admissions. Strong engineering programs."
+    },
+    {
+      "id": "columbia",
+      "name": "Columbia University",
+      "location": "New York, NY",
+      "type": "Private",
+      "admissionRate": "3.7%",
+      "averageGPA": "4.15",
+      "satRange": "1470-1570",
+      "actRange": "33-35",
+      "testPolicy": "Test-Optional",
+      "applicationTypes": ["Early Decision", "Regular Decision"],
+      "deadlines": {
+        "ED": "November 1",
+        "RD": "January 1"
+      },
+      "requirements": {
+        "commonApp": true,
+        "personalEssay": true,
+        "supplementalEssays": 3,
+        "recommendations": 3,
+        "transcript": true,
+        "midYearReport": true
+      },
+      "financialAid": {
+        "needBlind": true,
+        "meetsFullNeed": true,
+        "averageAid": "$69,000"
+      },
+      "majors": ["Economics", "Political Science", "Computer Science", "Engineering", "English"],
+      "notes": "Core Curriculum required. Located in NYC. ED is binding."
+    },
+    {
+      "id": "upenn",
+      "name": "University of Pennsylvania",
+      "location": "Philadelphia, PA",
+      "type": "Private",
+      "admissionRate": "5.8%",
+      "averageGPA": "3.95",
+      "satRange": "1450-1560",
+      "actRange": "33-35",
+      "testPolicy": "Test-Optional",
+      "applicationTypes": ["Early Decision", "Regular Decision"],
+      "deadlines": {
+        "ED": "November 1",
+        "RD": "January 5"
+      },
+      "requirements": {
+        "commonApp": true,
+        "personalEssay": true,
+        "supplementalEssays": 2,
+        "recommendations": 2,
+        "transcript": true,
+        "midYearReport": true
+      },
+      "financialAid": {
+        "needBlind": true,
+        "meetsFullNeed": true,
+        "averageAid": "$66,000"
+      },
+      "majors": ["Wharton (Business)", "Computer Science", "Economics", "Engineering", "Biology"],
+      "notes": "Wharton School is highly selective. Strong pre-professional focus."
+    },
+    {
+      "id": "duke",
+      "name": "Duke University",
+      "location": "Durham, NC",
+      "type": "Private",
+      "admissionRate": "5.8%",
+      "averageGPA": "4.13",
+      "satRange": "1470-1570",
+      "actRange": "33-35",
+      "testPolicy": "Test-Optional",
+      "applicationTypes": ["Early Decision", "Regular Decision"],
+      "deadlines": {
+        "ED": "November 1",
+        "RD": "January 2"
+      },
+      "requirements": {
+        "commonApp": true,
+        "personalEssay": true,
+        "supplementalEssays": 2,
+        "recommendations": 2,
+        "transcript": true,
+        "midYearReport": true
+      },
+      "financialAid": {
+        "needBlind": true,
+        "meetsFullNeed": true,
+        "averageAid": "$64,000"
+      },
+      "majors": ["Computer Science", "Public Policy", "Economics", "Biology", "Psychology"],
+      "notes": "Strong research opportunities. Robertson Scholars Program available."
+    },
+    {
+      "id": "northwestern",
+      "name": "Northwestern University",
+      "location": "Evanston, IL",
+      "type": "Private",
+      "admissionRate": "7.0%",
+      "averageGPA": "4.10",
+      "satRange": "1440-1550",
+      "actRange": "33-35",
+      "testPolicy": "Test-Optional",
+      "applicationTypes": ["Early Decision", "Regular Decision"],
+      "deadlines": {
+        "ED": "November 1",
+        "RD": "January 3"
+      },
+      "requirements": {
+        "commonApp": true,
+        "personalEssay": true,
+        "supplementalEssays": 2,
+        "recommendations": 2,
+        "transcript": true,
+        "midYearReport": true
+      },
+      "financialAid": {
+        "needBlind": true,
+        "meetsFullNeed": true,
+        "averageAid": "$63,000"
+      },
+      "majors": ["Journalism", "Economics", "Engineering", "Computer Science", "Theater"],
+      "notes": "Top journalism and theater programs. Quarter system."
+    },
+    {
+      "id": "caltech",
+      "name": "California Institute of Technology",
+      "location": "Pasadena, CA",
+      "type": "Private",
+      "admissionRate": "3.9%",
+      "averageGPA": "4.19",
+      "satRange": "1530-1580",
+      "actRange": "35-36",
+      "testPolicy": "Test-Optional",
+      "applicationTypes": ["Restrictive Early Action", "Regular Decision"],
+      "deadlines": {
+        "REA": "November 1",
+        "RD": "January 3"
+      },
+      "requirements": {
+        "commonApp": true,
+        "personalEssay": true,
+        "supplementalEssays": 4,
+        "recommendations": 2,
+        "transcript": true,
+        "midYearReport": true
+      },
+      "financialAid": {
+        "needBlind": true,
+        "meetsFullNeed": true,
+        "averageAid": "$62,000"
+      },
+      "majors": ["Physics", "Computer Science", "Engineering", "Mathematics", "Chemistry"],
+      "notes": "Extremely STEM-focused. Small, intense environment."
+    },
+    {
+      "id": "cornell",
+      "name": "Cornell University",
+      "location": "Ithaca, NY",
+      "type": "Private",
+      "admissionRate": "7.3%",
+      "averageGPA": "4.07",
+      "satRange": "1400-1540",
+      "actRange": "32-35",
+      "testPolicy": "Test-Optional",
+      "applicationTypes": ["Early Decision", "Regular Decision"],
+      "deadlines": {
+        "ED": "November 1",
+        "RD": "January 2"
+      },
+      "requirements": {
+        "commonApp": true,
+        "personalEssay": true,
+        "supplementalEssays": 2,
+        "recommendations": 2,
+        "transcript": true,
+        "midYearReport": true
+      },
+      "financialAid": {
+        "needBlind": true,
+        "meetsFullNeed": true,
+        "averageAid": "$60,000"
+      },
+      "majors": ["Engineering", "Hotel Management", "Agriculture", "Architecture", "Computer Science"],
+      "notes": "Largest Ivy League. Seven different undergraduate colleges."
+    },
+    {
+      "id": "usc",
+      "name": "University of Southern California",
+      "location": "Los Angeles, CA",
+      "type": "Private",
+      "admissionRate": "9.9%",
+      "averageGPA": "3.88",
+      "satRange": "1350-1520",
+      "actRange": "31-34",
+      "testPolicy": "Test-Optional",
+      "applicationTypes": ["Early Action", "Regular Decision"],
+      "deadlines": {
+        "EA": "November 1",
+        "RD": "January 15"
+      },
+      "requirements": {
+        "commonApp": true,
+        "personalEssay": true,
+        "supplementalEssays": 2,
+        "recommendations": 1,
+        "transcript": true,
+        "midYearReport": true
+      },
+      "financialAid": {
+        "needBlind": false,
+        "meetsFullNeed": true,
+        "averageAid": "$58,000"
+      },
+      "majors": ["Film", "Business", "Computer Science", "Engineering", "Communications"],
+      "notes": "Top film school. Strong alumni network. Merit scholarships available."
+    },
+    {
+      "id": "carnegie-mellon",
+      "name": "Carnegie Mellon University",
+      "location": "Pittsburgh, PA",
+      "type": "Private",
+      "admissionRate": "11.3%",
+      "averageGPA": "3.90",
+      "satRange": "1460-1560",
+      "actRange": "33-35",
+      "testPolicy": "Test-Optional",
+      "applicationTypes": ["Early Decision", "Regular Decision"],
+      "deadlines": {
+        "ED": "November 1",
+        "RD": "January 3"
+      },
+      "requirements": {
+        "commonApp": true,
+        "personalEssay": true,
+        "supplementalEssays": 1,
+        "recommendations": 2,
+        "transcript": true,
+        "midYearReport": true
+      },
+      "financialAid": {
+        "needBlind": false,
+        "meetsFullNeed": false,
+        "averageAid": "$52,000"
+      },
+      "majors": ["Computer Science", "Engineering", "Drama", "Design", "Business"],
+      "notes": "Top CS and robotics programs. School of Computer Science highly selective."
+    },
+    {
+      "id": "georgia-tech",
+      "name": "Georgia Institute of Technology",
+      "location": "Atlanta, GA",
+      "type": "Public",
+      "admissionRate": "16.4%",
+      "averageGPA": "4.07",
+      "satRange": "1370-1520",
+      "actRange": "31-35",
+      "testPolicy": "Test-Optional",
+      "applicationTypes": ["Early Action", "Regular Decision"],
+      "deadlines": {
+        "EA": "November 1",
+        "RD": "January 4"
+      },
+      "requirements": {
+        "commonApp": true,
+        "personalEssay": true,
+        "supplementalEssays": 2,
+        "recommendations": 1,
+        "transcript": true,
+        "midYearReport": true
+      },
+      "financialAid": {
+        "needBlind": false,
+        "meetsFullNeed": false,
+        "averageAid": "$22,000"
+      },
+      "majors": ["Computer Science", "Mechanical Engineering", "Industrial Engineering", "Aerospace Engineering", "Business"],
+      "notes": "Top engineering and computer science programs. Strong co-op program."
+    }
+  ]
+}
+

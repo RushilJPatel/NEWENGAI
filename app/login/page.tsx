@@ -3,6 +3,8 @@
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Logo from '../components/Logo';
+import { FaEnvelope, FaLock, FaArrowRight } from 'react-icons/fa';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -43,8 +45,11 @@ export default function LoginPage() {
       <div className="max-w-md w-full">
         {/* Logo/Header */}
         <div className="text-center mb-8">
+          <div className="flex items-center justify-center mb-4">
+            <Logo size={60} />
+          </div>
           <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-            🎓 College Planner AI
+            College Compass
           </h1>
           <p className="text-gray-600 text-lg">
             Your AI-powered college planning assistant

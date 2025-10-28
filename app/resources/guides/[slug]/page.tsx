@@ -123,7 +123,7 @@ export default function GuidePage() {
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <div className="flex items-center space-x-8">
               <Link href="/dashboard" className="text-2xl font-bold text-indigo-600 flex items-center">
-                🎓 <span className="ml-2">College Planner AI</span>
+                🎓 <span className="ml-2">College Compass</span>
               </Link>
               <div className="hidden md:flex space-x-4">
                 <Link href="/dashboard" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
@@ -171,7 +171,7 @@ export default function GuidePage() {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-8">
             <Link href="/dashboard" className="text-2xl font-bold text-indigo-600 flex items-center">
-              🎓 <span className="ml-2">College Planner AI</span>
+              🎓 <span className="ml-2">College Compass</span>
             </Link>
             <div className="hidden md:flex space-x-4">
               <Link href="/dashboard" className="px-4 py-2 text-gray-600 hover:text-indigo-600">
