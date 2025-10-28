@@ -263,7 +263,7 @@ export default function BillingPage() {
               <div
                 key={plan.tier}
                 className={`relative bg-white rounded-2xl shadow-xl p-8 border-2 transition-all ${
-                  colorClasses[plan.color]
+                  colorClasses[plan.color as keyof typeof colorClasses]
                 } ${isCurrentPlan ? 'ring-4 ring-green-200 border-green-400' : ''}`}
               >
                 {plan.recommended && (
