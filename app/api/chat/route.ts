@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     const hsCourses = JSON.parse(fs.readFileSync(hsCoursesPath, 'utf8'));
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
 
     // Build conversation history for context
     const conversationHistory = messages

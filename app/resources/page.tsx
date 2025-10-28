@@ -73,6 +73,62 @@ export default function Resources() {
         icon: '🎤', 
         category: 'guide',
         content: 'Common questions: Why this school? Tell me about yourself. What do you do for fun? Greatest challenge? Questions for interviewer? Be authentic, prepared, and enthusiastic!'
+      },
+      { 
+        title: 'AP & Honors Course Selection Strategy', 
+        description: 'How many AP classes should you take? Which ones matter most for your target colleges?', 
+        icon: '🎓', 
+        category: 'guide',
+        content: 'Balance rigor with GPA. Top colleges want 5-8 APs total. Take AP in subjects related to your major. Junior year is crucial. Don\'t overload - quality over quantity!'
+      },
+      { 
+        title: 'Extracurricular Activities Guide', 
+        description: 'Quality beats quantity! How to build a compelling activities list that shows leadership and passion.', 
+        icon: '⚡', 
+        category: 'guide',
+        content: 'Focus on 3-5 meaningful activities showing depth, not breadth. Demonstrate impact, leadership, and commitment over time. Create a "spike" in your area of interest.'
+      },
+      { 
+        title: 'College Major Selection Guide', 
+        description: 'Undecided is OK! How to explore majors, understand career paths, and make an informed choice.', 
+        icon: '🎯', 
+        category: 'guide',
+        content: 'Most students change majors! Research career outcomes, take intro courses, talk to professionals, consider double majors, and explore interdisciplinary programs.'
+      },
+      { 
+        title: 'Demonstrated Interest & Yield Protection', 
+        description: 'Learn how colleges track interest and why it matters for admissions - especially for matches and safeties.', 
+        icon: '👀', 
+        category: 'guide',
+        content: 'Open emails, attend virtual events, visit campus, interview, apply early, engage with reps. Some schools track heavily, others don\'t. Research each school\'s policy!'
+      },
+      { 
+        title: 'Transfer Application Guide', 
+        description: 'Considering transferring? Complete guide to transfer admissions, credit transfers, and timing.', 
+        icon: '🔄', 
+        category: 'guide',
+        content: 'Transfer after freshman or sophomore year. Need strong college GPA (3.5+), compelling reason, course prerequisites. Some schools love transfers (Cornell), others rarely accept them.'
+      },
+      { 
+        title: 'Gap Year Planning Guide', 
+        description: 'Is a gap year right for you? How to plan, when to apply, and making the most of time off.', 
+        icon: '🌍', 
+        category: 'guide',
+        content: 'Apply senior year, defer enrollment. Use time for work, travel, service, internships, or personal projects. Popular options: AmeriCorps, work abroad, research, skill-building.'
+      },
+      { 
+        title: 'Early Decision vs Early Action Strategy', 
+        description: 'ED, EA, REA, ED2 - understand the differences and choose the right strategy for YOU.', 
+        icon: '⚡', 
+        category: 'guide',
+        content: 'ED is binding, increases odds but commits you. EA is non-binding. REA restricts other early apps. ED2 gives second chance. Only do ED if it\'s your clear #1 and finances work!'
+      },
+      { 
+        title: 'Waitlist Strategy & Acceptance Tips', 
+        description: 'Got waitlisted? Here\'s how to maximize your chances of getting off the waitlist.', 
+        icon: '⏳', 
+        category: 'guide',
+        content: 'Send LOCI (Letter of Continued Interest), update achievements, get extra rec, demonstrate fit. But commit to another school by May 1! Waitlist acceptances come May-July.'
       }
     ],
     tools: [
