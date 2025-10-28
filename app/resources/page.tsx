@@ -23,6 +23,7 @@ export default function Resources() {
         description: 'Step-by-step walkthrough from choosing schools to submitting applications. Covers Common App, UC system, and more.', 
         icon: '📖', 
         category: 'guide',
+        url: '/resources/guides/applications',
         content: 'Learn about application types (EA, ED, RD), how to create a balanced college list, filling out the Common App, requesting transcripts, and submitting applications on time.'
       },
       { 
@@ -30,6 +31,7 @@ export default function Resources() {
         description: 'Everything you need to know about paying for college - FAFSA, CSS Profile, scholarships, and loans.', 
         icon: '💰', 
         category: 'guide',
+        url: '/resources/guides/financial-aid',
         content: 'Opens Oct 1 annually. Learn about grants, work-study, federal loans, parent PLUS loans, merit scholarships, need-based aid, and how to compare financial aid packages.'
       },
       { 
@@ -37,6 +39,7 @@ export default function Resources() {
         description: 'Proven study tips, test-taking strategies, and timeline for standardized testing.', 
         icon: '📝', 
         category: 'guide',
+        url: '/resources/guides/test-prep',
         content: 'Test-optional doesn\'t mean test-blind. Learn when to submit scores, how to prep effectively, best practice resources (Khan Academy, official tests), and score improvement strategies.'
       },
       { 
@@ -44,6 +47,7 @@ export default function Resources() {
         description: 'What to look for during visits and essential questions to ask current students and admissions.', 
         icon: '🏫', 
         category: 'guide',
+        url: '/resources/guides/campus-visits',
         content: 'Tour checklist: sit in on a class, eat in dining hall, walk around campus alone, visit dorms, check library, ask about internships, career services, class sizes, and student life.'
       },
       { 
@@ -51,6 +55,7 @@ export default function Resources() {
         description: 'From brainstorming to final draft - how to write essays that stand out to admissions officers.', 
         icon: '✍️', 
         category: 'guide',
+        url: '/essays',
         content: 'Show don\'t tell, be specific, avoid clichés, write in your authentic voice, focus on growth, have 3-5 people proofread, and never plagiarize. Start in summer!'
       },
       { 
@@ -58,6 +63,7 @@ export default function Resources() {
         description: 'How to choose recommenders, when to ask, and what makes a strong letter.', 
         icon: '✉️', 
         category: 'guide',
+        url: '/resources/guides/recommendations',
         content: 'Ask junior year teachers who know you well (ideally from core subjects). Give them a "brag sheet" with your accomplishments, goals, and specific examples. Ask 6 weeks before deadline.'
       },
       { 
@@ -65,6 +71,7 @@ export default function Resources() {
         description: 'Build a balanced list with reach, target, and safety schools that actually fit you.', 
         icon: '📋', 
         category: 'guide',
+        url: '/resources/guides/college-list',
         content: 'Apply to 8-12 schools: 3-4 reach, 3-4 target, 2-3 safety. Consider location, size, cost, majors, campus culture, career outcomes, and graduate school placement.'
       },
       { 
@@ -72,6 +79,7 @@ export default function Resources() {
         description: 'Ace your alumni or admissions interviews with preparation tips and common questions.', 
         icon: '🎤', 
         category: 'guide',
+        url: '/resources/guides/interviews',
         content: 'Common questions: Why this school? Tell me about yourself. What do you do for fun? Greatest challenge? Questions for interviewer? Be authentic, prepared, and enthusiastic!'
       },
       { 
@@ -79,6 +87,7 @@ export default function Resources() {
         description: 'How many AP classes should you take? Which ones matter most for your target colleges?', 
         icon: '🎓', 
         category: 'guide',
+        url: '/resources/guides/ap-honors',
         content: 'Balance rigor with GPA. Top colleges want 5-8 APs total. Take AP in subjects related to your major. Junior year is crucial. Don\'t overload - quality over quantity!'
       },
       { 
@@ -86,6 +95,7 @@ export default function Resources() {
         description: 'Quality beats quantity! How to build a compelling activities list that shows leadership and passion.', 
         icon: '⚡', 
         category: 'guide',
+        url: '/resources/guides/extracurriculars',
         content: 'Focus on 3-5 meaningful activities showing depth, not breadth. Demonstrate impact, leadership, and commitment over time. Create a "spike" in your area of interest.'
       },
       { 
@@ -93,6 +103,7 @@ export default function Resources() {
         description: 'Undecided is OK! How to explore majors, understand career paths, and make an informed choice.', 
         icon: '🎯', 
         category: 'guide',
+        url: '/resources/guides/majors',
         content: 'Most students change majors! Research career outcomes, take intro courses, talk to professionals, consider double majors, and explore interdisciplinary programs.'
       },
       { 
@@ -100,6 +111,7 @@ export default function Resources() {
         description: 'Learn how colleges track interest and why it matters for admissions - especially for matches and safeties.', 
         icon: '👀', 
         category: 'guide',
+        url: '/resources/guides/demonstrated-interest',
         content: 'Open emails, attend virtual events, visit campus, interview, apply early, engage with reps. Some schools track heavily, others don\'t. Research each school\'s policy!'
       },
       { 
@@ -107,6 +119,7 @@ export default function Resources() {
         description: 'Considering transferring? Complete guide to transfer admissions, credit transfers, and timing.', 
         icon: '🔄', 
         category: 'guide',
+        url: '/resources/guides/transfer',
         content: 'Transfer after freshman or sophomore year. Need strong college GPA (3.5+), compelling reason, course prerequisites. Some schools love transfers (Cornell), others rarely accept them.'
       },
       { 
@@ -114,6 +127,7 @@ export default function Resources() {
         description: 'Is a gap year right for you? How to plan, when to apply, and making the most of time off.', 
         icon: '🌍', 
         category: 'guide',
+        url: '/resources/guides/gap-year',
         content: 'Apply senior year, defer enrollment. Use time for work, travel, service, internships, or personal projects. Popular options: AmeriCorps, work abroad, research, skill-building.'
       },
       { 
@@ -121,6 +135,7 @@ export default function Resources() {
         description: 'ED, EA, REA, ED2 - understand the differences and choose the right strategy for YOU.', 
         icon: '⚡', 
         category: 'guide',
+        url: '/resources/guides/early-decision',
         content: 'ED is binding, increases odds but commits you. EA is non-binding. REA restricts other early apps. ED2 gives second chance. Only do ED if it\'s your clear #1 and finances work!'
       },
       { 
@@ -128,6 +143,7 @@ export default function Resources() {
         description: 'Got waitlisted? Here\'s how to maximize your chances of getting off the waitlist.', 
         icon: '⏳', 
         category: 'guide',
+        url: '/resources/guides/waitlist',
         content: 'Send LOCI (Letter of Continued Interest), update achievements, get extra rec, demonstrate fit. But commit to another school by May 1! Waitlist acceptances come May-July.'
       }
     ],
@@ -145,7 +161,7 @@ export default function Resources() {
         description: 'Calculate your high school GPA on both 4.0 and weighted scales.', 
         icon: '📊', 
         category: 'tool',
-        url: '/calculator/gpa',
+        url: '/resources/tools/gpa-calculator',
         content: 'Unweighted: A=4.0, B=3.0, C=2.0. Weighted: honors +0.5, AP +1.0. Calculate cumulative GPA for college apps.'
       },
       { 
@@ -161,7 +177,7 @@ export default function Resources() {
         description: 'Track word count for Common App (650 words) and supplemental essays.', 
         icon: '✍️', 
         category: 'tool',
-        url: '/essays',
+        url: '/resources/tools/essay-counter',
         content: 'Common App: 650 words max. UC PIQs: 350 words each. Coalition: 500-650 words. Use this tool to stay within limits!'
       },
       { 
@@ -654,8 +670,8 @@ export default function Resources() {
           <div className="mb-8 sm:mb-12">
             <h2 className="text-xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-6">📖 Comprehensive Guides</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-              {filteredResources.guides.map((resource, idx) => (
-                <div key={idx} className="bg-white rounded-lg sm:rounded-xl shadow-lg p-4 sm:p-6 hover:shadow-2xl transition-all cursor-pointer group border-l-4 border-blue-500">
+              {filteredResources.guides.map((resource: any, idx: number) => {
+                const cardContent = (
                   <div className="flex items-start">
                     <div className="text-3xl sm:text-5xl mr-3 sm:mr-4 group-hover:scale-110 transition-transform flex-shrink-0">{resource.icon}</div>
                     <div className="flex-1 min-w-0">
@@ -664,13 +680,27 @@ export default function Resources() {
                       </h3>
                       <p className="text-sm sm:text-base text-gray-600 mb-2 sm:mb-3">{resource.description}</p>
                       <p className="text-xs sm:text-sm text-gray-500 italic">{resource.content}</p>
-                      <button className="mt-3 sm:mt-4 text-indigo-600 text-sm sm:text-base font-semibold hover:text-indigo-700 flex items-center">
-                        Read More <span className="ml-2">→</span>
-                      </button>
+                      <div className="mt-3 sm:mt-4 text-indigo-600 text-sm sm:text-base font-semibold hover:text-indigo-700 flex items-center">
+                        {resource.url ? 'Read Full Guide' : 'Ask AI'} <span className="ml-2">→</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+
+                if (resource.url) {
+                  return (
+                    <Link key={idx} href={resource.url} className="bg-white rounded-lg sm:rounded-xl shadow-lg p-4 sm:p-6 hover:shadow-2xl transition-all cursor-pointer group border-l-4 border-blue-500 block">
+                      {cardContent}
+                    </Link>
+                  );
+                }
+                
+                return (
+                  <div key={idx} className="bg-white rounded-lg sm:rounded-xl shadow-lg p-4 sm:p-6 hover:shadow-2xl transition-all cursor-pointer group border-l-4 border-blue-500">
+                    {cardContent}
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}
