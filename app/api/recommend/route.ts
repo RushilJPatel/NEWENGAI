@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 
 interface Course {
   id: string;
@@ -18,6 +17,42 @@ interface College {
   requiredCourses: string[];
   electiveOptions: string[];
 }
+
+// Generate personalized advice based on interests
+const generateAdvice = (interests: string, courses: Course[]): string => {
+  if (!interests || !interests.trim()) {
+    return `Great progress so far! Based on your curriculum, here are some recommended electives that will strengthen your foundation and help you explore different areas. Each course is carefully selected to complement your core classes and broaden your skill set.`;
+  }
+  
+  const interestLower = interests.toLowerCase();
+  
+  if (interestLower.includes('ai') || interestLower.includes('machine learning') || interestLower.includes('artificial intelligence')) {
+    return `Excellent choice focusing on AI and machine learning! These recommended electives will give you the mathematical and programming foundation essential for this rapidly growing field. Consider supplementing with online courses in Python and TensorFlow to get hands-on experience with AI frameworks.`;
+  }
+  
+  if (interestLower.includes('web') || interestLower.includes('frontend') || interestLower.includes('backend')) {
+    return `Web development is a fantastic area to explore! These electives will help you build full-stack capabilities and understand both client and server-side technologies. Don't forget to build personal projects and deploy them online - nothing beats hands-on experience in web dev!`;
+  }
+  
+  if (interestLower.includes('game') || interestLower.includes('graphics')) {
+    return `Game development and graphics - awesome! These courses will give you the computational and mathematical skills needed for this creative field. Start working on small game projects using engines like Unity or Unreal to apply what you learn in class.`;
+  }
+  
+  if (interestLower.includes('security') || interestLower.includes('cyber')) {
+    return `Cybersecurity is incredibly important and in high demand! These electives will build your understanding of systems, networks, and secure coding practices. Consider participating in CTF (Capture the Flag) competitions to practice your skills in a fun, competitive environment.`;
+  }
+  
+  if (interestLower.includes('data') || interestLower.includes('analytics') || interestLower.includes('science')) {
+    return `Data science is where the future is heading! These courses will strengthen your statistical thinking and programming skills. Start working with real datasets and learn tools like Python, R, and SQL to complement your coursework.`;
+  }
+  
+  if (interestLower.includes('mobile') || interestLower.includes('app')) {
+    return `Mobile development is a great choice with huge opportunities! These electives will give you the programming and design skills needed. Consider building and publishing your own app to the App Store or Google Play - it's a fantastic resume builder!`;
+  }
+  
+  // Default advice
+  return `Based on your interests in ${interests}, here are electives that align well with your goals. These courses will deepen your expertise and open up new areas of exploration. Remember to work on side projects that showcase your passion and skills!`;
+};
 
 export async function POST(request: Request) {
   try {
@@ -43,30 +78,12 @@ export async function POST(request: Request) {
     // Find electives based on interests using keyword matching
     const keywordElectives = suggestElectivesByKeywords(interests, allCourses, college);
 
-    // Get AI suggestions using Gemini
-    let aiSuggestion = '';
-    let aiElectives: Course[] = [];
-    
-    try {
-      const geminiResult = await getGeminiSuggestions(
-        interests,
-        completedCourses,
-        allCourses,
-        college,
-        keywordElectives
-      );
-      aiSuggestion = geminiResult.suggestion;
-      aiElectives = geminiResult.courses;
-    } catch (error) {
-      console.error('Gemini API error:', error);
-      // Fallback to keyword-based suggestions
-      aiSuggestion = 'Based on your interests, here are some recommended electives:';
-      aiElectives = keywordElectives;
-    }
+    // Generate personalized advice
+    const aiSuggestion = generateAdvice(interests, keywordElectives);
 
     return NextResponse.json({
       nextCourses,
-      suggestedElectives: aiElectives,
+      suggestedElectives: keywordElectives,
       aiSuggestion
     });
   } catch (error) {
@@ -127,57 +144,5 @@ function suggestElectivesByKeywords(interests: string, allCourses: Course[], col
     .map(item => item.course);
   
   return electivesWithScores;
-}
-
-async function getGeminiSuggestions(
-  interests: string,
-  completedCourses: string[],
-  allCourses: Course[],
-  college: College,
-  keywordSuggestions: Course[]
-): Promise<{ suggestion: string; courses: Course[] }> {
-  const apiKey = process.env.GEMINI_API_KEY;
-  
-  if (!apiKey) {
-    throw new Error('GEMINI_API_KEY not configured');
-  }
-
-  const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
-
-  // Get available electives
-  const availableElectives = allCourses.filter(course => 
-    college.electiveOptions.includes(course.id) && 
-    !completedCourses.includes(course.id)
-  );
-
-  const prompt = `You are a college CS advisor helping a student at ${college.name}.
-
-Student's interests: ${interests || 'general computer science'}
-
-Available elective courses:
-${availableElectives.map(c => `- ${c.id}: ${c.name}`).join('\n')}
-
-Based on the student's interests, recommend 3-5 elective courses and explain why they would be a good fit. Be encouraging and specific about how these courses align with their interests.
-
-Format your response as:
-1. A brief personalized message (2-3 sentences)
-2. Course recommendations with brief explanations
-
-Keep it concise and friendly.`;
-
-  const result = await model.generateContent(prompt);
-  const response = await result.response;
-  const text = response.text();
-
-  // Return keyword-based suggestions as the courses (Gemini provides explanation)
-  const topCourses = keywordSuggestions.length > 0 
-    ? keywordSuggestions 
-    : availableElectives.slice(0, 5);
-
-  return {
-    suggestion: text,
-    courses: topCourses
-  };
 }
 
