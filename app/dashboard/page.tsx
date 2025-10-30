@@ -77,12 +77,13 @@ export default function DashboardPage() {
     }
   };
 
-  const loadChatHistories = async () => {
+  // Load chat histories from localStorage
+  const loadChatHistories = () => {
     try {
-      const response = await fetch('/api/chat-history');
-      const data = await response.json();
-      if (data.histories) {
-        setChatHistories(data.histories);
+      const saved = localStorage.getItem('chatHistories');
+      if (saved) {
+        const histories = JSON.parse(saved);
+        setChatHistories(histories);
       }
     } catch (error) {
       console.error('Error loading chat histories:', error);
@@ -102,13 +103,17 @@ export default function DashboardPage() {
     setMessages([welcomeMessage]);
   };
 
-  const saveConversation = async () => {
+  // Save conversation to localStorage
+  const saveConversation = () => {
     if (tier === 'free') {
-      alert('Chat history saving is a Premium feature!\n\nUpgrade to Basic or Premium to:\n✓ Save unlimited conversations\n✓ Resume chats anytime\n✓ Access chat history across devices\n\nVisit the Billing page to upgrade!');
+      alert('Chat history saving is a Premium feature!\n\nUpgrade to Basic or Premium to:\n✓ Save unlimited conversations\n✓ Resume chats anytime\n✓ Never lose your planning sessions\n\nVisit the Billing page to upgrade!');
       return;
     }
 
-    if (messages.length <= 1) return;
+    if (messages.length <= 1) {
+      alert('No messages to save yet!');
+      return;
+    }
 
     setSavingChat(true);
     try {
@@ -118,51 +123,86 @@ export default function DashboardPage() {
 
       const id = conversationId || `conv_${Date.now()}`;
 
-      await fetch('/api/chat-history', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          conversationId: id,
-          messages: messages,
-          title: title
-        })
-      });
+      // Get existing histories
+      const saved = localStorage.getItem('chatHistories');
+      const histories = saved ? JSON.parse(saved) : [];
+
+      // Find if conversation already exists
+      const existingIndex = histories.findIndex((h: any) => h.conversationId === id);
+
+      const chatData = {
+        conversationId: id,
+        title: title,
+        messages: messages,
+        lastActive: new Date().toISOString(),
+        createdAt: existingIndex >= 0 ? histories[existingIndex].createdAt : new Date().toISOString()
+      };
+
+      if (existingIndex >= 0) {
+        // Update existing
+        histories[existingIndex] = chatData;
+      } else {
+        // Add new
+        histories.unshift(chatData);
+      }
+
+      // Keep only last 50 conversations
+      const limitedHistories = histories.slice(0, 50);
+      localStorage.setItem('chatHistories', JSON.stringify(limitedHistories));
 
       setConversationId(id);
       setConversationTitle(title);
       loadChatHistories();
-      alert('Conversation saved successfully!');
+      alert('✓ Conversation saved successfully!');
     } catch (error) {
       console.error('Error saving conversation:', error);
-      alert('Failed to save conversation');
+      alert('Failed to save conversation. Please try again.');
     } finally {
       setSavingChat(false);
     }
   };
 
-  const loadConversation = async (convId: string) => {
+  // Load conversation from localStorage
+  const loadConversation = (convId: string) => {
     try {
-      const response = await fetch(`/api/chat-history/${convId}`);
-      const data = await response.json();
-      if (data.chatHistory) {
-        setMessages(data.chatHistory.messages);
-        setConversationId(convId);
-        setConversationTitle(data.chatHistory.title);
-        setShowHistory(false);
+      const saved = localStorage.getItem('chatHistories');
+      if (saved) {
+        const histories = JSON.parse(saved);
+        const conversation = histories.find((h: any) => h.conversationId === convId);
+        
+        if (conversation) {
+          setMessages(conversation.messages);
+          setConversationId(convId);
+          setConversationTitle(conversation.title);
+          setShowHistory(false);
+          
+          // Update last active time
+          conversation.lastActive = new Date().toISOString();
+          localStorage.setItem('chatHistories', JSON.stringify(histories));
+        }
       }
     } catch (error) {
       console.error('Error loading conversation:', error);
+      alert('Failed to load conversation');
     }
   };
 
-  const deleteConversation = async (convId: string) => {
+  // Delete conversation from localStorage
+  const deleteConversation = (convId: string) => {
     if (!confirm('Are you sure you want to delete this conversation?')) return;
     
     try {
-      await fetch(`/api/chat-history/${convId}`, { method: 'DELETE' });
-      loadChatHistories();
+      const saved = localStorage.getItem('chatHistories');
+      if (saved) {
+        const histories = JSON.parse(saved);
+        const filtered = histories.filter((h: any) => h.conversationId !== convId);
+        localStorage.setItem('chatHistories', JSON.stringify(filtered));
+        loadChatHistories();
+        alert('✓ Conversation deleted');
+      }
     } catch (error) {
       console.error('Error deleting conversation:', error);
+      alert('Failed to delete conversation');
     }
   };
 
